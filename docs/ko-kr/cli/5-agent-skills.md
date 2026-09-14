@@ -1,119 +1,99 @@
 ---
-title: "연습 5 - 에이전트 스킬 사용하기"
+title: "연습 5 - quality-checks 스킬 만들기 및 사용"
+description: "재사용 가능한 셸 스크립트 기반 품질 검사를 Copilot에 요청하고, 스킬을 검토한 후 필터링 브랜치에서 실행합니다."
 authors:
   - geektrainer
-lastUpdated: 2026-06-30
+lastUpdated: 2026-09-11
 ---
 
-앱 개발에는 빌드 생성, 테스트 실행, pull request 작성처럼 반복 가능한 작업이 자주 포함됩니다. **에이전트 스킬(Agent Skills)**을 사용하면 Copilot과 다른 AI agent에 이러한 작업을 수행하는 방법에 대한 가이드를 제공할 수 있습니다. 스킬은 agent가 필요할 때 불러올 수 있는 지침, 스크립트, 리소스 폴더입니다. [Agent Skills는 오픈 표준][agent-skills-repo]이며, 여러 agent에서 사용됩니다. 따라서 동일한 스킬을 Copilot Chat in agent mode, Copilot cloud agent, Copilot CLI, GitHub Copilot app 전반에서 사용할 수 있습니다.
-
-스킬은 프로젝트의 `.github/skills` 폴더 또는 전역 `~/.copilot/skills`에 저장됩니다. 각 스킬은 YAML frontmatter(`name`과 `description`)가 포함된 `SKILL.md` 파일과 그 뒤에 이어지는 markdown 지침으로 구성된 폴더입니다.
-
-```yaml
----
-name: make-contribution
-description: All changes to code must follow the guidance documented in the repository. Before any issue is filed, branch is made, commits generated, or pull request (or PR) created, a search must be done to ensure the right steps are followed. Whenever asked to create an issue, commit messages, to push code, or create a PR, use this skill so everything is done correctly.
----
-```
-
-스킬에는 스크립트, asset, 참고 자료를 담은 하위 폴더도 포함될 수 있습니다. 전체 구조는 [agent skills specification][agent-skills-spec]에서 다룹니다.
-
-> [!TIP]
-> 스킬은 동적으로 로드됩니다. 어떤 스킬이 적용되는지는 agent가 `description` 필드를 기준으로 판단합니다. 시나리오별로 명확한 설명이 있어야 실제로 사용되는 스킬이 되고, 그렇지 않으면 무시될 수 있습니다.
-
-[agent-skills-repo]: https://github.com/agentskills/agentskills
-[agent-skills-spec]: https://agentskills.io/specification
-이제 스킬이 팀의 사양에 맞는 pull request를 보장하는 방법을 살펴보겠습니다.
-
-## 시나리오
-
-팀에는 pull request(PR)에 대한 다음 요구 사항이 있습니다.
-
-- 명확한 커밋 메시지를 사용하고, 파일은 논리적으로 그룹화해야 합니다.
-- PR을 만들기 전에 모든 테스트가 통과해야 합니다.
-- 각 PR에는 다음 섹션이 포함되어야 합니다.
-    - 변경이 필요한 이유에 대한 설명
-    - 변경된 파일 개요
-    - 중요한 코드 블록 스니펫
-    - 수행한 변경 사항을 묶어 설명하는 세부 내용
-
-팀은 Copilot으로 코드와 PR을 생성하고 있으므로, AI 도구가 이러한 요구 사항을 따르도록 보장하고 싶어 합니다.
+필터링 기능을 구현하고 기존 npm 명령으로 검사했습니다. 이제 이러한 검사를 재사용 가능한 **에이전트 스킬**로 묶습니다. 연습 4~8에서 동일한 필터링 세션과 브랜치를 유지합니다. 이 연습에서는 끌어오기 요청을 만들지 않습니다.
 
 이 연습에서는 다음을 수행합니다.
 
-- Pull request 생성을 위한 기존 스킬을 살펴봅니다.
-- AI agent가 스킬을 활용하는 방식을 학습합니다.
-- 스킬의 도움으로 가이드라인에 맞는 PR을 만듭니다.
+- 사용자 지정을 만들기 전에 **Interactive** 모드로 돌아옵니다.
+- Copilot에 `quality-checks`를 만들고 검토를 위해 중단하도록 요청합니다.
+- 함께 제공되는 스크립트로 네 가지 검사를 모두 실행하고, 단일 테스트 파일을 지정하는 인수가 해당 파일만 선택함을 입증합니다.
+- 필터링 기능과 함께 스킬의 체크포인트를 저장합니다.
 
-## 스킬 실행하기
+## 지침, 스크립트, 리소스
 
-스킬은 agent가 필요하다고 판단할 때 동적으로 로드됩니다. 어떤 스킬을 사용할지는 `SKILL.md` 파일의 설명에 따라 결정됩니다. 따라서 스킬의 사용 사례를 정의하는 명확한 설명을 작성하는 것이 중요합니다.
+스킬은 에이전트가 필요할 때 불러오는 재사용 가능한 작업 지침, 실행 가능한 스크립트, 보조 리소스를 묶습니다. 사용자 지정 에이전트는 전문 역할, 지침, 사용 가능한 도구를 정의합니다. 두 방식은 상호 보완적입니다. 사용자 지정 에이전트도 스킬에 포함된 스크립트를 비롯한 스크립트를 실행할 수 있습니다.
 
-## PR 스킬 살펴보기
+리포지토리 스킬은 `.github/skills/<skill-name>/SKILL.md`에 있으며 `name`과 `description` 프런트매터 및 Markdown 지침을 포함합니다. 스크립트와 다른 리소스는 그 옆에 둡니다. 완성된 답을 복사하지 않고 Copilot에 `.github/skills/quality-checks/SKILL.md`와 `scripts/`를 생성하도록 요청합니다. [Agent Skills 명세][skill-spec]에서 형식을 설명합니다.
 
-Tailspin Toys에는 PR 생성에 대한 요구 사항이 있으므로, AI 도구가 이러한 가이드라인을 따르는 PR을 생성할 수 있도록 도와주는 스킬을 만들었습니다. 이 스킬이 무엇을 하는지 이해하기 위해 내용을 살펴보겠습니다.
+Copilot은 발견한 스킬의 설명으로 언제 불러올지 판단합니다. 이미 열린 세션에서 새 스킬을 즉시 발견한다고 가정하지 않습니다. 실행 절에서는 명시적으로 읽는 대체 절차를 제공합니다. 이식 가능한 형식이라고 해서 셸이나 프로젝트 필수 조건이 없어지지는 않습니다.
 
-1. `.github/skills/make-contribution/SKILL.md`를 엽니다.
-2. 이름과 설명을 확인합니다. 설명이 pull request 생성 또는 코드 커밋 요청이 있을 때 사용해야 하는 시나리오를 어떻게 강조하는지 확인합니다.
-3. 스킬 내용을 읽어 봅니다. 브랜치 생성 방식, 커밋 생성 방식, pull request 내용에 관한 규칙이 정의되어 있음을 확인합니다.
+## 스킬 만들기
 
-## 스킬 사용하기
+프롬프트를 보내기 전에 **Interactive** 모드로 돌아옵니다. 현재 체크아웃과 브랜치를 유지합니다. 이 스킬이 이미 있는 이전 템플릿으로 시작했다면 사용자 지정을 덮어쓰지 말고 검토하여 확장합니다.
 
-앞서 강조했듯이 스킬은 Copilot CLI가 자동으로 호출합니다. 따라서 Copilot에게 PR 생성을 요청하기만 하면 됩니다.
+```plaintext
+.github/skills/quality-checks/SKILL.md에 scripts/ 하위 디렉터리를 포함한 재사용 가능한 quality-checks 에이전트 스킬을 만들어 주십시오. 먼저 package.json, README, 테스트 설정, 리포지토리 지침을 확인하여 기존 검사와 필수 조건을 파악해 주십시오. 현재 체크아웃과 브랜치를 식별해 주십시오. 이 스킬이 이미 있다면 덮어쓰지 말고 검토하여 확장해 주십시오.
 
-> [!TIP]
-> **Copilot CLI 세션 시작하기**
->
-> 아래 연습을 시작하기 전에 코드스페이스로 돌아가 터미널을 엽니다(이미 열려 있지 않다면 <kbd>Ctrl</kbd>+<kbd>`</kbd>). 그런 다음 `--yolo`와 `--enable-all-github-mcp-tools`를 사용해 Copilot CLI를 시작합니다.
->
-> ```bash
-> copilot --yolo --enable-all-github-mcp-tools
-> ```
->
-> 이 프로젝트의 가장 최근 세션을 새로 시작하지 않고 이어서 사용하려면 `copilot --yolo --enable-all-github-mcp-tools --continue`를 실행합니다. 이전 연습에서 Copilot CLI가 이미 실행 중이라면 `/clear`를 보내 새 대화를 시작합니다.
->
-> `--enable-all-github-mcp-tools`는 현재 세션에서 읽기/쓰기 GitHub MCP 도구를 활성화하므로, 워크숍 흐름 중 Copilot이 백로그를 읽고 pull request를 열 수 있습니다.
+의도한 실행 환경을 감지하고 모호하면 질문해 주십시오. 해당 환경에 적합한 구현만 생성해 주십시오. macOS/Linux/WSL에는 Bash .sh 스크립트, 네이티브 Windows에는 PowerShell .ps1 스크립트를 사용해 주십시오. .mjs 스크립트나 두 셸 구현 모두를 생성하지 말고 다른 셸이나 런타임 설치를 요구하지 마십시오.
 
-> [!CAUTION]
-> `--yolo`는 전체 자동 권한(`--allow-all-tools`, `--allow-all-paths`, `--allow-all-urls`)을 활성화합니다. Codespace나 VM 같은 격리된 환경에서만 사용하고, 일상적인 개발을 위한 기본 별칭으로는 절대 설정하지 않습니다. 자세한 내용은 [Allowing and denying tool use][allow-all-warning]를 참고합니다.
+기존 package.json 스크립트를 사용하여 lint, 단위 테스트, 엔드투엔드 테스트, 타입 검사용 작은 래퍼를 만들어 주십시오. 현재 명령은 npm run lint, npm run test:unit, npm run test:e2e, npm run typecheck:all입니다. 이 체크아웃에서 확인해 주십시오. 래퍼는 의도한 루트와 매니페스트를 검증한 다음 인수, 출력, 종료 코드를 전달하며 기존 npm 스크립트를 호출하는 역할로 제한해 주십시오. 래퍼에 포트 검사, 프로세스 관리 코드, 프로세스 종료 처리를 넣지 마십시오. 불필요한 스캐폴딩이나 추상화 없이 설계를 단순하게 유지해 주십시오.
 
-[allow-all-warning]: https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli/allowing-tools
-1. 다음 프롬프트를 사용해 Copilot에게 PR 생성을 요청합니다.
+각 스크립트는 자신의 위치를 기준으로 리포지토리 루트를 찾고, 찾은 루트가 이 체크아웃에서 의도한 package.json을 포함하는 디렉터리인지 검증해야 합니다. 그렇지 않으면 명확히 실패하도록 하고, npm의 상위 디렉터리 패키지 탐색에 의존하지 마십시오. 현재 디렉터리에 관계없이 워크트리나 공백이 있는 경로에서도 작동하고, 실제 npm 스크립트로 인수를 전달하며, stdout과 stderr를 유지하고 실패한 명령의 종료 코드를 반환해야 합니다. npm의 인수 구분자는 래퍼가 담당합니다. 전달할 인수 앞에 --를 한 번만 삽입하고, 호출자는 추가 -- 없이 대상 도구의 인수를 직접 제공하도록 해 주십시오. PowerShell에서는 네이티브 명령 실패를 명시적으로 처리하여 실패한 npm 명령이 성공으로 나타나지 않게 해 주십시오.
 
-    ```
-    Can you please create a pull request for me!
-    ```
+SKILL.md에 유효한 name과 description 프런트매터, 간결한 실행 순서, 문제 해결 지침을 포함해 주십시오. 기반 npm 명령을 나열하거나 실행하는 데 그치지 말고 함께 제공되는 스크립트를 실제로 실행하도록 Copilot에 지시해 주십시오. 정확한 스크립트 경로, 필수 조건, 올바른 호출 예시를 문서화하고 기존 테스트 파일을 사용하는 단일 단위 테스트 파일 실행 예시도 포함해 주십시오. SKILL.md는 재사용 가능하게 유지하고 특정 컴퓨터의 절대 체크아웃 경로를 포함하지 마십시오. 실행 비트에 의존하지 않는 명시적 bash 호출이나 실행 정책을 광범위하게 바꾸거나 우회하지 않는 적절한 PowerShell 호출을 사용해 주십시오.
 
-2. Copilot이 요청을 확인합니다. 잠시 후 Copilot이 **make-contribution** 스킬을 사용 중이라고 표시하는 것을 확인할 수 있습니다.
+Playwright에 설정된 빌드/미리 보기용 webServer, 로컬 서버 재사용, 서버 소유권 확인은 래퍼가 아니라 SKILL.md의 실행 지침에 넣어 주십시오. 잘못된 서버를 재사용하지 않도록 이전에 우리가 시작한 개발 서버가 E2E 검사 전에 중지되었는지 확인해 주십시오. 테스트할 체크아웃과 서버를 식별해 주십시오. 실제로 직접 시작한 서버만 중지해 주십시오. 작업 디렉터리나 프로세스 이름의 일치는 소유권의 증거가 아닙니다. 그렇지 않으면 프로세스를 종료하지 말고 충돌을 보고한 후 사용자에게 해결 방법을 질문해 주십시오. 관련 없는 프로세스를 절대로 종료하지 마십시오.
 
-3. Copilot은 이어서 스킬의 지침을 따릅니다. 먼저 테스트를 실행한 뒤 브랜치, 커밋, 그리고 최종적으로 PR을 생성합니다.
-4. PR이 생성되면 리포지토리로 돌아가 PR을 엽니다. 섹션이 스킬에 정의된 가이드라인을 따르고 있으며, 팀이 제시한 요구 사항과 일치하는지 확인합니다.
-5. 다음 연습으로 넘어가기 전에 이 필터링 PR과 접근성 작업을 분리하기 위해 로컬 작업 공간을 `main`에서 새 브랜치로 초기화합니다.
+소프트웨어, 의존성, 브라우저를 자동으로 설치하거나 데이터를 삭제하거나 애플리케이션 코드 또는 브랜치를 변경하지 마십시오. 누락된 필수 조건을 보고하고 설치 전에 승인을 요청해 주십시오. 커밋, 푸시, 끌어오기 요청 생성을 하지 마십시오. SKILL.md, 필수 래퍼, 필요한 경우 공유 헬퍼만 제공하고 임시 조사 파일이나 디버그 파일은 남기지 마십시오. 그런 다음 검사를 실행하기 전에 검토할 수 있도록 중단해 주십시오.
+```
 
-    ```bash
-    git checkout main
-    git pull
-    git checkout -b accessibility-cli
-    ```
+## 스킬 검토
 
-## 요약 및 다음 단계
+1. 편집기에서 `.github/skills/quality-checks/SKILL.md`와 `scripts/` 디렉터리를 열고 diff를 확인합니다.
+2. `name`과 `description`이 스킬과 적용 시점을 설명하는지 확인합니다. 메타데이터뿐 아니라 지침도 읽습니다.
+3. 실행 순서가 lint, 단위 테스트, E2E, 타입 검사를 위해 `.github/skills/quality-checks/scripts/`의 스크립트를 실제로 호출하는지 확인합니다.
+4. 각 래퍼에서 스크립트 위치 기반 루트 탐색과, 찾은 디렉터리에 이 체크아웃에서 의도한 `package.json`이 있는지 명시적으로 확인하는 절차를 살펴봅니다. npm이 상위 디렉터리를 검색하여 명령이 성공한 것은 루트가 올바르다는 증거가 아닙니다. 경로의 따옴표 처리, 인수 전달, 출력 표시, 실패 종료를 확인합니다. PowerShell은 네이티브 npm 실패를 전달해야 합니다.
+5. 문서화된 단일 단위 테스트 파일 실행 예시를 확인합니다. 래퍼가 npm의 `--` 구분자를 삽입하므로 호출자는 다른 구분자 없이 대상 도구의 인수를 직접 전달합니다. 재사용 가능한 지침에는 특정 컴퓨터의 절대 체크아웃 경로를 포함하지 않습니다. 실행 전에 부족한 부분을 수정하도록 Copilot에 요청합니다.
+6. 스크립트는 루트/매니페스트 검증과 기존 npm 검사 실행으로 제한합니다. 포트와 프로세스에 관한 판단은 셸 프로세스 관리 코드가 아니라 SKILL.md에 둡니다. 에이전트가 실제로 시작한 서버만 중지할 수 있는지 확인합니다. 작업 디렉터리나 프로세스 이름이 일치한다고 소유권이 성립하지는 않습니다. 제공한 파일에는 스킬, 필수 래퍼, 필요한 공유 헬퍼만 포함하고 임시 조사 파일이나 디버그 파일은 포함하지 않습니다.
 
-에이전트 스킬의 도움으로 문서화된 요구 사항을 충족하는 새로운 PR을 만들었습니다. 다음을 수행했습니다.
+> [!NOTE]
+> 현재 Tailspin Toys에는 Node.js 22.13 이상, 프로젝트 의존성, E2E 검사용 Playwright Chromium이 필요합니다. 체크아웃의 README와 `package.json`에서 필수 조건을 확인합니다. 누락된 필수 조건이나 PowerShell 실행 정책에 의한 차단은 승인된 방법으로 해결해야 합니다. 자동 설치, 정책 우회, 알리지 않고 직접 npm으로 전환하는 방식으로 해결하지 않습니다.
 
-- Pull request 생성을 위한 기존 스킬을 살펴보았습니다.
-- AI agent가 스킬을 활용하는 방식을 학습했습니다.
-- 스킬의 도움으로 가이드라인에 맞는 PR을 만들었습니다.
+## 스킬 실행
 
-스킬은 특정 작업에 적합하지만, 더 강력한 작업을 수행하려면 [custom agents][next-lesson]를 활용해야 합니다. 다음으로 이를 살펴보겠습니다.
+이전 연습의 개발 서버가 중지되었는지 확인합니다. Playwright는 E2E를 위해 빌드하고 미리 보기를 제공하지만, 로컬 설정은 포트 `4321`의 서버를 재사용할 수 있습니다. 다른 체크아웃의 서버는 이 기능의 유효한 근거가 아닙니다.
 
-## 리소스
+Copilot CLI에 `/quality-checks`가 표시되면 선택하여 발견된 스킬을 명시적으로 호출하고 아래 요청을 포함합니다. 발견되지 않았다면 이 세션에서 동일한 요청을 직접 보냅니다. 이 연습에서는 스킬을 읽는 방법을 대체 절차로 사용할 수 있습니다.
 
-- [에이전트 스킬 소개][about-agent-skills]
-- [Agent Skills Specification][agent-skills-spec]
-- [Agent Skills Repository][agent-skills-repo]
-- [Awesome-copilot의 Agent Skills][awesome-copilot-skills]
+```plaintext
+.github/skills/quality-checks/SKILL.md를 읽고 지침에 따라 이 체크아웃의 필터링 기능을 검증해 주십시오. 먼저 각 래퍼의 코드를 검토하여 npm의 상위 디렉터리 패키지 탐색에 의존하지 않고, 이 체크아웃에서 의도한 package.json을 포함하는 디렉터리를 찾으며, 잘못된 루트에서는 명시적으로 실패하도록 처리하는지 확인해 주십시오. 실패를 재현하기 위해 리포지토리 파일을 이동하거나 이름을 바꾸거나 삭제하거나 수정하지 마십시오. 함께 제공되는 lint, 단위 테스트, 엔드투엔드 테스트, 타입 검사 스크립트를 실제로 실행해 주십시오. 문서화된 단일 단위 테스트 파일 실행 예시도 실행하되, npm의 -- 구분자는 래퍼가 담당하므로 대상 도구의 인수를 직접 전달해 주십시오. 테스트 러너의 결과에서 지정한 파일만 실행되었는지 확인하고, 해당 파일명과 실행된 테스트 파일 수를 보고해 주십시오. 인수를 출력하거나 종료 코드 0을 반환하는 것만으로는 올바른 선택을 증명하지 못합니다.
 
-[previous-lesson]: ../4-mcp/
-[next-lesson]: ../6-custom-agents/
-[about-agent-skills]: https://docs.github.com/copilot/concepts/agents/about-agent-skills
-[awesome-copilot-skills]: https://github.com/github/awesome-copilot/tree/main/skills
+실패, 건너뛴 검사, 누락된 필수 조건을 포함하여 각 스크립트 호출과 결과를 보고해 주십시오. 사용할 수 없는 스킬 스크립트를 알리지 않고 직접 npm 명령으로 대체하지 마십시오. 테스트할 체크아웃과 서버를 식별하고 직접 시작한 서버만 중지하며, 설치하거나 다른 프로세스를 중지하기 전에 질문해 주십시오. 애플리케이션 코드나 브랜치를 변경하거나 커밋, 푸시, 끌어오기 요청 생성을 하지 마십시오.
+```
+
+도구 호출과 출력을 확인합니다. 네 스크립트가 모두 실제로 실행되어야 합니다. 검사 설명이나 건너뛴 검사는 통과가 아닙니다. 단일 파일 예시에서는 요청한 파일명을 러너의 실제 파일별 결과 및 보고한 수와 비교합니다. 해당 파일만 실행되어야 합니다. 다른 파일도 실행되었다면 인수 출력이나 종료 코드 0만으로는 충분하지 않습니다. 실패는 유용한 근거입니다. 스킬을 수정하거나 승인받아 설정 차단 요인을 해결한 다음 영향을 받는 검사를 다시 실행합니다. 관련 없는 프로세스를 중지하거나 포트 충돌을 강제로 없애지 않습니다.
+
+## 체크포인트 저장
+
+스킬과 결과를 검토한 후 로컬 체크포인트를 승인합니다.
+
+```plaintext
+현재 diff를 검토하고 quality-checks 스킬 파일만 포함한 체크포인트 커밋을 만들어 주십시오. 기존 필터링 브랜치를 유지해 주십시오. 푸시하거나 끌어오기 요청을 만들지 마십시오.
+```
+
+스킬 파일은 연습 8의 기능 PR에 필터링, QA 프로필, 관련 테스트와 함께 포함됩니다. 동일한 체크아웃에서 [연습 6 - Playwright MCP로 기능 검증][next-lesson]을 계속합니다.
+
+## 더 많은 스킬 예제
+
+이 커뮤니티 예제는 참고 자료이며 추가 작업이 아닙니다. 채택하기 전에 필수 조건과 동작을 검토합니다.
+
+- [기여 워크플로: `make-repo-contribution`][contribution-example].
+- [요구 사항 문서: `prd`][prd-example].
+- [다이어그램과 함께 제공되는 내보내기 스크립트: `drawio`][drawio-example].
+- [브라우저 테스트: `webapp-testing`][browser-example].
+
+업스트림 기여 예제의 이름은 `make-repo-contribution`이며, 이전 Tailspin 템플릿은 `make-contribution`이라는 다른 이름을 사용했습니다. 이 워크숍은 두 기여 스킬 중 어느 것에도 의존하지 않습니다.
+
+[previous-lesson]: ../4-build-filtering/
+[next-lesson]: ../6-mcp-playwright/
+[skill-spec]: https://agentskills.io/specification
+[contribution-example]: https://github.com/github/awesome-copilot/tree/main/skills/make-repo-contribution
+[prd-example]: https://github.com/github/awesome-copilot/tree/main/skills/prd
+[drawio-example]: https://github.com/github/awesome-copilot/tree/main/skills/drawio
+[browser-example]: https://github.com/github/awesome-copilot/tree/main/skills/webapp-testing
