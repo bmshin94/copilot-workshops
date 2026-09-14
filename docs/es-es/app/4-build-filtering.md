@@ -17,6 +17,10 @@ En esta lección:
 
 La habilidad, la validación MCP, el perfil QA y la PR de la funcionalidad llegarán en módulos posteriores. No los crees durante este paso de implementación.
 
+## Escenario
+
+El catálogo de Tailspin Toys está creciendo y sus visitantes necesitan acotar los juegos por categoría y editor. La incidencia del backlog describe la funcionalidad, pero hay que acordar detalles como la combinación de categorías antes de programar. Utilizarás el modo Plan para resolver esas decisiones y después autorizarás una implementación acotada con Autopilot.
+
 ## Modos de sesión
 
 El selector de modo situado debajo de la indicación controla la autonomía del agente:
@@ -109,7 +113,9 @@ Tras revisar los cambios y la verificación, autoriza un commit local:
 Revisa las diferencias actuales y crea un commit de control para la implementación del filtrado y sus pruebas. Mantén esta misma rama y worktree de filtrado. No crees habilidades ni agentes, no configures MCP, no envíes cambios ni abras una solicitud de incorporación de cambios.
 ```
 
-Este punto de control forma parte de la PR 3, no de una PR independiente. Mantén el modo **Interactive** en la misma sesión para la [Lección 5 - Crear y utilizar una habilidad quality-checks][next-lesson].
+## Resumen y pasos siguientes
+
+Has acordado los requisitos de filtrado, revisado la implementación y las pruebas, y comprobado la funcionalidad manualmente. Este punto de control forma parte de la PR 3, no de una PR independiente. Mantén el modo **Interactive** en la misma sesión para la [Lección 5 - Crear y utilizar una habilidad quality-checks][next-lesson].
 
 ## Recursos
 

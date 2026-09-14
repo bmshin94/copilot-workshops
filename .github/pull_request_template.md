@@ -14,11 +14,12 @@
 
 ## Verification
 
-<!-- Confirm type, build, and link checks pass before requesting review. -->
+<!-- Follow .github/skills/build-and-verify-docs/SKILL.md. Mark non-applicable checks with a brief explanation. -->
 
-- [ ] `cd website && npm run check:all && rm -rf dist && npm run build` succeeds (target: 40 routes × 6 locales + 1 redirect = 241 built pages excluding 404; build reports 242 HTML files including 404, or note any intentional change)
-- [ ] Lychee link check passes: `mkdir -p /tmp/lychee-root && ln -sfn $PWD/website/dist /tmp/lychee-root/copilot-workshops && lychee --offline --no-progress --root-dir /tmp/lychee-root 'website/dist/**/*.html'`
-- [ ] External GitHub URLs that I changed have been clicked manually (lychee runs offline)
+- [ ] Type checks and a clean site build pass.
+- [ ] Affected pages and translations match their source and intended routes.
+- [ ] Offline internal link checks pass.
+- [ ] Changed external links have been checked separately.
 
 ## Screenshots
 

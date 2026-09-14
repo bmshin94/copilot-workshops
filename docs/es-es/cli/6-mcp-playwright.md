@@ -10,6 +10,16 @@ La implementación de filtrado y la habilidad quality-checks ya tienen verificac
 
 Mantén el modo **Interactive** en la misma copia de trabajo y rama de filtrado. Configurar MCP no inicia un nuevo hito de funcionalidad.
 
+En este ejercicio:
+
+- conectarás MCP de Playwright y confirmarás que sus herramientas de navegador están disponibles.
+- compararás el comportamiento real del filtrado con la incidencia y los criterios aprobados.
+- revisarás las observaciones y detendrás el servidor de desarrollo que hayas iniciado.
+
+## Escenario
+
+Las comprobaciones automatizadas han pasado, pero Tailspin Toys también necesita pruebas de lo que experimentan los visitantes. Darás a Copilot herramientas de navegador para probar los filtros y comparar los juegos mostrados con el comportamiento acordado, en lugar de considerar que un control que responde demuestra que el filtrado funciona.
+
 ## Qué aporta MCP
 
 [MCP][mcp-overview] conecta un agente con herramientas y contexto externos mediante servidores. El servidor MCP de GitHub integrado permite a Copilot trabajar con incidencias y PR. El [servidor MCP de Playwright][playwright-mcp] proporciona herramientas de navegador para abrir páginas, examinar elementos accesibles, navegar e interactuar con controles.
@@ -66,6 +76,8 @@ Si algo falla, registra el comportamiento observado. Autoriza por separado cualq
 ## Detener el servidor propio y continuar
 
 Detén el servidor de desarrollo con <kbd>Ctrl</kbd>+<kbd>C</kbd> en la terminal donde lo iniciaste. Mantén disponible la configuración de MCP de Playwright. El Ejercicio 7 coordinará observaciones nuevas en el navegador y comprobaciones E2E automatizadas, que no deben reutilizar un servidor de desarrollo obsoleto ni la aplicación de otra copia de trabajo.
+
+## Resumen y pasos siguientes
 
 Mantén **Interactive** antes de crear el perfil de QA. Has observado el comportamiento del navegador sin crear otra PR o rama; a continuación, [crea y utiliza un agente de QA][next-lesson] para combinar requisitos, cobertura, la habilidad y las pruebas de verificación finales.
 

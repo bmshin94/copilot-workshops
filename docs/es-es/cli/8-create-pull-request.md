@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Ahora reúne el hito de filtrado en la PR 3. Mantén la rama y la copia de trabajo utilizadas en los Ejercicios 4–7. Contienen la implementación de filtrado, la habilidad quality-checks y sus scripts, el perfil de QA y las pruebas asociadas.
 
+En este ejercicio:
+
+- revisarás las diferencias del hito completo y las pruebas de verificación actuales de QA.
+- solicitarás una PR de funcionalidad y examinarás sus comprobaciones y comentarios de revisión.
+- combinarás explícitamente la PR revisada y actualizarás el `main` local.
+
+## Escenario
+
+El trabajo de filtrado está repartido en varios puntos de control, pero los revisores necesitan evaluar una funcionalidad completa. Tailspin Toys quiere una PR que conecte los requisitos, la implementación, las comprobaciones reutilizables y los hallazgos de QA. Prepararás esa entrega y resolverás los bloqueos antes de combinar.
+
 Esta es una petición normal de PR con alcance limitado que utiliza las convenciones del repositorio. No requiere una habilidad de contribución.
 
 > [!NOTE]
@@ -90,6 +100,8 @@ git status
 git switch main
 git pull --ff-only
 ```
+
+## Resumen y pasos siguientes
 
 No hace falta una rama nueva para el siguiente ejercicio. Has combinado exactamente tres PR del taller: valoraciones por estrellas; instrucciones y una demostración; y filtrado con la habilidad de calidad, el perfil de QA y las pruebas.
 

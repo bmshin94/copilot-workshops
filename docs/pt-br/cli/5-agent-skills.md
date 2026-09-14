@@ -15,6 +15,10 @@ Nesta lição, você vai:
 - executar as quatro verificações pelos scripts incluídos e comprovar que um argumento que indica um único arquivo de teste seleciona apenas esse arquivo.
 - salvar um checkpoint da skill junto com o recurso de filtragem.
 
+## Cenário
+
+A Tailspin Toys precisa das mesmas verificações de qualidade sempre que a filtragem muda. Em vez de explicar os comandos e pré-requisitos em cada conversa, a equipe quer uma skill reutilizável. Você vai criá-la, examinar seus scripts e verificar se outra solicitação consegue executar as verificações corretamente.
+
 ## Instruções, scripts e recursos
 
 Skills reúnem instruções de tarefas reutilizáveis, scripts executáveis e recursos de apoio que um agente carrega sob demanda. Agentes personalizados definem papéis especializados, instruções e ferramentas disponíveis. Eles são complementares: um agente personalizado pode executar scripts, incluindo os fornecidos com uma skill.
@@ -71,7 +75,9 @@ Após revisar a skill e seus resultados, autorize um checkpoint local:
 Revise o diff atual e crie um commit de checkpoint apenas para os arquivos da skill quality-checks. Mantenha a branch de filtragem existente. Não faça push nem crie um pull request.
 ```
 
-Os arquivos da skill acompanharão a filtragem, o perfil de QA e os testes associados no PR do recurso na Lição 8. Continue nesta mesma cópia de trabalho com a [Lição 6 - Validar a funcionalidade com o MCP do Playwright][next-lesson].
+## Resumo e próximos passos
+
+Você criou, examinou e executou uma skill quality-checks reutilizável, incluindo seu exemplo de teste de um único arquivo. Os arquivos da skill acompanharão a filtragem, o perfil de QA e os testes associados no PR do recurso na Lição 8. Continue nesta mesma cópia de trabalho com a [Lição 6 - Validar a funcionalidade com o MCP do Playwright][next-lesson].
 
 ## Mais exemplos de skills
 

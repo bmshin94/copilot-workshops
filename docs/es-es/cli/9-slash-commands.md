@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Los tres hitos de PR están completos. Ahora explora los controles de CLI que te ayudan a comprender y gestionar una sesión. Este ejercicio no implementa otra funcionalidad, no delega trabajo ni abre otra PR.
 
+En este ejercicio:
+
+- examinarás los controles de contexto, uso, modelo y modo.
+- compararás las opciones de línea de comandos con la ayuda de la versión instalada.
+- exportarás una sesión localmente y la revisarás antes de compartir nada.
+
+## Escenario
+
+Una vez publicada la funcionalidad, quieres comprender los controles de CLI que utilizarás a diario. Examinarás una sesión y sus opciones para compartir sin iniciar otra tarea, para evitar que gestionar el contexto o exportar una conversación autorice trabajo o revele información del proyecto por accidente.
+
 Desde la copia de trabajo actualizada del participante, inicia `copilot` en modo **Interactive**. Utiliza `/help` y la [referencia de comandos][cli-reference] para confirmar los comandos que admite tu versión instalada; la documentación actual puede describir controles más recientes que tu instalación.
 
 ## Examinar el contexto y la información de sesión

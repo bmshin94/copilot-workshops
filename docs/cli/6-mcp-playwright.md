@@ -10,6 +10,16 @@ Your filtering implementation and quality-checks skill already have automated ve
 
 Stay in **Interactive** mode on the same filtering checkout and branch. MCP configuration does not start a new feature milestone.
 
+In this exercise, you will:
+
+- connect Playwright MCP and confirm its browser tools are available.
+- compare actual filtering behavior with the issue and approved criteria.
+- review the observations and stop the development server you started.
+
+## Scenario
+
+Automated checks have passed, but Tailspin Toys also needs evidence of what visitors experience. You'll give Copilot browser tools to exercise the filters and compare the displayed games with the agreed behavior, rather than treating a responsive control as proof that filtering works.
+
 ## What MCP adds
 
 [MCP][mcp-overview] connects an agent to external tools and context through servers. The built-in GitHub MCP server lets Copilot work with issues and PRs. The [Playwright MCP server][playwright-mcp] gives it browser tools for opening pages, inspecting accessible elements, navigating, and interacting with controls.
@@ -66,6 +76,8 @@ If something fails, record the observed behavior. Authorize any focused applicat
 ## Stop the owned server and continue
 
 Stop the development server with <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal where you started it. Keep the Playwright MCP configuration available. Exercise 7 will coordinate fresh browser observations and automated E2E checks, which must not reuse a stale development server or another checkout's app.
+
+## Summary and next steps
 
 Stay **Interactive** before creating the QA profile. You've observed browser behavior without creating another PR or branch; next, [create and use a QA agent][next-lesson] to combine requirements, coverage, the skill, and final evidence.
 

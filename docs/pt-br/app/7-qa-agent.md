@@ -3,16 +3,35 @@ title: "Lição 7 - Criar e usar um agente de QA"
 description: "Crie um perfil de QA que parta dos requisitos e combine cobertura de testes, a skill quality-checks e evidências diretas do navegador."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-09-14
 ---
 
-Você executou verificações repetíveis e explorou a filtragem pelo MCP do Playwright. Agora crie um **agente personalizado de QA** para reunir os requisitos, a cobertura e as evidências do navegador. Mantenha a sessão, a cópia de trabalho e a branch de filtragem; o PR do recurso vem na Lição 8.
+Nas lições anteriores, você criou uma skill quality-checks e deu ao Copilot acesso a um navegador pelo MCP do Playwright. Agora reúna essas capacidades com um **agente personalizado de QA** que revise o recurso de filtragem em relação aos requisitos.
+
+Nesta lição, você vai:
+
+- entender como um agente personalizado trabalha com instruções, skills e ferramentas MCP.
+- criar e examinar um perfil de QA reutilizável.
+- selecionar o agente de QA e revisar suas conclusões em relação à issue de filtragem.
+- salvar o perfil e quaisquer testes justificados para o PR do recurso.
+
+## Cenário
+
+A Tailspin Toys está se preparando para lançar a filtragem por categoria e editora. As verificações automatizadas e a exploração no navegador forneceram evidências úteis à equipe, mas passar nos testes não demonstra, por si só, que todos os requisitos acordados estão cobertos. Antes de abrir o PR, a equipe quer uma revisão focada do que foi solicitado, do que foi implementado e do que ainda precisa de atenção.
+
+Você criará um agente de QA que parte da issue e das decisões de planejamento aprovadas, examina a cobertura e usa a skill e as ferramentas do navegador para reunir evidências. Seu papel é identificar lacunas e explicar se o recurso está pronto para revisão, não aprovar o próprio trabalho nem integrar o PR.
+
+## O que é um agente personalizado?
+
+Um agente personalizado é um papel especializado reutilizável definido em um perfil Markdown. Suas instruções orientam como o Copilot aborda uma tarefa; selecionar o perfil aplica esse papel à conversa. Neste workshop, você definirá o papel em `.github/agents/qa.agent.md` e o selecionará no aplicativo.
+
+As personalizações que você criou têm funções distintas. As instruções do repositório descrevem os padrões da equipe. A skill quality-checks reúne verificações repetíveis. O MCP do Playwright fornece ferramentas de navegador. O perfil de QA informa ao Copilot como usar essas capacidades para avaliar requisitos e relatar conclusões. Ele não as substitui nem exige outra sessão de agente.
 
 ## Criar o perfil de QA
 
-Permaneça no modo **Interactive**. Um perfil define o papel e as instruções de um especialista; uma skill reúne instruções de tarefas reutilizáveis, scripts e recursos. O agente de QA usará sua skill e as ferramentas MCP configuradas em vez de substituí-las.
+Continue na sessão de filtragem da Lição 6, mantendo o mesmo worktree e branch. Confirme que a sessão está no modo **Interactive**, que a skill quality-checks está presente e que o MCP do Playwright está disponível. O PR do recurso vem na Lição 8; esta lição adiciona um perfil e, apenas quando necessário, testes.
 
-Envie este prompt e examine a definição antes de executá-la:
+Envie o prompt a seguir ao agente padrão do Copilot. Você examinará o arquivo resultante antes de selecionar QA:
 
 ```plaintext
 Crie um agente personalizado de QA reutilizável em .github/agents/qa.agent.md. Primeiro examine as instruções do repositório, package.json, a configuração de testes e .github/skills/quality-checks/SKILL.md. Forneça ao perfil um frontmatter YAML válido com name definido como QA e uma description que explique quando usá-lo. Não fixe um modelo nem adicione uma lista tools; herde as ferramentas e permissões disponíveis no ambiente. Crie apenas a definição do agente e pare para que eu possa examiná-la antes de executá-lo.
@@ -26,9 +45,13 @@ Permita que o agente de QA adicione os menores testes necessários para lacunas 
 
 ## Examinar o perfil
 
-Abra `.github/agents/qa.agent.md` em **Changes** ou no painel de revisão de arquivos. `description` é obrigatório; esta lição também fornece `QA` como `name` legível. Confirme que não há um `model` fixado nem uma lista de ferramentas inventada. Omitir `tools` herda as ferramentas disponíveis; não contorna as permissões do ambiente. Perfis de produção podem restringir ferramentas deliberadamente.
+1. Abra **Changes** e selecione `.github/agents/qa.agent.md`. Você também pode encontrá-lo no painel de revisão de arquivos.
+2. Leia o frontmatter. `description` é obrigatório, e `name: QA` torna o perfil reconhecível no seletor. Deixe `model` e `tools` sem especificar neste exercício para usar o modelo selecionado e as ferramentas disponíveis; as permissões normais continuam valendo.
+3. Leia as instruções como uma lista de revisão: elas partem dos requisitos, usam a skill e as ferramentas do navegador, adicionam testes apenas para lacunas reais e distinguem falhas de verificações bloqueadas?
+4. Peça ao Copilot que corrija as lacunas antes de selecionar o perfil. Confirme que ele criou a definição sem iniciar QA nem alterar a aplicação.
 
-Confirme que as instruções começam pelos requisitos, exigem atividade real no navegador via MCP e scripts da skill, permitem apenas adições justificadas de testes e relatam bloqueios com veracidade. Nem um perfil especializado nem uma skill exige uma janela de contexto separada ou a orquestração de outros agentes.
+> [!NOTE]
+> Um perfil especializado orienta o comportamento; ele não garante um resultado correto. Você ainda precisa examinar a atividade das ferramentas, as alterações nos testes e o relatório do agente.
 
 ## Executar QA em relação à issue
 
@@ -50,7 +73,12 @@ Valide o comportamento com o servidor MCP do Playwright, examine a cobertura de 
 
 ## Revisar as evidências
 
-Compare o relatório com a issue: cada critério precisa de cobertura automatizada adequada e comportamento observável. Examine a atividade real das ferramentas MCP do Playwright, a identidade da cópia de trabalho e do servidor e os resultados dos quatro scripts da skill. As verificações no navegador e E2E automatizadas não devem reutilizar um servidor desatualizado ou outra cópia de trabalho.
+Leia o relatório junto com a issue de filtragem e os esclarecimentos aprovados:
+
+1. Verifique se cada critério está conectado a testes adequados e comportamento observável. Por exemplo, combinar categorias e uma editora exige evidências sobre os jogos retornados, não apenas sobre a resposta dos controles.
+2. Examine a atividade real das ferramentas MCP do Playwright e confirme que o servidor testado pertence a esta cópia de trabalho. As verificações no navegador e E2E automatizadas não devem reutilizar um servidor desatualizado ou outra cópia de trabalho.
+3. Revise os resultados de lint, testes de unidade, testes E2E e verificações de tipos. As quatro verificações devem usar os scripts da skill quality-checks; um resumo de comandos planejados não é execução.
+4. Abra **Changes** para examinar os testes adicionados e compará-los com as lacunas do relatório.
 
 Revise os testes adicionados: eles devem cobrir lacunas reais sem enfraquecer asserções. Não adicionar testes é correto quando a cobertura é adequada. Um parecer **NO-GO** por bloqueio ou falha é um resultado válido, não permissão para ignorar evidências.
 
@@ -58,7 +86,11 @@ Se QA identificar um defeito na aplicação, aprove separadamente uma correção
 
 ## Salvar um checkpoint
 
-Quando QA terminar, mantenha disponíveis o relatório, a URL da issue, os esclarecimentos aprovados e a revisão testada. Na mesma sessão, use o seletor de agentes documentado para voltar ao agente padrão do Copilot e confirme que **QA** não está mais selecionado. Mantenha a mesma cópia de trabalho e branch; não inicie outra sessão de recurso nem recarregue o worktree. Se não encontrar a opção do agente padrão, pause e peça ajuda à pessoa que conduz o workshop em vez de enviar instruções de commit ao QA.
+O papel de QA é verificar, então volte ao agente padrão antes de solicitar um commit:
+
+1. Mantenha o relatório de QA, a URL da issue, os esclarecimentos aprovados e a revisão testada disponíveis para a lição sobre o PR.
+2. Na mesma sessão, use o seletor de agentes para voltar ao agente padrão do Copilot e confirme que **QA** não está mais selecionado.
+3. Mantenha o mesmo worktree e branch. Se não encontrar a opção do agente padrão, peça ajuda à pessoa que conduz o workshop em vez de iniciar outra sessão de recurso ou enviar instruções de commit ao QA.
 
 Após revisar o perfil, quaisquer alterações de testes e as evidências resultantes, envie a solicitação de checkpoint ao agente padrão com esse contexto de QA:
 
@@ -66,7 +98,19 @@ Após revisar o perfil, quaisquer alterações de testes e as evidências result
 Revise o diff atual e crie um commit de checkpoint para a definição do agente de QA e quaisquer alterações de testes aprovadas. Permaneça na branch de filtragem existente. Não faça push nem abra um pull request.
 ```
 
-Continue na [Lição 8 - Criar e integrar o PR do recurso][next-lesson] com o recurso de filtragem, a skill, o perfil de QA, os testes e as evidências atuais de verificação.
+## Resumo e próximos passos
+
+Você adicionou um papel especializado reutilizável ao fluxo de trabalho e revisou o trabalho dele. Nesta lição, você:
+
+- criou e examinou um perfil de QA que parte dos requisitos.
+- selecionou o perfil para avaliar a cobertura e reunir evidências pela skill e pelo MCP do Playwright.
+- revisou as conclusões e salvou o perfil com quaisquer alterações justificadas nos testes na branch de filtragem.
+
+Agora você tem os elementos para revisar o recurso: a implementação, a skill, o perfil de QA, os testes e o relatório de verificação. Leve adiante os achados não resolvidos; um resultado com falha ou bloqueado não autoriza a integração. Continue na [Lição 8 - Criar e integrar o PR do recurso][next-lesson] para revisar o marco completo e usar Agent Merge.
+
+## Recursos
+
+- [Personalização do aplicativo GitHub Copilot, incluindo a seleção de agentes personalizados][customize-app]
 
 [previous-lesson]: ../6-mcp-playwright/
 [next-lesson]: ../8-create-pull-request/

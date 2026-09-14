@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Ahora crea la funcionalidad más amplia: permitir que los usuarios filtren juegos por categoría y editor. Planificarás antes de programar, autorizarás explícitamente **Autopilot**, revisarás y probarás la implementación y guardarás un punto de control. Este ejercicio no crea la habilidad, el agente de QA ni la PR de la funcionalidad.
 
+En este ejercicio:
+
+- leerás la incidencia de filtrado y aclararás los requisitos ambiguos en modo Plan.
+- aprobarás explícitamente una implementación acotada con Autopilot.
+- revisarás las diferencias y los resultados de las cuatro comprobaciones y guardarás un punto de control.
+
+## Escenario
+
+El catálogo de Tailspin Toys está creciendo y sus visitantes necesitan acotar los juegos por categoría y editor. La incidencia del backlog describe la funcionalidad, pero hay que acordar detalles como la combinación de categorías antes de programar. Utilizarás el modo Plan para resolver esas decisiones y después autorizarás una implementación acotada con Autopilot.
+
 ## Iniciar el hito de filtrado
 
 Confirma que las PR 1 y 2 están combinadas. En la terminal del repositorio del participante:
@@ -89,7 +99,9 @@ Cuando las diferencias y los resultados sean satisfactorios, autoriza un punto d
 Revisa las diferencias actuales y los resultados de verificación. Crea un commit de punto de control que contenga solo la implementación de filtrado revisada y sus pruebas. Mantén la rama y la copia de trabajo de filtrado actuales. No envíes cambios, no abras una PR ni crees todavía la habilidad o el agente de QA.
 ```
 
-Registra la revisión probada y conserva la URL de la incidencia y las aclaraciones aprobadas. Mantén **Interactive** y continúa en esta misma copia de trabajo con el [Ejercicio 5 - Crear y utilizar una habilidad quality-checks][next-lesson].
+## Resumen y pasos siguientes
+
+Has acordado los requisitos de filtrado, revisado la implementación y las pruebas, y guardado un punto de control. Registra la revisión probada y conserva la URL de la incidencia y las aclaraciones aprobadas. Mantén **Interactive** y continúa en esta misma copia de trabajo con el [Ejercicio 5 - Crear y utilizar una habilidad quality-checks][next-lesson].
 
 ## Recursos
 

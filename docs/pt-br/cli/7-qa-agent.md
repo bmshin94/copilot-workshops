@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Você executou verificações repetíveis e explorou a filtragem pelo MCP do Playwright. Agora crie um **agente personalizado de QA** para reunir os requisitos, a cobertura e as evidências do navegador. Mantenha a sessão, a cópia de trabalho e a branch de filtragem; o PR do recurso vem na Lição 8.
 
+Nesta lição, você vai:
+
+- criar e examinar um perfil de QA que parte dos requisitos.
+- selecionar o perfil e revisar a cobertura, os resultados das verificações e as evidências do navegador.
+- voltar ao agente comum e salvar um checkpoint do perfil com os testes cuja inclusão seja justificada.
+
+## Cenário
+
+A Tailspin Toys está se preparando para entregar a filtragem. Testes aprovados, por si só, não mostram se todos os requisitos acordados estão cobertos. A equipe precisa de uma revisão focada que compare a issue com a implementação, identifique lacunas e explique se o recurso está pronto para revisão. Seu perfil de QA orientará essa avaliação sem substituir o julgamento humano.
+
 ## Criar o perfil de QA
 
 Permaneça no modo **Interactive**. Um perfil define o papel e as instruções de um especialista; uma skill reúne instruções de tarefas reutilizáveis, scripts e recursos. O agente de QA usará sua skill e as ferramentas MCP configuradas em vez de substituí-las.
@@ -70,7 +80,9 @@ Após revisar o perfil, quaisquer alterações de testes e as evidências result
 Revise o diff atual e crie um commit de checkpoint para a definição do agente de QA e quaisquer alterações de testes aprovadas. Permaneça na branch de filtragem existente. Não faça push nem abra um pull request.
 ```
 
-Continue na [Lição 8 - Criar e integrar o PR do recurso][next-lesson] com o recurso de filtragem, a skill, o perfil de QA, os testes e as evidências atuais de verificação.
+## Resumo e próximos passos
+
+Você criou e selecionou um perfil de QA, revisou suas evidências e salvou o perfil com os testes justificados. Leve adiante os achados não resolvidos; um veredito com falha ou bloqueado não autoriza a integração. Continue na [Lição 8 - Criar e integrar o PR do recurso][next-lesson] com o recurso de filtragem, a skill, o perfil de QA, os testes e as evidências atuais de verificação.
 
 [previous-lesson]: ../6-mcp-playwright/
 [next-lesson]: ../8-create-pull-request/

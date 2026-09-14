@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Os três marcos de PR estão completos. Agora explore os controles da CLI que ajudam a entender e gerenciar uma sessão. Esta lição não implementa outro recurso, não delega trabalho nem abre outro PR.
 
+Nesta lição, você vai:
+
+- examinar os controles de contexto, uso, modelo e modo.
+- comparar as opções de linha de comando com a ajuda da versão instalada.
+- exportar uma sessão localmente e revisá-la antes de compartilhar qualquer conteúdo.
+
+## Cenário
+
+Com o recurso entregue, você quer entender os controles da CLI que usará no dia a dia. Examinará uma sessão e suas opções de compartilhamento sem iniciar outra tarefa, para que gerenciar contexto ou exportar uma conversa não autorize trabalho nem divulgue informações do projeto por acidente.
+
 Na cópia de trabalho atualizada do participante, inicie `copilot` no modo **Interactive**. Use `/help` e a [referência de comandos][cli-reference] para confirmar quais comandos a versão instalada suporta; a documentação atual pode descrever controles mais novos do que a sua instalação.
 
 ## Examinar contexto e informações da sessão

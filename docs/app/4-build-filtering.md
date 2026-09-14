@@ -17,6 +17,10 @@ In this lesson, you will:
 
 The skill, MCP validation, QA profile, and feature PR come in later modules. Do not create them during this implementation step.
 
+## Scenario
+
+Tailspin Toys' catalog is growing, and visitors need to narrow the games by category and publisher. The backlog issue describes the feature, but details such as combining categories need agreement before coding. You'll use Plan mode to resolve those decisions, then authorize a bounded implementation with Autopilot.
+
 ## Session modes
 
 The mode selector below the prompt controls the agent's autonomy:
@@ -109,7 +113,9 @@ After reviewing the changes and verification, authorize a local commit:
 Review the current diff and create a checkpoint commit for the filtering implementation and its tests. Keep this same filtering branch and worktree. Do not create skills or agents, configure MCP, push, or open a pull request.
 ```
 
-This checkpoint is part of PR 3, not a separate PR. Stay in **Interactive** mode in the same session for [Lesson 5 - Create and use a quality-checks skill][next-lesson].
+## Summary and next steps
+
+You've agreed the filtering requirements, reviewed the implementation and tests, and checked the feature manually. This checkpoint is part of PR 3, not a separate PR. Stay in **Interactive** mode in the same session for [Lesson 5 - Create and use a quality-checks skill][next-lesson].
 
 ## Resources
 

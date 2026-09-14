@@ -5,6 +5,19 @@ authors:
 lastUpdated: 2026-06-30
 ---
 
+You've built and tested filtering with Copilot Chat. Now define a reusable specialist role to guide accessibility work.
+
+In this exercise, you will:
+
+- create and review an accessibility custom agent.
+- use the accessibility agent in Copilot Chat to implement a high-contrast mode.
+
+## Scenario
+
+Tailspin Toys is committed to ensuring their crowdfunding platform is accessible to all users, regardless of their visual abilities or preferences. Recent user feedback has highlighted that some users find the current dark theme difficult to read due to insufficient contrast between text and background colors. To address this accessibility concern, the design team has requested the implementation of a high-contrast mode that users can toggle on and off.
+
+Because accessibility is critical, you want to ensure this is implemented as quickly as possible. You're going to utilize a custom agent to generate the functionality.
+
 ## What are custom agents?
 
 [Custom agents][custom-agents-concept] in GitHub Copilot allow you to create specialized AI assistants tailored to specific tasks or domains within your development workflow. By defining agents through markdown files in the `.github/agents` folder of your repository, you can provide Copilot with focused instructions, best practices, coding patterns, and domain-specific knowledge that guide it to perform particular types of work more effectively. Teams can codify their expertise into reusable agents — an accessibility agent that enforces [WCAG][wcag] compliance, a security agent that follows secure coding practices, or a testing agent that maintains consistent test patterns.
@@ -23,16 +36,6 @@ Agents can run scripts directly through available tools, or follow a skill when 
 [custom-agents-concept]: https://docs.github.com/copilot/concepts/agents/cloud-agent/about-custom-agents
 [agent-skills-concept]: https://docs.github.com/copilot/concepts/agents/about-agent-skills
 [wcag]: https://www.w3.org/WAI/standards-guidelines/wcag/
-## Scenario
-
-Tailspin Toys is committed to ensuring their crowdfunding platform is accessible to all users, regardless of their visual abilities or preferences. Recent user feedback has highlighted that some users find the current dark theme difficult to read due to insufficient contrast between text and background colors. To address this accessibility concern, the design team has requested the implementation of a high-contrast mode that users can toggle on and off.
-
-Because accessibility is critical, you want to ensure this is implemented as quickly as possible. You're going to utilize a custom agent to generate the functionality.
-In this exercise, you will:
-
-- create and review an accessibility custom agent.
-- use the accessibility agent in Copilot Chat to implement a high-contrast mode.
-
 ## Creating and reviewing the accessibility custom agent
 
 The template does not supply custom agents or skills. You'll generate an accessibility profile, review its instructions, then select it for the implementation task.

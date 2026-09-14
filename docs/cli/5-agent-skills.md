@@ -15,6 +15,10 @@ In this exercise, you will:
 - execute all four checks through its bundled scripts and prove a single-file test argument selects only that file.
 - checkpoint the skill alongside the filtering feature.
 
+## Scenario
+
+Tailspin Toys needs the same quality checks whenever filtering changes. Instead of explaining the commands and prerequisites in every conversation, the team wants a reusable skill. You'll create it, inspect its scripts, and verify that another request can run the checks correctly.
+
 ## Instructions, scripts, and resources
 
 Skills package reusable task instructions, executable scripts, and supporting resources that an agent loads on demand. Custom agents define specialist roles, instructions, and available tools. These are complementary: a custom agent can execute scripts, including those bundled with a skill.
@@ -71,7 +75,9 @@ Once you have reviewed the skill and its results, authorize a local checkpoint:
 Review the current diff and create a checkpoint commit for the quality-checks skill files only. Keep the existing filtering branch. Do not push or create a pull request.
 ```
 
-The skill files will accompany filtering, the QA profile, and associated tests in the feature PR in Exercise 8. Continue in this same checkout to [Exercise 6 - Validate functionality with Playwright MCP][next-lesson].
+## Summary and next steps
+
+You've created, inspected, and run a reusable quality-checks skill, including its single-file test example. The skill files will accompany filtering, the QA profile, and associated tests in the feature PR in Exercise 8. Continue in this same checkout to [Exercise 6 - Validate functionality with Playwright MCP][next-lesson].
 
 ## More skill examples
 

@@ -5,6 +5,19 @@ authors:
 lastUpdated: 2026-06-30
 ---
 
+You've assigned work to Copilot cloud agent. Now define a reusable specialist role to guide its accessibility work.
+
+In this exercise, you will:
+
+- create and review a custom-agent profile.
+- assign a task to the custom agent.
+
+## Scenario
+
+Tailspin Toys is committed to ensuring their crowdfunding platform is accessible to all users, regardless of their visual abilities or preferences. Recent user feedback has highlighted that some users find the current dark theme difficult to read due to insufficient contrast between text and background colors. To address this accessibility concern, the design team has requested the implementation of a high-contrast mode that users can toggle on and off.
+
+Because accessibility is critical, you want to ensure this is implemented as quickly as possible. You're going to utilize a custom agent to generate the functionality.
+
 ## What are custom agents?
 
 [Custom agents][custom-agents-concept] in GitHub Copilot allow you to create specialized AI assistants tailored to specific tasks or domains within your development workflow. By defining agents through markdown files in the `.github/agents` folder of your repository, you can provide Copilot with focused instructions, best practices, coding patterns, and domain-specific knowledge that guide it to perform particular types of work more effectively. Teams can codify their expertise into reusable agents — an accessibility agent that enforces [WCAG][wcag] compliance, a security agent that follows secure coding practices, or a testing agent that maintains consistent test patterns.
@@ -23,16 +36,7 @@ Agents can run scripts directly through available tools, or follow a skill when 
 [custom-agents-concept]: https://docs.github.com/copilot/concepts/agents/cloud-agent/about-custom-agents
 [agent-skills-concept]: https://docs.github.com/copilot/concepts/agents/about-agent-skills
 [wcag]: https://www.w3.org/WAI/standards-guidelines/wcag/
-You'll explore the following with custom agents:
 
-- creating and reviewing a custom-agent profile.
-- assigning a task to a custom agent.
-
-## Scenario
-
-Tailspin Toys is committed to ensuring their crowdfunding platform is accessible to all users, regardless of their visual abilities or preferences. Recent user feedback has highlighted that some users find the current dark theme difficult to read due to insufficient contrast between text and background colors. To address this accessibility concern, the design team has requested the implementation of a high-contrast mode that users can toggle on and off.
-
-Because accessibility is critical, you want to ensure this is implemented as quickly as possible. You're going to utilize a custom agent to generate the functionality.
 ## Creating and reviewing the accessibility custom agent
 
 The template does not supply custom agents or skills. Before assigning the high-contrast issue, create an accessibility profile using GitHub's [custom-agent creation flow][creating-custom-agents]. The profile must reach your repository's **default branch** before you select it for an issue.

@@ -15,6 +15,10 @@ En este ejercicio:
 - demostrarás el estándar en una pequeña función auxiliar o un componente existente.
 - validarás y combinarás el hito de instrucciones.
 
+## Escenario
+
+El equipo de Tailspin Toys quiere que la documentación útil del código sea una convención repetible, no una petición que alguien deba recordar en cada conversación. Añadirás el estándar a las instrucciones del repositorio y lo demostrarás en código existente, sin cambiar su comportamiento ni empezar el filtrado antes de tiempo.
+
 ## Explorar las instrucciones
 
 El repositorio ya contiene dos tipos útiles de instrucciones:

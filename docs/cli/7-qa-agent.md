@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 You've run repeatable checks and explored filtering through Playwright MCP. Now create a **QA custom agent** to bring the requirements, coverage, and browser evidence together. Keep the filtering session, checkout, and branch; the feature PR comes in Exercise 8.
 
+In this exercise, you will:
+
+- create and inspect a requirements-first QA profile.
+- select the profile and review coverage, check results, and browser evidence.
+- return to the ordinary agent and checkpoint the profile with any justified tests.
+
+## Scenario
+
+Tailspin Toys is preparing to ship filtering. Passing tests alone cannot show whether every agreed requirement is covered. The team needs a focused review that compares the issue with the implementation, identifies gaps, and explains whether the feature is ready for review. Your QA profile will guide that assessment without replacing human judgment.
+
 ## Create the QA profile
 
 Stay in **Interactive** mode. A profile defines a specialist's role and instructions; a skill packages reusable task instructions, scripts, and resources. The QA agent will use your skill and configured MCP tools rather than replace them.
@@ -70,7 +80,9 @@ When you have reviewed the profile, any test changes, and the resulting evidence
 Review the current diff and create a checkpoint commit for the QA agent definition and any approved test changes. Stay on the existing filtering branch. Do not push or open a pull request.
 ```
 
-Continue to [Exercise 8 - Create and merge the feature PR][next-lesson] with the filtering feature, skill, QA profile, tests, and current verification evidence.
+## Summary and next steps
+
+You've created and selected a QA profile, reviewed its evidence, and saved the profile with any justified tests. Carry unresolved findings forward; a failed or blocked verdict is not merge approval. Continue to [Exercise 8 - Create and merge the feature PR][next-lesson] with the filtering feature, skill, QA profile, tests, and current verification evidence.
 
 [previous-lesson]: ../6-mcp-playwright/
 [next-lesson]: ../8-create-pull-request/

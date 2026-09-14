@@ -17,6 +17,10 @@ Nesta lição, você vai:
 
 A skill, a validação MCP, o perfil QA e o PR do recurso vêm nos próximos módulos. Não os crie durante esta etapa de implementação.
 
+## Cenário
+
+O catálogo da Tailspin Toys está crescendo, e os visitantes precisam filtrar os jogos por categoria e editora. A issue do backlog descreve o recurso, mas detalhes como a combinação de categorias precisam ser acordados antes de programar. Você usará o modo Plan para resolver essas decisões e depois autorizará uma implementação delimitada com Autopilot.
+
 ## Modos de sessão
 
 O seletor de modo abaixo do prompt controla a autonomia do agente:
@@ -109,7 +113,9 @@ Após revisar as alterações e a verificação, autorize um commit local:
 Revise o diff atual e crie um commit de checkpoint para a implementação da filtragem e seus testes. Mantenha esta mesma branch e worktree de filtragem. Não crie skills ou agentes, não configure MCP, não faça push nem abra um pull request.
 ```
 
-Este checkpoint faz parte do PR 3, não de um PR separado. Permaneça no modo **Interactive**, na mesma sessão, para a [Lição 5 - Criar e usar uma skill quality-checks][next-lesson].
+## Resumo e próximos passos
+
+Você acordou os requisitos de filtragem, revisou a implementação e os testes e verificou o recurso manualmente. Este checkpoint faz parte do PR 3, não de um PR separado. Permaneça no modo **Interactive**, na mesma sessão, para a [Lição 5 - Criar e usar uma skill quality-checks][next-lesson].
 
 ## Recursos
 

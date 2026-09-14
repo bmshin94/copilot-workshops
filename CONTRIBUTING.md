@@ -28,7 +28,7 @@ CI (`pages.yml`) must be green on your PR. It runs:
 - **`pages.yml` build** — `npm run build` (Astro site build).
 - **Lychee** — offline link check of the built `website/dist/`.
 
-Before you push, run the full local verification sequence described in [AUTHORING.md → Building and verifying](./AUTHORING.md#building-and-verifying): type checks, clean build, page-count check, and lychee link check.
+Before you push, follow the [`build-and-verify-docs`](./.github/skills/build-and-verify-docs/SKILL.md) skill for type checks, a clean build, inspection of affected pages, and offline link checking.
 
 ## Commit messages
 

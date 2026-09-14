@@ -14,6 +14,10 @@ En este ejercicio:
 - examinarás las diferencias y verificarás las tarjetas con y sin valoración.
 - crearás un commit, abrirás y revisarás la PR 1 y la combinarás.
 
+## Escenario
+
+Los visitantes pueden ver las valoraciones en la página de detalles de un juego, pero no compararlas al explorar el catálogo. Tailspin Toys quiere mostrar las valoraciones existentes en las tarjetas, con un estado claro para los juegos sin valorar. Este pequeño cambio permite practicar cómo solicitar, revisar y publicar trabajo antes de abordar una funcionalidad mayor.
+
 ## Iniciar el primer hito
 
 Desde la raíz del repositorio del participante, confirma que el árbol de trabajo está limpio, actualiza `main` y crea una rama. Si `git status` muestra cambios inesperados, resuélvelos antes de cambiar de rama; no los descartes.

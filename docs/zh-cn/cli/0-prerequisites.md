@@ -7,6 +7,11 @@ lastUpdated: 2026-09-11
 
 开始 Copilot CLI 练习前，需要先完成环境准备。将先创建 Tailspin Toys 存储库的个人副本，再启动一个 [codespace][codespaces]。下一节练习会使用其中集成的终端来安装并运行 Copilot CLI。
 
+在本练习中，你将：
+
+- 从 Tailspin Toys 模板创建自己的存储库。
+- 打开 codespace，确认工作区已准备好进行 CLI 设置。
+
 ## 设置实验存储库
 
 为了给即将编写的代码创建一份存储库副本，需要基于 [模板][template-repository] 创建一个实例。这个新实例会包含实验所需的全部文件，后续练习都会在其中完成。

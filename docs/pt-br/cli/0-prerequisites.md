@@ -7,6 +7,11 @@ lastUpdated: 2026-09-11
 
 Antes de começar as lições do Copilot CLI, você precisa deixar tudo pronto. Você criará sua própria cópia do repositório Tailspin Toys e iniciará um [codespace][codespaces], cujo terminal integrado será usado para instalar e executar o Copilot CLI na próxima lição.
 
+Nesta lição, você vai:
+
+- criar seu próprio repositório a partir do modelo da Tailspin Toys.
+- abrir um codespace e confirmar que o ambiente está pronto para configurar a CLI.
+
 ## Configurar o repositório do laboratório
 
 Para criar uma cópia do repositório para o código que você desenvolverá, crie uma instância a partir do [modelo][template-repository]. A nova instância conterá todos os arquivos necessários para o laboratório, e você a usará ao longo das lições.

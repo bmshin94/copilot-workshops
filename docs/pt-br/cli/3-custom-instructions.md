@@ -15,6 +15,10 @@ Nesta lição, você vai:
 - demonstrar o padrão em uma pequena função auxiliar ou componente existente.
 - validar e integrar o marco de instruções.
 
+## Cenário
+
+A equipe da Tailspin Toys quer que a documentação útil do código seja uma convenção repetível, não uma solicitação que alguém precise lembrar em cada conversa. Você adicionará o padrão às instruções do repositório e o demonstrará no código existente, sem mudar o comportamento nem começar a filtragem antes da hora.
+
 ## Explorar as instruções
 
 O repositório já contém dois tipos úteis de instruções:

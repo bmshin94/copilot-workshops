@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Agora crie o recurso maior: permitir que os usuários filtrem jogos por categoria e distribuidora. Você planejará antes de programar, autorizará explicitamente o **Autopilot**, revisará e testará a implementação e salvará um checkpoint. Esta lição não cria a skill, o agente de QA ou o PR do recurso.
 
+Nesta lição, você vai:
+
+- ler a issue de filtragem e esclarecer requisitos ambíguos no modo Plan.
+- aprovar explicitamente uma implementação delimitada com Autopilot.
+- revisar o diff e os resultados das quatro verificações e salvar um checkpoint.
+
+## Cenário
+
+O catálogo da Tailspin Toys está crescendo, e os visitantes precisam filtrar os jogos por categoria e editora. A issue do backlog descreve o recurso, mas detalhes como a combinação de categorias precisam ser acordados antes de programar. Você usará o modo Plan para resolver essas decisões e depois autorizará uma implementação delimitada com Autopilot.
+
 ## Iniciar o marco de filtragem
 
 Confirme que os PRs 1 e 2 estão integrados. No terminal do repositório do participante:
@@ -89,7 +99,9 @@ Quando o diff e os resultados forem satisfatórios, autorize um checkpoint local
 Revise o diff atual e os resultados de verificação. Crie um commit de checkpoint contendo apenas a implementação de filtragem revisada e seus testes. Mantenha a branch e a cópia de trabalho de filtragem atuais. Não faça push, não abra um PR nem crie a skill ou o agente de QA ainda.
 ```
 
-Registre a revisão testada e mantenha a URL da issue e os esclarecimentos aprovados. Permaneça em **Interactive** e continue nesta mesma cópia de trabalho com a [Lição 5 - Criar e usar uma skill quality-checks][next-lesson].
+## Resumo e próximos passos
+
+Você acordou os requisitos de filtragem, revisou a implementação e os testes e salvou um checkpoint. Registre a revisão testada e mantenha a URL da issue e os esclarecimentos aprovados. Permaneça em **Interactive** e continue nesta mesma cópia de trabalho com a [Lição 5 - Criar e usar uma skill quality-checks][next-lesson].
 
 ## Recursos
 

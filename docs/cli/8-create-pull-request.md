@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Now bring the filtering milestone together in PR 3. Stay on the branch and checkout used in Exercises 4–7. It contains the filtering implementation, quality-checks skill and scripts, QA profile, and associated tests.
 
+In this exercise, you will:
+
+- review the complete milestone diff and current QA evidence.
+- request one feature PR and inspect its checks and review feedback.
+- explicitly merge the reviewed PR and update local `main`.
+
+## Scenario
+
+The filtering work is spread across several checkpoints, but reviewers need to assess one complete feature. Tailspin Toys wants a PR that connects the requirements, implementation, reusable checks, and QA findings. You'll prepare that handoff and resolve blockers before merging.
+
 This is a normal scoped PR request using the repository's conventions. It does not require a contribution skill.
 
 > [!NOTE]
@@ -90,6 +100,8 @@ git status
 git switch main
 git pull --ff-only
 ```
+
+## Summary and next steps
 
 No new branch is needed for the next exercise. You have now merged exactly three workshop PRs: star ratings; instructions and a demonstration; filtering with the quality skill, QA profile, and tests.
 

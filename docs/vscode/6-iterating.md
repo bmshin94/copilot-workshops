@@ -8,13 +8,18 @@ lastUpdated: 2026-06-30
 | [← Previous lesson: Monitoring and managing agents][previous-lesson] |
 |:--|
 
-## Reviewing the work
-
 Throughout this lab you've worked with GitHub Copilot on several tasks focused on improving the user experience. You used agent mode to add filtering across the client and server, the Playwright MCP server to manually test that work in a browser, then a custom agent to implement accessibility features — high-contrast and light-mode toggles — and steered the session mid-flight to extend the work. Now it's time to publish that local work and review it the same way your team would.
 
-### Scenario
+In this exercise, you will:
+
+- publish the reviewed accessibility changes in a pull request.
+- inspect the complete diff and workflow results.
+- reflect on the workflow and choose what to explore next.
+
+## Scenario
 
 The fundamentals of software design and DevOps don't change with the addition of generative AI. You still want a real review cycle on anything Copilot produces. With that in mind, let's push the accessibility changes from your codespace, open a pull request, and walk through the diff before bringing the rest of the team in.
+
 ## Publish the accessibility features
 
 The high-contrast and light-mode toggles you implemented with the accessibility custom agent in [Exercise 4][exercise-4] and [Exercise 5][exercise-5] are sitting in your codespace as committed changes. Let's push them to a branch and open a pull request so the rest of your team can review.

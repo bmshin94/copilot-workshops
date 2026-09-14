@@ -10,6 +10,16 @@ Sua implementação de filtragem e a skill quality-checks já têm verificação
 
 Permaneça no modo **Interactive** na mesma cópia de trabalho e branch de filtragem. A configuração do MCP não inicia um novo marco de recurso.
 
+Nesta lição, você vai:
+
+- conectar o MCP do Playwright e confirmar que suas ferramentas de navegador estão disponíveis.
+- comparar o comportamento real da filtragem com a issue e os critérios aprovados.
+- revisar as observações e parar o servidor de desenvolvimento que iniciou.
+
+## Cenário
+
+As verificações automatizadas passaram, mas a Tailspin Toys também precisa de evidências da experiência dos visitantes. Você dará ao Copilot ferramentas de navegador para exercitar os filtros e comparar os jogos exibidos com o comportamento acordado, em vez de considerar que um controle que responde prova que a filtragem funciona.
+
 ## O que o MCP acrescenta
 
 O [MCP][mcp-overview] conecta um agente a ferramentas e contexto externos por meio de servidores. O servidor MCP do GitHub integrado permite ao Copilot trabalhar com issues e PRs. O [servidor MCP do Playwright][playwright-mcp] fornece ferramentas de navegador para abrir páginas, examinar elementos acessíveis, navegar e interagir com controles.
@@ -66,6 +76,8 @@ Se algo falhar, registre o comportamento observado. Autorize separadamente qualq
 ## Parar o próprio servidor e continuar
 
 Pare o servidor de desenvolvimento com <kbd>Ctrl</kbd>+<kbd>C</kbd> no terminal em que o iniciou. Mantenha a configuração do MCP do Playwright disponível. A Lição 7 coordenará novas observações no navegador e verificações E2E automatizadas, que não devem reutilizar um servidor de desenvolvimento desatualizado nem a aplicação de outra cópia de trabalho.
+
+## Resumo e próximos passos
 
 Permaneça em **Interactive** antes de criar o perfil de QA. Você observou o comportamento no navegador sem criar outro PR ou branch; em seguida, [crie e use um agente de QA][next-lesson] para combinar requisitos, cobertura, a skill e as evidências finais.
 

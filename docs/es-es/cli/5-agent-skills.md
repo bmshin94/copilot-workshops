@@ -15,6 +15,10 @@ En este ejercicio:
 - ejecutarás las cuatro comprobaciones mediante los scripts incluidos y demostrarás que un argumento que indica un único archivo de pruebas selecciona solo ese archivo.
 - guardarás un punto de control de la habilidad junto con la funcionalidad de filtrado.
 
+## Escenario
+
+Tailspin Toys necesita las mismas comprobaciones de calidad cada vez que cambia el filtrado. En lugar de explicar los comandos y requisitos previos en cada conversación, el equipo quiere una habilidad reutilizable. La crearás, examinarás sus scripts y verificarás que otra solicitud puede ejecutar las comprobaciones correctamente.
+
 ## Instrucciones, scripts y recursos
 
 Las habilidades reúnen instrucciones de tareas reutilizables, scripts ejecutables y recursos de apoyo que un agente carga cuando los necesita. Los agentes personalizados definen roles especializados, instrucciones y herramientas disponibles. Son complementarios: un agente personalizado puede ejecutar scripts, incluidos los de una habilidad.
@@ -71,7 +75,9 @@ Cuando hayas revisado la habilidad y sus resultados, autoriza un punto de contro
 Revisa las diferencias actuales y crea un commit de punto de control solo para los archivos de la habilidad quality-checks. Mantén la rama de filtrado existente. No envíes cambios ni crees una solicitud de incorporación de cambios.
 ```
 
-Los archivos de la habilidad acompañarán al filtrado, al perfil de QA y a las pruebas asociadas en la PR de funcionalidad del Ejercicio 8. Continúa en esta misma copia de trabajo con el [Ejercicio 6 - Validar la funcionalidad con MCP de Playwright][next-lesson].
+## Resumen y pasos siguientes
+
+Has creado, examinado y ejecutado una habilidad quality-checks reutilizable, incluido su ejemplo de prueba de un solo archivo. Los archivos de la habilidad acompañarán al filtrado, al perfil de QA y a las pruebas asociadas en la PR de funcionalidad del Ejercicio 8. Continúa en esta misma copia de trabajo con el [Ejercicio 6 - Validar la funcionalidad con MCP de Playwright][next-lesson].
 
 ## Ejemplos adicionales de habilidades
 

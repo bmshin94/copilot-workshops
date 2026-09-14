@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Now build the larger feature: let users filter games by category and publisher. You'll plan before coding, explicitly authorize **Autopilot**, review and test the implementation, and save a checkpoint. This exercise does not create the skill, QA agent, or feature PR.
 
+In this exercise, you will:
+
+- read the filtering issue and agree on unclear requirements in Plan mode.
+- explicitly approve a bounded Autopilot implementation.
+- review the diff and all four check results, then save a checkpoint.
+
+## Scenario
+
+Tailspin Toys' catalog is growing, and visitors need to narrow the games by category and publisher. The backlog issue describes the feature, but details such as combining categories need agreement before coding. You'll use Plan mode to resolve those decisions, then authorize a bounded implementation with Autopilot.
+
 ## Start the filtering milestone
 
 Confirm PRs 1 and 2 are merged. In your learner repository terminal:
@@ -89,7 +99,9 @@ Once the diff and results are satisfactory, authorize a local checkpoint:
 Review the current diff and verification results. Create a checkpoint commit containing only the reviewed filtering implementation and its tests. Keep the current filtering branch and checkout. Do not push, open a PR, or create the skill or QA agent yet.
 ```
 
-Record the tested revision and keep the issue URL and approved clarifications. Stay **Interactive** and continue in this same checkout to [Exercise 5 - Create and use a quality-checks skill][next-lesson].
+## Summary and next steps
+
+You've agreed the filtering requirements, reviewed the implementation and tests, and saved a checkpoint. Record the tested revision and keep the issue URL and approved clarifications. Stay **Interactive** and continue in this same checkout to [Exercise 5 - Create and use a quality-checks skill][next-lesson].
 
 ## Resources
 

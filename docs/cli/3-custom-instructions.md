@@ -15,6 +15,10 @@ In this exercise, you will:
 - demonstrate the standard on a small existing helper or component.
 - validate and merge the instructions milestone.
 
+## Scenario
+
+The Tailspin Toys team wants useful code documentation to be a repeatable convention, not a request someone must remember in every conversation. You'll add the standard to the repository instructions and demonstrate it on existing code without changing behavior or starting filtering early.
+
 ## Explore the instructions
 
 The repository already contains two useful kinds of instructions:

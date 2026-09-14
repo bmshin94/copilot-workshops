@@ -14,6 +14,10 @@ Nesta lição, você vai:
 - examinar o diff e verificar cards com e sem avaliação.
 - fazer commit, abrir, revisar e integrar o PR 1.
 
+## Cenário
+
+Os visitantes podem ver as avaliações na página de detalhes de um jogo, mas não compará-las ao explorar o catálogo. A Tailspin Toys quer exibir as avaliações existentes nos cartões, com um estado claro para jogos sem avaliação. Essa pequena alteração permite praticar como solicitar, revisar e entregar trabalho antes de enfrentar um recurso maior.
+
 ## Iniciar o primeiro marco
 
 Na raiz do repositório do participante, confirme que a árvore de trabalho está limpa, atualize `main` e crie uma branch. Se `git status` mostrar alterações inesperadas, resolva-as antes de mudar de branch; não as descarte.

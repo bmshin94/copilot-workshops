@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 The three PR milestones are complete. Now explore the CLI controls that help you understand and manage a session. This exercise does not implement another feature, delegate work, or open another PR.
 
+In this exercise, you will:
+
+- inspect context, usage, model, and mode controls.
+- compare command-line options with your installed version's help.
+- export a session locally and review it before sharing anything.
+
+## Scenario
+
+With the feature shipped, you want to understand the CLI controls you'll use in daily work. You'll inspect a session and its sharing options without starting another task, so that managing context or exporting a conversation does not accidentally authorize work or disclose project information.
+
 From the updated learner checkout, start `copilot` in **Interactive** mode. Use `/help` and the [command reference][cli-reference] to confirm which commands your installed version supports; current documentation can describe newer controls than your installation.
 
 ## Inspect context and session information

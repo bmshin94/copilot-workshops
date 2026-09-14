@@ -14,6 +14,10 @@ In this exercise, you will:
 - inspect the diff and verify rated and unrated cards.
 - commit, open, review, and merge PR 1.
 
+## Scenario
+
+Visitors can see ratings on a game's details page but cannot compare them while browsing the catalog. Tailspin Toys wants the existing ratings on the game cards, with a clear unrated state. This small change lets you practice requesting, reviewing, and shipping work before tackling a larger feature.
+
 ## Start the first milestone
 
 From your learner repository root, confirm the working tree is clean, update `main`, and create a branch. If `git status` shows unexpected changes, resolve them before switching; do not discard them.

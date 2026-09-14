@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Agora reúna o marco de filtragem no PR 3. Permaneça na branch e na cópia de trabalho usadas nas Lições 4–7. Elas contêm a implementação de filtragem, a skill quality-checks e seus scripts, o perfil de QA e os testes associados.
 
+Nesta lição, você vai:
+
+- revisar o diff do marco completo e as evidências atuais de QA.
+- solicitar um PR de recurso e examinar suas verificações e comentários de revisão.
+- integrar explicitamente o PR revisado e atualizar o `main` local.
+
+## Cenário
+
+O trabalho de filtragem está distribuído em vários checkpoints, mas os revisores precisam avaliar um recurso completo. A Tailspin Toys quer um PR que conecte os requisitos, a implementação, as verificações reutilizáveis e os achados de QA. Você preparará essa entrega e resolverá os bloqueios antes de integrar.
+
 Esta é uma solicitação normal de PR com escopo delimitado que usa as convenções do repositório. Ela não exige uma skill de contribuição.
 
 > [!NOTE]
@@ -90,6 +100,8 @@ git status
 git switch main
 git pull --ff-only
 ```
+
+## Resumo e próximos passos
 
 Não é necessária uma branch nova para a próxima lição. Você integrou exatamente três PRs do workshop: avaliações por estrelas; instruções e uma demonstração; e filtragem com a skill de qualidade, o perfil de QA e os testes.
 

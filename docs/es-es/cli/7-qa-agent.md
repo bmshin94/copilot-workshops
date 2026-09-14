@@ -8,6 +8,16 @@ lastUpdated: 2026-09-11
 
 Has ejecutado comprobaciones repetibles y explorado el filtrado mediante MCP de Playwright. Ahora crea un **agente personalizado de QA** para reunir los requisitos, la cobertura y las observaciones del navegador. Mantén la sesión, la copia de trabajo y la rama de filtrado; la PR de funcionalidad llegará en el Ejercicio 8.
 
+En este ejercicio:
+
+- crearás y examinarás un perfil de QA que parte de los requisitos.
+- seleccionarás el perfil y revisarás la cobertura, los resultados de las comprobaciones y las pruebas de verificación del navegador.
+- volverás al agente normal y guardarás un punto de control del perfil con las pruebas cuya incorporación esté justificada.
+
+## Escenario
+
+Tailspin Toys se prepara para publicar el filtrado. Que las pruebas pasen no basta para saber si se cubren todos los requisitos acordados. El equipo necesita una revisión centrada en comparar la incidencia con la implementación, identificar carencias y explicar si la funcionalidad está lista para revisión. El perfil de QA guiará esa evaluación sin sustituir el criterio humano.
+
 ## Crear el perfil de QA
 
 Mantén el modo **Interactive**. Un perfil define el rol y las instrucciones de un especialista; una habilidad reúne instrucciones de tareas reutilizables, scripts y recursos. El agente de QA utilizará tu habilidad y las herramientas MCP configuradas en lugar de sustituirlas.
@@ -70,7 +80,9 @@ Cuando hayas revisado el perfil, los cambios de pruebas y las pruebas de verific
 Revisa las diferencias actuales y crea un commit de punto de control para la definición del agente de QA y los cambios de pruebas aprobados. Mantén la rama de filtrado existente. No envíes cambios ni abras una solicitud de incorporación de cambios.
 ```
 
-Continúa con el [Ejercicio 8 - Crear y combinar la PR de la funcionalidad][next-lesson] con la funcionalidad de filtrado, la habilidad, el perfil de QA, las pruebas y las pruebas de verificación actuales.
+## Resumen y pasos siguientes
+
+Has creado y seleccionado un perfil de QA, revisado sus pruebas de verificación y guardado el perfil con las pruebas justificadas. Conserva los hallazgos pendientes; un veredicto fallido o bloqueado no autoriza la combinación. Continúa con el [Ejercicio 8 - Crear y combinar la PR de la funcionalidad][next-lesson] con la funcionalidad de filtrado, la habilidad, el perfil de QA, las pruebas y las pruebas de verificación actuales.
 
 [previous-lesson]: ../6-mcp-playwright/
 [next-lesson]: ../8-create-pull-request/
