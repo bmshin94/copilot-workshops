@@ -168,7 +168,7 @@ Usar comandos de barra no Copilot CLI permite configurá-lo, compartilhar sessõ
 - [Selecionar modelos no Copilot CLI][selecting-models]
 
 [previous-lesson]: ../6-custom-agents/
-[next-lesson]: ../8-review/
+[next-lesson]: ../9-review/
 [using-copilot-cli]: https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli
 [about-copilot-cli]: https://docs.github.com/copilot/concepts/agents/about-copilot-cli
 [about-cloud-agent]: https://docs.github.com/copilot/concepts/agents/cloud-agent/about-cloud-agent

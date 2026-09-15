@@ -50,5 +50,5 @@ Antes de participar deste workshop, verifique se você tem:
 [ex5]: 5-agent-skills/
 [ex6]: 6-custom-agents/
 [ex7]: 7-slash-commands/
-[ex8]: 8-review/
+[ex8]: 9-review/
 [callout-student-plan-education]: https://github.com/education/students

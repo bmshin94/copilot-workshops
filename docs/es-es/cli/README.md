@@ -52,4 +52,4 @@ Antes de asistir a este taller, asegúrate de tener:
 [ex5]: 5-agent-skills/
 [ex6]: 6-custom-agents/
 [ex7]: 7-slash-commands/
-[ex8]: 8-review/
+[ex8]: 9-review/
