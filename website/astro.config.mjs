@@ -63,6 +63,7 @@ export default defineConfig({
             { label: '4. Custom agents', link: '/vscode/4-custom-agents/' },
             { label: '5. Managing agents', link: '/vscode/5-managing-agents/' },
             { label: '6. Iterating', link: '/vscode/6-iterating/' },
+            { label: '7. Create a Backer Concierge AI Agent (Optional)', link: '/vscode/7-foundry-toolkit/' },
           ],
         },
         {
