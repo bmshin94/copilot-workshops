@@ -8,7 +8,7 @@ lastUpdated: 2026-06-30
 
 **[GitHub Copilot CLI](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)** puts GitHub Copilot in your terminal as an agentic coding assistant. It explores codebases, generates code, runs commands, and connects to external tools — all from the command line, so you can stay in the flow without switching to a graphical editor.
 
-Across these exercises you'll install and authenticate Copilot CLI, then give it project context with custom instructions before using plan mode to generate a feature deliberately. You'll connect the Playwright MCP server to test that feature in a real browser, then extend Copilot with reusable agent skills and custom agents. Finally, you'll explore slash commands for managing context, models, and sharing a wrapup of what you've built. You can also explore an optional exercise that uses the Microsoft Foundry Skill to build and deploy a hosted agent.
+Across these exercises you'll install and authenticate Copilot CLI, then give it project context with custom instructions before using plan mode to generate a feature deliberately. You'll connect the Playwright MCP server to test that feature in a real browser, then extend Copilot with reusable agent skills and custom agents. Finally, you'll explore slash commands for managing context, models, and sharing a wrapup of what you've built. An optional three-module series uses GitHub Copilot CLI and Foundry to prepare a model, build and deploy a hosted agent, and connect it to the website.
 
 ## Exercises
 
@@ -22,8 +22,8 @@ Across these exercises you'll install and authenticate Copilot CLI, then give it
 | [5. Agent Skills][ex5] | Skills | Enhance Copilot with specialized skills |
 | [6. Custom Agents][ex6] | Agents | Review and use custom agents |
 | [7. Slash Commands][ex7] | CLI Features | Explore context, models, sharing, and optional delegation to cloud agent |
-| [8. Build a Backer Concierge AI Agent (Optional)][foundry] | Hosted agents | Build and deploy a catalog-grounded Backer Concierge |
 | [9. Review][ex9] | Summary | Review key concepts and next steps |
+| [Optional: Incorporate Foundry][foundry] | Hosted agents | Prepare a model, build and deploy the concierge, and connect it to the website in three modules |
 
 ## Prerequisites
 

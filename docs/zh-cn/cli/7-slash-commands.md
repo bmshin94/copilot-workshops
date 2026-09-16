@@ -157,7 +157,7 @@ lastUpdated: 2026-06-30
 - 使用 `/model` 查看可用模型列表，并在需要时选择新的模型。
 - 了解了 `/delegate` 作为连接 cloud agent 的可选桥梁。
 
-当然，还有更多斜杠命令可用，也还有更多 Copilot CLI 功能值得探索。如果你想更进一步，[可选的 Microsoft Foundry 课程][foundry-lesson]将带你在 Tailspin 目录之上构建一个托管智能体。否则，最后通过[回顾已学内容][next-lesson]以及后续学习方向，为这段旅程收尾。
+当然，还有更多斜杠命令可用，也还有更多 Copilot CLI 功能值得探索。最后，通过[回顾已学内容][next-lesson]并了解后续学习方向，为这段旅程收尾。如果想在结束前尝试一项可选挑战，可以通过包含三个模块的系列课程[使用 GitHub Copilot CLI 和 Foundry 构建礼宾助手][foundry-lesson]。
 
 ## 资源
 

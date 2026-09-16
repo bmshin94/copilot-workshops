@@ -141,7 +141,7 @@ Using slash commands in Copilot CLI allows you to configure it, share sessions, 
 - `/model` to explore the list of available models and select a new one if you so desire.
 - Learned about `/delegate` as an optional bridge to cloud agent.
 
-There are of course more slash commands available, and more to explore with Copilot CLI! If you want to go further, the [optional Microsoft Foundry lesson][foundry-lesson] walks through building a hosted agent on top of the Tailspin catalog. Otherwise, let's close out our journey by [reviewing what we've learned][next-lesson] and some next steps to continue learning.
+There are of course more slash commands available, and more to explore with Copilot CLI! Let's close out our journey by [reviewing what we've learned][next-lesson] and some next steps to continue learning. If you'd like an optional challenge before wrapping up, [build a concierge with GitHub Copilot CLI and Foundry][foundry-lesson] in a three-module series.
 
 ## Resources
 

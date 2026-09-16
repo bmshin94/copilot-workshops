@@ -157,7 +157,7 @@ Usar comandos de barra en Copilot CLI te permite configurarlo, compartir sesione
 - `/model` para explorar la lista de modelos disponibles y seleccionar uno nuevo si así lo deseas.
 - `/delegate` como puente opcional hacia cloud agent.
 
-Por supuesto, hay más comandos de barra disponibles y mucho más por explorar con Copilot CLI. Si quieres ir más allá, la [lección opcional de Microsoft Foundry][foundry-lesson] te guía para compilar un agente hospedado sobre el catálogo de Tailspin. Si no, vamos a cerrar este recorrido [repasando lo que hemos aprendido][next-lesson] y viendo algunos próximos pasos para seguir aprendiendo.
+Por supuesto, hay más comandos de barra disponibles y mucho más por explorar con Copilot CLI. Vamos a cerrar este recorrido [repasando lo que hemos aprendido][next-lesson] y viendo algunos próximos pasos para seguir aprendiendo. Si te apetece un reto opcional antes de terminar, puedes [crear un concierge con GitHub Copilot CLI y Foundry][foundry-lesson] en una serie de tres módulos.
 
 ## Recursos
 

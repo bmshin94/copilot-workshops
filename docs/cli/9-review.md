@@ -13,7 +13,7 @@ Over the last several exercises, you explored some of the most common use cases 
 - calling custom agents for advanced and more complex tasks.
 - using slash commands to manage your session, and optionally bridging back to cloud agent via `/delegate`.
 
-If you haven't yet, consider the [optional Microsoft Foundry lesson][foundry-lesson] before you finish, which builds a catalog-grounded hosted agent on top of the Tailspin Toys site.
+If you'd like an optional challenge, [build a concierge with GitHub Copilot CLI and Foundry][foundry-lesson] in a three-module series covering model setup, agent development and deployment, and website integration.
 
 Let's talk about some slash commands, best practices, and next steps.
 
