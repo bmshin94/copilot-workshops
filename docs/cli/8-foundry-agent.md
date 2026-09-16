@@ -147,11 +147,8 @@ The agent needs a Foundry project and a deployed model. Use the Microsoft Foundr
 
 1. After the project is ready, ask Copilot to recommend a model:
 
-   > [!NOTE]
-   > Replace **#14** with the appropriate issue number for the *Add a Backer Concierge assistant for catalog questions* issue.
-
    ```text
-   Use the Microsoft Foundry Skill to recommend two or three current chat models available in the tailspin-toys project for the Backer Concierge acceptance criteria in #14. Prioritize low latency, instruction following, grounding fidelity, available quota, and models that aren't approaching retirement. There is no complex math or multi-step planning. Explain the tradeoffs and wait for me to choose a model from the recommended options.
+   Use the Microsoft Foundry Skill to recommend two or three current chat models available in the tailspin-toys project for the Backer Concierge acceptance criteria in the issue titled "Add a Backer Concierge assistant for catalog questions". Prioritize low latency, instruction following, grounding fidelity, available quota, and models that aren't approaching retirement. There is no complex math or multi-step planning. Explain the tradeoffs and wait for me to choose a model from the recommended options.
    ```
 
     Copilot may prompt you to select a model from the recommended options.
