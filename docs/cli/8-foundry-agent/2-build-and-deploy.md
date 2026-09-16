@@ -90,7 +90,7 @@ You'll now ask the Microsoft Foundry Skill to scaffold the hosted agent inside t
 
 You'll now check the agent's grounding and conversation behavior through its local Responses API. The local agent service occupies its terminal while it runs, so you'll keep Copilot CLI open in your current terminal and start the agent from a second terminal.
 
-1. Open another terminal by selecting <kbd>Ctrl</kbd>+<kbd>\`</kbd>.
+1. Open another terminal by pressing <kbd>Ctrl</kbd>+<kbd>\`</kbd>.
 2. From the Tailspin Toys repository root, run:
 
     ```bash

@@ -8,7 +8,7 @@ lastUpdated: 2026-06-30
 
 **[GitHub Copilot CLI](https://docs.github.com/copilot/concepts/agents/about-copilot-cli)** puts GitHub Copilot in your terminal as an agentic coding assistant. It explores codebases, generates code, runs commands, and connects to external tools — all from the command line, so you can stay in the flow without switching to a graphical editor.
 
-Across these exercises you'll install and authenticate Copilot CLI, then give it project context with custom instructions before using plan mode to generate a feature deliberately. You'll connect the Playwright MCP server to test that feature in a real browser, then extend Copilot with reusable agent skills and custom agents. Finally, you'll explore slash commands for managing context, models, and sharing a wrapup of what you've built. An optional three-module series uses GitHub Copilot CLI and Foundry to prepare a model, build and deploy a hosted agent, and connect it to the website.
+Across these exercises you'll install and authenticate Copilot CLI, then give it project context with custom instructions before using plan mode to generate a feature deliberately. You'll connect the Playwright MCP server to test that feature in a real browser, then extend Copilot with reusable agent skills and custom agents. Finally, you'll explore slash commands for managing context, models, and sharing, and wrap up with a review of what you've built. An optional three-module series uses GitHub Copilot CLI and Foundry to prepare a model, build and deploy a hosted agent, and connect it to the website.
 
 ## Exercises
 
