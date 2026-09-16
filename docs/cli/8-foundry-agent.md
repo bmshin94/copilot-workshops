@@ -334,14 +334,6 @@ The skill-led workflow uses `azd deploy` to package the service source, resolve 
 
 Tailspin Toys is fully pre-rendered. Browser code must never call the hosted agent directly or receive Foundry credentials. Add a local Azure Functions **server-side credential boundary** that authenticates to Foundry and returns only the agent response to the browser.
 
-```mermaid
-flowchart LR
-    A[Astro chat widget] -->|POST message and conversation handle| B[Azure Functions proxy]
-   B -->|DefaultAzureCredential| C[Foundry hosted agent]
-    C --> B
-    B -->|Sanitized response| A
-```
-
 ### Build the server-side proxy
 
 The `microsoft-foundry` skill owns the hosted-agent workflow, while the broader Azure skills in the same plugin can prepare the local Function project.
