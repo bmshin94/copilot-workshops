@@ -1,6 +1,6 @@
 # Copilot Workshops — Workshop Content
 
-Workshop content for **Copilot Workshops**, a guided exploration of GitHub Copilot's agentic capabilities (Copilot CLI, VS Code agent mode, the Copilot app, and the Copilot cloud agent) across the software development lifecycle.
+Workshop content for **Copilot Workshops**, with guided first-step experiences and real-world development scenarios across Copilot CLI, VS Code agent mode, the GitHub Copilot app, and the Copilot cloud agent.
 
 The published site lives at **<https://github-samples.github.io/copilot-workshops/>**.
 
@@ -21,8 +21,9 @@ For PR/CI rules, see **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
 
 - **`docs/`** — **Lesson source (plain Markdown). Edit here.** Browsable directly on github.com, no build required.
   - `README.md` — Workshop landing page (also the published site's home via `slug: index`).
-  - `cli/`, `vscode/`, `cloud/`, `app/` — Per-harness lessons (Copilot CLI / VS Code / cloud agent / GitHub Copilot app). Each codespace-based harness opens with its own `0-prerequisites.md` setup lesson, and a folder `README.md` (routed via a `slug:` matching the folder) is its landing page.
-  - `es-es/`, `ja-jp/`, `ko-kr/`, `pt-br/`, `zh-cn/` — Translated locale trees (currently the app harness).
+  - `first-steps/` — Guided introductory workshops, including the GitHub Copilot app tour adapted from James Montemagno's GitHub Copilot App Lab.
+  - `real-world-development/` — Scenario-based workshops organized by environment: `cli/`, `vscode/`, `cloud/`, and `app/`.
+  - `es-es/`, `ja-jp/`, `ko-kr/`, `pt-br/`, `zh-cn/` — Translated locale trees that mirror available English category and workshop paths.
   - `_images/` — Screenshots and diagrams (shared across all locales).
 - **`website/`** — Optional Astro + Starlight site that publishes `docs/` to GitHub Pages. Only needed to self-host or preview the rendered site.
   - `astro.config.mjs` — Site URL, base path, `locales` block, sidebar.
