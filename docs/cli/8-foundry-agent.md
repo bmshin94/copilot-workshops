@@ -56,7 +56,7 @@ Before you start, make sure you have:
 
 1. Install the [Azure Skills Plugin][azure-skills] which adds Azure skills, Azure MCP Server, and Foundry MCP Server to GitHub Copilot CLI.
 
-    - Open a new Copilot CLI session to the side from the command palette, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, then select **Chat: New Copilot CLI session to the side**.
+    - Open a new Copilot CLI session to the side from the command palette. Press <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows/Linux), then select **Chat: New Copilot CLI session to the side**.
 
     - Add the Azure Skills marketplace. You only need to do this the first time you install the plugin:
 
