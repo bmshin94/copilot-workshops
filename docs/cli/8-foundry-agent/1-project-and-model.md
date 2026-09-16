@@ -23,7 +23,7 @@ Tailspin Toys needs a concierge that can distinguish between catalog facts and i
 You'll use Azure to host the Backer Concierge and Copilot CLI to guide the work. First, prepare the command-line tools and plugin that let Copilot work with your Azure resources.
 
 > [!IMPORTANT]
-> This optional series creates billable Azure resources. Hosted agents are in public preview. The [cleanup instructions][cleanup] cover stopping after this module as well as finishing the series.
+> The [cleanup instructions][cleanup] cover stopping after this module as well as finishing the series.
 
 1. Confirm that you have an Azure subscription. If you need one, the available options include a [free Azure subscription with $200 credit][azure-free] or [Azure for Students with $100 credit][azure-students].
 2. Return to your Tailspin Toys codespace and open a terminal.

@@ -23,7 +23,7 @@ Tailspin Toys에는 카탈로그의 사실과 회사가 제공하지 않는 정�
 Azure를 사용해 Backer Concierge를 호스팅하고 Copilot CLI로 작업을 진행합니다. 먼저 Copilot이 Azure 리소스를 다룰 수 있도록 명령줄 도구와 플러그인을 준비합니다.
 
 > [!IMPORTANT]
-> 이 선택 사항 시리즈에서는 요금이 부과되는 Azure 리소스를 만듭니다. 호스트된 에이전트(Hosted agent)는 공개 미리 보기 상태입니다. [정리 지침][cleanup]은 시리즈를 모두 마친 경우뿐 아니라 이 모듈을 마친 뒤 중단하는 경우에도 적용됩니다.
+> [정리 지침][cleanup]은 시리즈를 모두 마친 경우뿐 아니라 이 모듈을 마친 뒤 중단하는 경우에도 적용됩니다.
 
 1. Azure 구독이 있는지 확인합니다. 구독이 필요하다면 [$200 크레딧이 포함된 무료 Azure 구독][azure-free] 또는 [$100 크레딧이 포함된 Azure for Students][azure-students] 등의 옵션을 사용할 수 있습니다.
 2. Tailspin Toys 코드스페이스로 돌아가 터미널을 엽니다.

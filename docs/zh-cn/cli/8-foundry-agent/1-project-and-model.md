@@ -23,7 +23,7 @@ Tailspin Toys 需要一个能够区分目录事实和公司未提供信息的礼
 将使用 Azure 托管 Backer Concierge，并通过 Copilot CLI 引导工作。首先，准备好让 Copilot 能够操作 Azure 资源的命令行工具和插件。
 
 > [!IMPORTANT]
-> 本可选系列会创建计费的 Azure 资源。托管智能体目前处于公共预览阶段。无论是在本模块后停止，还是完成整个系列，都应按照[清理说明][cleanup]操作。
+> 无论是在本模块后停止，还是完成整个系列，都应按照[清理说明][cleanup]操作。
 
 1. 确认已拥有 Azure 订阅。如果还没有，可选择[包含 200 美元额度的免费 Azure 订阅][azure-free]或[包含 100 美元额度的 Azure for Students][azure-students]。
 2. 返回 Tailspin Toys codespace 并打开终端。

@@ -119,13 +119,13 @@ Tailspin Toys에는 모델의 일회성 답변 이상이 필요합니다. 후원
 
 ## 호스트된 에이전트 배포하기
 
-로컬 인수 테스트를 통과했다면 에이전트를 Foundry Agent Service에 배포할 준비가 되었습니다. 동일한 스킬 중심 작업 흐름을 사용해 배포 준비 상태를 확인하고 원격 엔드포인트를 테스트합니다.
+로컬 인수 테스트를 통과했다면 에이전트를 Microsoft Foundry에 배포할 준비가 되었습니다. 동일한 스킬 중심 작업 흐름을 사용해 배포 준비 상태를 확인하고 원격 엔드포인트를 테스트합니다.
 
 1. 모든 인수 테스트를 통과한 뒤 <kbd>Ctrl</kbd>+<kbd>C</kbd>로 로컬 서비스를 중지합니다.
 2. Copilot CLI로 돌아가 다음 프롬프트를 입력합니다. 배포를 승인하기 전에 제안된 리소스와 예상 비용을 검토합니다.
 
     ```text
-    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Foundry Agent Service, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
+    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Microsoft Foundry, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
     ```
 
 3. 평가 모음 소스를 선택하라는 메시지가 표시되면 **No, set it up later**를 선택합니다.
@@ -136,11 +136,11 @@ Tailspin Toys에는 모델의 일회성 답변 이상이 필요합니다. 후원
 
 표시된 플레이그라운드(Playground) 링크를 통해 Microsoft Foundry 포털에서 배포된 호스트된 에이전트와 상호 작용할 수 있습니다.
 
-스킬 중심 작업 흐름은 `azd deploy`를 사용해 서비스 소스를 패키징하고, 의존성을 해결하고, 원격으로 빌드한 뒤 Foundry Agent Service에 게시합니다. 배포된 엔드포인트는 Foundry 호출 작업 흐름으로 테스트합니다.
+스킬 중심 작업 흐름은 `azd deploy`를 사용해 서비스 소스를 패키징하고, 의존성을 해결하고, 원격으로 빌드한 뒤 Microsoft Foundry에 게시합니다. 배포된 엔드포인트는 Foundry 호출 작업 흐름으로 테스트합니다.
 
 ## 요약 및 다음 단계
 
-배포 가능한 카탈로그 사본을 포함한 에이전트를 스캐폴드하고, 그라운딩과 대화 연속성을 테스트한 뒤 Foundry Agent Service의 원격 응답을 검증했습니다. 이제 정상적으로 작동하는 호스트된 Backer Concierge가 준비되었습니다.
+배포 가능한 카탈로그 사본을 포함한 에이전트를 스캐폴드하고, 그라운딩과 대화 연속성을 테스트한 뒤 Microsoft Foundry의 원격 응답을 검증했습니다. 이제 정상적으로 작동하는 호스트된 Backer Concierge가 준비되었습니다.
 
 다음으로 동일한 리포지토리, 브랜치, Copilot CLI 세션, 배포된 에이전트를 유지한 채 [컨시어지를 웹사이트에 연결합니다][next-lesson]. 호스트된 에이전트를 살펴본 것으로 충분하다면 여기서 중단하고 [Azure 리소스를 정리합니다][cleanup].
 

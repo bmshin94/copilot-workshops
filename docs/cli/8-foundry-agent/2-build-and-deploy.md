@@ -119,13 +119,13 @@ You'll now check the agent's grounding and conversation behavior through its loc
 
 ## Deploy the hosted agent
 
-With the local acceptance tests passing, you're ready to deploy the agent to Foundry Agent Service. You'll use the same skill-led workflow to check deployment readiness and test the remote endpoint.
+With the local acceptance tests passing, you're ready to deploy the agent to Microsoft Foundry. You'll use the same skill-led workflow to check deployment readiness and test the remote endpoint.
 
 1. Stop the local service with <kbd>Ctrl</kbd>+<kbd>C</kbd> after all acceptance tests pass.
 2. Return to Copilot CLI and enter the following prompt. Review the proposed resources and estimated cost before approving deployment:
 
     ```text
-    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Foundry Agent Service, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
+    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Microsoft Foundry, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
     ```
 
 3. If prompted to select an evaluation suite source, choose **No, set it up later**.
@@ -136,11 +136,11 @@ With the local acceptance tests passing, you're ready to deploy the agent to Fou
 
 The playground link displayed allows you to interact with the deployed hosted agent on the Microsoft Foundry portal.
 
-The skill-led workflow uses `azd deploy` to package the service source, resolve dependencies, build it remotely, and publish it to Foundry Agent Service. It uses the Foundry invocation workflow to test the deployed endpoint.
+The skill-led workflow uses `azd deploy` to package the service source, resolve dependencies, build it remotely, and publish it to Microsoft Foundry. It uses the Foundry invocation workflow to test the deployed endpoint.
 
 ## Summary and next steps
 
-You scaffolded an agent with a deployable catalog copy, tested grounding and conversation continuity, and verified a remote response from Foundry Agent Service. You now have a working hosted Backer Concierge.
+You scaffolded an agent with a deployable catalog copy, tested grounding and conversation continuity, and verified a remote response from Microsoft Foundry. You now have a working hosted Backer Concierge.
 
 Next, you'll keep the same repository, branch, Copilot CLI session, and deployed agent to [connect the concierge to the website][next-lesson]. If a hosted agent is enough for your exploration, you can stop here and [clean up your Azure resources][cleanup].
 

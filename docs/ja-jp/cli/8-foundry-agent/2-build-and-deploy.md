@@ -119,13 +119,13 @@ Microsoft Foundry Skill に、既存の Tailspin Toys リポジトリ内でホ�
 
 ## ホスト型エージェントをデプロイする
 
-ローカルの受け入れテストが成功したら、エージェントを Foundry Agent Service にデプロイする準備が整います。同じスキル主導のワークフローで、デプロイの準備状況を確認し、リモート エンドポイントをテストします。
+ローカルの受け入れテストが成功したら、エージェントを Microsoft Foundry にデプロイする準備が整います。同じスキル主導のワークフローで、デプロイの準備状況を確認し、リモート エンドポイントをテストします。
 
 1. すべての受け入れテストが成功したら、<kbd>Ctrl</kbd>+<kbd>C</kbd> でローカル サービスを停止します。
 2. Copilot CLI に戻り、次のプロンプトを入力します。デプロイを承認する前に、提案されたリソースと推定コストを確認してください。
 
     ```text
-    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Foundry Agent Service, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
+    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Microsoft Foundry, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
     ```
 
 3. 評価スイートのソースを選ぶよう求められた場合は、**No, set it up later** を選択します。
@@ -136,11 +136,11 @@ Microsoft Foundry Skill に、既存の Tailspin Toys リポジトリ内でホ�
 
 表示されたプレイグラウンドのリンクから、Microsoft Foundry ポータルでデプロイ済みのホスト型エージェントと対話できます。
 
-スキル主導のワークフローは、`azd deploy` でサービスのソースをパッケージ化し、依存関係を解決してリモートでビルドし、Foundry Agent Service に公開します。デプロイ済みのエンドポイントのテストには、Foundry の呼び出しワークフローを使います。
+スキル主導のワークフローは、`azd deploy` でサービスのソースをパッケージ化し、依存関係を解決してリモートでビルドし、Microsoft Foundry に公開します。デプロイ済みのエンドポイントのテストには、Foundry の呼び出しワークフローを使います。
 
 ## まとめと次のステップ
 
-デプロイ可能なカタログ コピーを含むエージェントのひな形を作成し、グラウンディングと会話の継続性をテストして、Foundry Agent Service からのリモートの回答を検証しました。これで、正常に動作するホスト型の Backer Concierge が完成しました。
+デプロイ可能なカタログ コピーを含むエージェントのひな形を作成し、グラウンディングと会話の継続性をテストして、Microsoft Foundry からのリモートの回答を検証しました。これで、正常に動作するホスト型の Backer Concierge が完成しました。
 
 次は、同じリポジトリ、ブランチ、Copilot CLI セッション、デプロイ済みのエージェントを使って、[コンシェルジュを Web サイトに接続します][next-lesson]。ホスト型エージェントを試すだけで十分な場合は、ここで終了して [Azure リソースをクリーンアップできます][cleanup]。
 

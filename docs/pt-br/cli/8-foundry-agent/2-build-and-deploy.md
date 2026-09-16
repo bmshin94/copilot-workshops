@@ -119,13 +119,13 @@ Agora, você verificará a fundamentação das respostas e o comportamento de co
 
 ## Implante o agente hospedado
 
-Com os testes de aceitação locais aprovados, você está pronto para implantar o agente no Foundry Agent Service. Você usará o mesmo fluxo orientado pela skill para verificar se tudo está pronto para a implantação e testar o endpoint remoto.
+Com os testes de aceitação locais aprovados, você está pronto para implantar o agente no Microsoft Foundry. Você usará o mesmo fluxo orientado pela skill para verificar se tudo está pronto para a implantação e testar o endpoint remoto.
 
 1. Pare o serviço local com <kbd>Ctrl</kbd>+<kbd>C</kbd> depois que todos os testes de aceitação forem aprovados.
 2. Volte ao Copilot CLI e insira o seguinte prompt. Revise os recursos propostos e o custo estimado antes de aprovar a implantação:
 
     ```text
-    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Foundry Agent Service, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
+    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Microsoft Foundry, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
     ```
 
 3. Se for solicitado que você selecione uma fonte para a suíte de avaliação, escolha **Não, configurar mais tarde**.
@@ -136,11 +136,11 @@ Com os testes de aceitação locais aprovados, você está pronto para implantar
 
 O link do playground exibido permite interagir com o agente hospedado implantado no portal do Microsoft Foundry.
 
-O fluxo orientado pela skill usa `azd deploy` para empacotar o código-fonte do serviço, resolver dependências, compilá-lo remotamente e publicá-lo no Foundry Agent Service. Ele usa o fluxo de invocação do Foundry para testar o endpoint implantado.
+O fluxo orientado pela skill usa `azd deploy` para empacotar o código-fonte do serviço, resolver dependências, compilá-lo remotamente e publicá-lo no Microsoft Foundry. Ele usa o fluxo de invocação do Foundry para testar o endpoint implantado.
 
 ## Resumo e próximos passos
 
-Você gerou a estrutura de um agente com uma cópia do catálogo para implantação, testou a fundamentação das respostas e a continuidade da conversa e verificou uma resposta remota do Foundry Agent Service. Agora, você tem um Backer Concierge hospedado e funcional.
+Você gerou a estrutura de um agente com uma cópia do catálogo para implantação, testou a fundamentação das respostas e a continuidade da conversa e verificou uma resposta remota do Microsoft Foundry. Agora, você tem um Backer Concierge hospedado e funcional.
 
 A seguir, você manterá o mesmo repositório, a branch, a sessão do Copilot CLI e o agente implantado para [conectar o concierge ao site][next-lesson]. Se um agente hospedado for suficiente para sua exploração, você pode parar por aqui e [limpar seus recursos do Azure][cleanup].
 

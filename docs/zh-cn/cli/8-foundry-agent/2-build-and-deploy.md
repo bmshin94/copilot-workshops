@@ -119,13 +119,13 @@ Tailspin Toys 需要的不只是模型的一次性回答。支持者希望礼宾
 
 ## 部署托管智能体
 
-本地验收测试通过后，就可以将智能体部署到 Foundry Agent Service。将继续使用由技能引导的工作流程，检查部署准备情况并测试远程终结点。
+本地验收测试通过后，就可以将智能体部署到 Microsoft Foundry。将继续使用由技能引导的工作流程，检查部署准备情况并测试远程终结点。
 
 1. 所有验收测试通过后，按 <kbd>Ctrl</kbd>+<kbd>C</kbd> 停止本地服务。
 2. 返回 Copilot CLI 并输入以下提示。在批准部署之前，检查建议的资源和预估费用：
 
     ```text
-    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Foundry Agent Service, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
+    Continue with the Microsoft Foundry Skill workflow. Review the hosted agent for deployment readiness, then deploy it to Microsoft Foundry, show the deployment status and playground link, and invoke it remotely with: "I love puzzle games about tracking down bugs. What should I back?"
     ```
 
 3. 如果系统提示选择评估套件来源，请选择 **No, set it up later**（否，稍后设置）。
@@ -136,11 +136,11 @@ Tailspin Toys 需要的不只是模型的一次性回答。支持者希望礼宾
 
 通过显示的操练场链接，可以在 Microsoft Foundry 门户中与已部署的托管智能体交互。
 
-由技能引导的工作流程使用 `azd deploy` 打包服务源代码、解析依赖项、执行远程构建，并发布到 Foundry Agent Service。它通过 Foundry 调用流程测试已部署的终结点。
+由技能引导的工作流程使用 `azd deploy` 打包服务源代码、解析依赖项、执行远程构建，并发布到 Microsoft Foundry。它通过 Foundry 调用流程测试已部署的终结点。
 
 ## 总结和后续步骤
 
-本模块生成了包含可部署目录副本的智能体脚手架，测试了回答的信息依据和对话连贯性，并验证了 Foundry Agent Service 的远程回答。现在已经拥有一个可用的托管 Backer Concierge。
+本模块生成了包含可部署目录副本的智能体脚手架，测试了回答的信息依据和对话连贯性，并验证了 Microsoft Foundry 的远程回答。现在已经拥有一个可用的托管 Backer Concierge。
 
 接下来，将继续使用同一个存储库、分支、Copilot CLI 会话和已部署的智能体，[将礼宾助手连接到网站][next-lesson]。如果托管智能体已足以满足探索需求，可以到此为止，并[清理 Azure 资源][cleanup]。
 
