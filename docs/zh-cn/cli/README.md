@@ -22,7 +22,8 @@ lastUpdated: 2026-06-30
 | [5. 智能体技能][ex5] | 技能 | 用专门的技能增强 Copilot |
 | [6. 自定义智能体][ex6] | 智能体 | 查看并使用自定义智能体 |
 | [7. 斜杠命令][ex7] | CLI 功能 | 探索上下文、模型、共享，以及可选的委托给 cloud agent |
-| [8. 回顾][ex8] | 总结 | 回顾关键概念和后续步骤 |
+| [8. 构建 Backer Concierge AI 智能体（可选）][foundry] | 托管智能体 | 构建并部署基于目录的 Backer Concierge |
+| [9. 回顾][ex9] | 总结 | 回顾关键概念和后续步骤 |
 
 ## 先决条件
 
@@ -52,4 +53,5 @@ lastUpdated: 2026-06-30
 [ex5]: 5-agent-skills/
 [ex6]: 6-custom-agents/
 [ex7]: 7-slash-commands/
-[ex8]: 9-review/
+[foundry]: 8-foundry-agent/
+[ex9]: 9-review/

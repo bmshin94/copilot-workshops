@@ -22,7 +22,8 @@ Ao longo destas lições, você instalará e autenticará o Copilot CLI, depois 
 | [5. Skills de agente][ex5] | Skills | Aprimore o Copilot com skills especializadas |
 | [6. Agentes personalizados][ex6] | Agentes | Revise e use agentes personalizados |
 | [7. Comandos de barra][ex7] | Recursos da CLI | Explore contexto, modelos, compartilhamento e a delegação opcional para o agente de nuvem |
-| [8. Revisão][ex8] | Resumo | Revise os principais conceitos e os próximos passos |
+| [8. Criar um agente de IA Backer Concierge (opcional)][foundry] | Agentes hospedados | Crie e implante um Backer Concierge baseado no catálogo |
+| [9. Revisão][ex9] | Resumo | Revise os principais conceitos e os próximos passos |
 
 ## Pré-requisitos
 
@@ -50,5 +51,6 @@ Antes de participar deste workshop, verifique se você tem:
 [ex5]: 5-agent-skills/
 [ex6]: 6-custom-agents/
 [ex7]: 7-slash-commands/
-[ex8]: 9-review/
+[foundry]: 8-foundry-agent/
+[ex9]: 9-review/
 [callout-student-plan-education]: https://github.com/education/students

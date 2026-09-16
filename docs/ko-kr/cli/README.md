@@ -22,7 +22,8 @@ lastUpdated: 2026-06-30
 | [5. 에이전트 스킬][ex5] | 스킬 | 특화된 스킬로 Copilot을 강화합니다 |
 | [6. 커스텀 에이전트][ex6] | 에이전트 | 커스텀 에이전트를 검토하고 사용합니다 |
 | [7. 슬래시 명령][ex7] | CLI 기능 | 컨텍스트, 모델, 공유, 그리고 선택적으로 cloud agent 위임을 살펴봅니다 |
-| [8. 검토][ex8] | 요약 | 핵심 개념과 다음 단계를 검토합니다 |
+| [8. Backer Concierge AI 에이전트 빌드 (선택 사항)][foundry] | 호스트된 에이전트 | 카탈로그 기반 Backer Concierge를 빌드하고 배포합니다 |
+| [9. 검토][ex9] | 요약 | 핵심 개념과 다음 단계를 검토합니다 |
 
 ## 사전 준비
 
@@ -52,4 +53,5 @@ lastUpdated: 2026-06-30
 [ex5]: 5-agent-skills/
 [ex6]: 6-custom-agents/
 [ex7]: 7-slash-commands/
-[ex8]: 9-review/
+[foundry]: 8-foundry-agent/
+[ex9]: 9-review/

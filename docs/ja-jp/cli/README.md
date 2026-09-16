@@ -22,7 +22,8 @@ lastUpdated: 2026-06-30
 | [5. エージェント スキル][ex5] | スキル | 専門スキルで Copilot を強化する |
 | [6. カスタム エージェント][ex6] | エージェント | カスタム エージェントを確認して使用する |
 | [7. スラッシュ コマンド][ex7] | CLI 機能 | コンテキスト、モデル、共有、cloud agent への任意の委任を確認する |
-| [8. 振り返り][ex8] | まとめ | 重要な概念と次のステップを確認する |
+| [8. Backer Concierge AI エージェントの構築 (オプション)][foundry] | ホスト型エージェント | カタログに基づいた Backer Concierge を構築してデプロイする |
+| [9. 振り返り][ex9] | まとめ | 重要な概念と次のステップを確認する |
 
 ## 前提条件
 
@@ -52,4 +53,5 @@ lastUpdated: 2026-06-30
 [ex5]: 5-agent-skills/
 [ex6]: 6-custom-agents/
 [ex7]: 7-slash-commands/
-[ex8]: 9-review/
+[foundry]: 8-foundry-agent/
+[ex9]: 9-review/
