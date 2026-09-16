@@ -21,7 +21,7 @@ You'll start by adding custom instructions and watching Copilot follow them, the
 | [4. Custom Agents][ex4] | Specialized Agents | Review and use custom agents |
 | [5. Managing Agents][ex5] | Monitoring | Monitor and steer agent sessions |
 | [6. Iterating][ex6] | Review | Review Copilot's work locally and choose next steps |
-| [7. Create a Backer Concierge AI Agent (Optional)][foundry-toolkit] | AI agents | Discover, deploy, and wire up a Microsoft Foundry hosted agent from VS Code |
+| [Optional: Incorporate Foundry][foundry-toolkit] | AI agents | Prepare a model, deploy an agent, and connect it to the site in three modules with VS Code and Foundry Toolkit |
 
 ## Prerequisites
 
