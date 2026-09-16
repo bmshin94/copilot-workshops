@@ -5,6 +5,9 @@ authors:
 lastUpdated: 2026-08-03
 ---
 
+| [← Previous lesson: Iterating on GitHub Copilot's work][previous-lesson] |
+|:--|
+
 In this optional lesson you'll take the Tailspin catalog and build an AI agent on top of it, discovering and deploying a model, scaffolding an agent locally, deploying it as a Foundry hosted agent and wiring it into the site.
 
 > [!IMPORTANT]
@@ -252,7 +255,7 @@ This drops a prompt into a new Copilot Chat and automatically switches to the **
 <summary>Expand to view the customized prompt</summary>
 
 ```text
-/foundrytk-quick-start Create a backer concierge AI agent called 'Backer Concierge'. The agent should use the model I deployed to answer catalog questions and recommend games grounded strictly in db/catalog.json. Review the acceptance criteria in #9 and ensure the agent meets them. Generate the code into agent/backer-concierge in the current workspace and ask me if anything is unclear.
+/foundrytk-quick-start Create a backer concierge AI agent called 'Backer Concierge'. The agent should use the model I deployed to answer catalog questions and recommend games grounded strictly in db/catalog.json. Review the acceptance criteria in the issue titled 'Add a Backer Concierge assistant for catalog questions' and ensure the agent meets them. Generate the code into agent/backer-concierge in the current workspace and ask me if anything is unclear.
 ```
 
 </details>
