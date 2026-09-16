@@ -56,7 +56,7 @@ Before you start, make sure you have:
 
 1. Install the [Azure Skills Plugin][azure-skills] which adds Azure skills, Azure MCP Server, and Foundry MCP Server to GitHub Copilot CLI.
 
-    - Open a new Copilot CLI session to the side from the command pallete, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, then select **Chat: New Copilot CLI session to the side**.
+    - Open a new Copilot CLI session to the side from the command palette, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>, then select **Chat: New Copilot CLI session to the side**.
 
     - Add the Azure Skills marketplace. You only need to do this the first time you install the plugin:
 
@@ -163,7 +163,7 @@ The agent needs a Foundry project and a deployed model. Use the Microsoft Foundr
 1. Ask Copilot to deploy your selection. *Insert your selection*:
 
    ```text
-   Deploy gpt-5.4-mini to the tailspin-toys Foundry project and use the model name as the deployment name. Choose an SKU with available quota, ask me to confirm the capacity before deployment. After deployment, show me the deployment status.
+   Deploy the model we selected to the tailspin-toys Foundry project and use the model name as the deployment name. Choose an SKU with available quota, ask me to confirm the capacity before deployment. After deployment, show me the deployment status.
    ```
 
     ![Deploy the selected model](../_images/cli-8-deploy-foundry-model.png)
@@ -376,7 +376,7 @@ The `microsoft-foundry` skill owns the hosted-agent workflow, while the broader 
 1. Ask Copilot to create the site integration:
 
    ```text
-   Add an accessible Backer Concierge chat widget as an Astro component and render it site-wide from Layout.astro. It should POST to /api/concierge and thread the conversation using the returned threadId, follow the dark theme in style.instructions.md, support Escape to close, and include data-testid attributes.
+   Add an accessible Backer Concierge chat widget as an Astro component and render it site-wide from Layout.astro. It should POST to /api/concierge and thread the conversation using the returned opaque conversation handle, follow the dark theme in style.instructions.md, support Escape to close, and include data-testid attributes.
    ```
 
 1. Keep the local Function running and start the Astro site in another terminal using the command provided by Copilot.
