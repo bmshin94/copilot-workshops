@@ -30,4 +30,4 @@ VS Code、Copilot CLI、GitHub Copilot app、Copilot cloud agent から選択で
 > 講師が進行するワークショップで正しく動作しない場合は、メンターに相談してください。
 
 [first-steps-app]: ../first-steps/copilot-app/
-[real-world-development]: real-world-development/
+[real-world-development]: ../real-world-development/

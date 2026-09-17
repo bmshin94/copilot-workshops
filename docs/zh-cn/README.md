@@ -30,4 +30,4 @@ lastUpdated: 2026-09-16
 > 如果在讲师指导的研讨会中遇到无法正常运行的内容，请向导师求助。
 
 [first-steps-app]: ../first-steps/copilot-app/
-[real-world-development]: real-world-development/
+[real-world-development]: ../real-world-development/

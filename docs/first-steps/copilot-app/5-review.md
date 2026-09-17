@@ -22,12 +22,12 @@ In this lesson, you will:
 3. Open the pull request on GitHub.
 4. From the **Reviewers** menu, request a review from **Copilot**.
 5. Open the **Files changed** tab and read every review comment.
-6. For up to two actionable comments, use the Copilot **Fix** action in the app.
+6. For each actionable comment, use the Copilot **Fix** action in the app or make the change yourself.
 7. Review each change and retest the feature.
 8. Reply with a concise description of what changed, then resolve the conversation.
 
 > [!NOTE]
-> If Copilot leaves fewer than two actionable comments, address all useful feedback it provides. Do not create unnecessary changes simply to reach a target number.
+> If a suggestion is not applicable or is outside the scope of the pull request, reply with the reason instead of making an unnecessary change. Resolve every review conversation before merging.
 
 ## Merge the pull request
 

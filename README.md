@@ -5,7 +5,7 @@ Workshop content for **Copilot Workshops**, with guided first-step experiences a
 The published site lives at **<https://github-samples.github.io/copilot-workshops/>**.
 
 > [!NOTE]
-> The demo application learners build through during the workshop — Tailspin Toys, a pure-Astro crowdfunding site (SSR, API endpoints, and a Drizzle data layer) — lives in a separate repository: **<https://github.com/github-samples/tailspin-toys>**. This repo holds only the *content*: lesson Markdown, images, and the Astro + Starlight site that publishes them.
+> The real-world development workshops use Tailspin Toys, a pure-Astro crowdfunding site (SSR, API endpoints, and a Drizzle data layer) that lives in a separate repository: **<https://github.com/github-samples/tailspin-toys>**. First steps workshops may guide learners in creating a small project from scratch. This repository holds only the workshop content: lesson Markdown, images, and the Astro + Starlight site that publishes them.
 
 ## Start the workshop
 

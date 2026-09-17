@@ -28,9 +28,12 @@ In this lesson, you will:
 1. Select **New session** for the Canvas.
 2. Choose the `space-quiz` project.
 3. Explore the issue board.
-4. Drag an issue card into the active-work column.
+4. Move an issue card into the active-work column.
 5. Open the automatically generated session.
 6. Confirm that the selected issue is available as session context.
+
+> [!NOTE]
+> The current Repository Issues Kanban extension moves cards with pointer-based drag and drop. If you cannot use that interaction, note the issue number on the board, open the issue in **My work**, then select **New session**. This creates the same issue-grounded session without moving the card.
 
 The Canvas provides a visual way to select and begin work while keeping the agent grounded in the issue.
 

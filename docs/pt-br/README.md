@@ -30,4 +30,4 @@ Escolha entre VS Code, Copilot CLI, o aplicativo GitHub Copilot ou o agente de n
 > Se algo não funcionar corretamente durante um workshop conduzido por uma pessoa instrutora, peça ajuda a uma pessoa mentora.
 
 [first-steps-app]: ../first-steps/copilot-app/
-[real-world-development]: real-world-development/
+[real-world-development]: ../real-world-development/

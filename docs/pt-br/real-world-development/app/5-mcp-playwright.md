@@ -38,7 +38,7 @@ Há muitos outros servidores MCP que fornecem acesso a diferentes ferramentas e 
 
 Você adiciona e gerencia servidores MCP nas configurações do aplicativo. O aplicativo inclui um catálogo de servidores conhecidos, portanto o [servidor MCP do Playwright][playwright-mcp-server] está a poucas seleções de distância.
 
-1. Selecione <kbd>Ctrl</kbd>+<kbd>,</kbd> para abrir a página de configurações do aplicativo Copilot.
+1. Pressione <kbd>Command</kbd>+<kbd>,</kbd> (Mac) ou <kbd>Ctrl</kbd>+<kbd>,</kbd> (Windows/Linux) para abrir a página de configurações do aplicativo Copilot.
 2. Selecione **MCP servers**.
 3. Na caixa de diálogo de pesquisa, digite `Playwright`.
 4. Selecione **Playwright** na lista de **Popular MCP servers**.
