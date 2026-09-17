@@ -73,17 +73,7 @@ export default defineConfig({
                 'zh-CN': '可选：集成 Foundry',
               },
               items: [
-                {
-                  label: 'Optional: Incorporate Foundry',
-                  link: '/vscode/7-foundry-toolkit/',
-                  translations: {
-                    'es-ES': 'Opcional: Incorporar Foundry',
-                    'ja-JP': '省略可能: Foundry を組み込む',
-                    'ko-KR': '선택 사항: Foundry 통합',
-                    'pt-BR': 'Opcional: Incorporar o Foundry',
-                    'zh-CN': '可选：集成 Foundry',
-                  },
-                },
+                { label: 'Overview', link: '/vscode/7-foundry-toolkit/' },
                 {
                   label: 'Prepare a project and model',
                   link: '/vscode/7-foundry-toolkit/1-project-and-model/',
