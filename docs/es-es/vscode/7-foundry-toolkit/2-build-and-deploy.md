@@ -93,10 +93,9 @@ La transferencia **Go production** empaqueta el agente existente para Foundry. N
 
 ## Punto de control al finalizar
 
-El resultado es un agente depurado localmente y una implementación hospedada en ejecución que respeta el catálogo.
+Has generado la estructura del Backer Concierge, depurado su fundamentación en el catálogo con Agent Inspector, lo has implementado en Foundry mediante el traspaso **Go production** y has vuelto a probar la versión hospedada en el Playground. El punto de control de este módulo es un agente hospedado en ejecución que respeta el catálogo sin inventar la información que falta.
 
-1. Guarda el agente generado y las pruebas en `foundry-agent-vscode`, sin incluir credenciales ni archivos de entorno locales. Anota los datos de conexión del agente hospedado, el directorio de implementación generado y el entorno de `azd` para la integración y la eliminación de recursos, sin incluir secretos en los commits.
-2. Continúa con [Conectar el agente al sitio][next-lesson] en el mismo repositorio, la misma rama y la misma área de trabajo de VS Code. Ese módulo inicia un chat normal en modo **Agent** que utiliza este agente implementado, no un proyecto nuevo. Si paras aquí, sigue las indicaciones de [Eliminar los recursos][cleanup].
+A continuación, utilizarás el mismo proyecto `tailspin-toys`, la implementación del modelo y el agente hospedado para conectar el agente al sitio. Si paras aquí, [elimina los recursos de Azure][cleanup] para evitar costes continuados.
 
 | [Siguiente módulo: Conectar el agente al sitio →][next-lesson] |
 |--:|

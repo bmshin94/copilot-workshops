@@ -29,37 +29,56 @@ Cada módulo termina con un resultado funcional. Se mantienen el mismo repositor
 > [!IMPORTANT]
 > Microsoft Foundry Toolkit y los agentes hospedados están en versión preliminar pública. Estos módulos crean recursos de Azure facturables, incluidos una implementación de modelo y un agente hospedado. Los permisos de la suscripción, la disponibilidad regional, la cuota y el coste pueden limitar la participación.
 
-## Elegir un punto de partida
+## Antes de empezar
 
 La ampliación parte de tu repositorio de Tailspin Toys, no del repositorio de documentación del taller.
 
 1. Confirma que el trabajo obligatorio del taller está guardado, confirmado mediante un commit y enviado al repositorio remoto antes de empezar la funcionalidad opcional.
-2. Revisa la suscripción de Azure seleccionada, la región, los permisos, la cuota y los costes estimados antes de aprobar la creación de recursos.
-3. Empieza por [Preparar un proyecto y un modelo][module-1]. Si retomas el trabajo, utiliza el punto de control de ese módulo para identificar el repositorio, la rama, el proyecto y la implementación existentes antes de continuar.
-4. Si paras después de cualquier módulo, sigue las indicaciones de [Eliminar los recursos][cleanup], salvo que decidas conservarlos para el siguiente módulo y aceptes los costes continuados.
+2. Empieza por [Preparar un proyecto y un modelo][module-1]. Si retomas el trabajo, vuelve a abrir tu repositorio de Tailspin Toys en la rama `foundry-agent-vscode` y confirma que el proyecto `tailspin-toys` y su implementación del modelo siguen existiendo en **Foundry Toolkit** > **My Resources**.
+3. Si paras después de cualquier módulo, sigue las indicaciones de [Eliminar los recursos][cleanup], salvo que decidas conservarlos para el siguiente módulo y aceptes los costes continuados.
 
 ## Eliminar los recursos
 
-La eliminación de recursos también se aplica si paras tras crear únicamente el proyecto y el modelo. No requiere haber generado la estructura de un agente ni disponer de un proyecto de `azd`.
+Cuando termines de experimentar en cualquier punto de control, elimina los recursos de Azure para evitar costes no deseados. La eliminación afecta a recursos que necesitan los módulos posteriores, por lo que continuar después exige volver a crearlos.
 
 > [!WARNING]
-> La eliminación de recursos es destructiva. `azd down --purge` puede eliminar de forma permanente el proyecto de Foundry, la implementación del modelo y el agente hospedado gestionados por esa implementación. Al eliminar un grupo de recursos, se elimina todo su contenido. Nunca elimines un grupo de recursos compartido ni recursos que pertenezcan a otro ejercicio o a otra persona.
+> Elimina `rg-tailspin-toys` solo si está dedicado a este ejercicio y no contiene recursos que quieras conservar. Al eliminar un grupo de recursos compartido, se eliminarían también recursos ajenos al taller.
+>
+> Si aprobaste otro nombre de grupo de recursos en el módulo 1, sustituye `rg-tailspin-toys` por ese nombre en todos los comandos siguientes.
 
-1. Guarda el código que quieras conservar en el repositorio de Tailspin Toys, sin incluir credenciales ni archivos de entorno locales. Detén los procesos del agente local, del host de Functions y del sitio que hayas iniciado.
-2. En Azure, verifica la suscripción activa e inspecciona los recursos de `rg-tailspin-toys`. Confirma qué proyecto, modelo, agente hospedado y recursos auxiliares pertenecen a este ejercicio opcional antes de eliminar nada.
-3. Si has implementado con `azd`, abre el directorio de implementación generado y verifica el entorno de `azd` seleccionado y los recursos que gestiona. Solo si están dedicados a este ejercicio, ejecuta el siguiente comando y revisa la confirmación. Esta es una opción de eliminación, no un requisito previo para el siguiente paso.
+1. Detén en su terminal cualquier sesión de depuración de Agent Inspector, host de Azure Functions o servidor de desarrollo de Astro que hayas iniciado.
+2. Si implementaste el agente hospedado en el módulo 2, abre un terminal en el directorio del agente generado que contiene `azure.yaml`, selecciona el mismo entorno de `azd` y ejecuta:
 
    ```bash
    azd down --purge
    ```
 
-4. Si has creado el proyecto y el modelo sin una implementación de `azd`, o si quedan recursos después, utiliza Azure para eliminar únicamente los recursos que te pertenecen. Si, y solo si, todo el grupo `rg-tailspin-toys` está dedicado a este ejercicio y la CLI de Azure apunta a la suscripción verificada, el siguiente comando es una alternativa a la eliminación individual. Omite la confirmación y devuelve el control antes de que termine la eliminación.
+3. Comprueba la suscripción seleccionada y si el grupo de recursos del taller sigue existiendo:
+
+   ```bash
+   az account show --output table
+   az group exists --name rg-tailspin-toys
+   ```
+
+   Si el comando devuelve `false`, la eliminación ha terminado. Si devuelve `true`, inspecciona los recursos del grupo:
+
+   ```bash
+   az resource list --resource-group rg-tailspin-toys --output table
+   ```
+
+   Verifica que todos los recursos restantes pertenecen a este ejercicio. Si paraste después del módulo 1, el proyecto y el modelo de Foundry todavía deben eliminarse aunque no hayas implementado un servicio de `azd`.
+
+4. Si el grupo de recursos dedicado al taller sigue existiendo y solo contiene recursos que quieres eliminar, ejecuta:
 
    ```bash
    az group delete --name rg-tailspin-toys --yes --no-wait
    ```
 
-5. Confirma en Azure que la eliminación ha terminado y que no quedan recursos facturables de este ejercicio. Si los permisos impiden eliminarlos, pide al propietario de la suscripción que elimine los recursos identificados; detener únicamente los procesos locales no detiene los cargos de Azure.
+5. Como `--no-wait` devuelve el control antes de que termine la eliminación, vuelve a ejecutar el siguiente comando hasta que devuelva `false`:
+
+   ```bash
+   az group exists --name rg-tailspin-toys
+   ```
 
 ## Recursos
 

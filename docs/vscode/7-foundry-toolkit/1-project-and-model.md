@@ -129,10 +129,9 @@ The Model Playground does not have the catalog file. A trimmed nine-game subset 
 
 ## Completion checkpoint
 
-The checkpoint is an exported catalog and a deployed model that passes the six test prompts, not yet a deployed agent.
+You prepared the VS Code workspace, exported the catalog, created a Foundry project, and tested a deployed model against the Backer Concierge grounding rules. The checkpoint for this module is a model that recommends real catalog games without inventing missing information, not yet a deployed agent.
 
-1. Save the catalog work on `foundry-agent-vscode` in your Tailspin Toys repository, excluding credentials and local settings. Record the subscription, resource group, project, region, and model deployment name for the next module.
-2. Continue to [Build and deploy an agent][next-lesson] in the same VS Code workspace and branch, reusing `tailspin-toys` and the tested model. If stopping here, complete [Clean up your resources][cleanup]; no agent scaffold is needed.
+Next, you'll use the same `tailspin-toys` project and selected model deployment to build and deploy the agent. If you're stopping here, [clean up your Azure resources][cleanup] to avoid ongoing costs.
 
 | [Next module: Build and deploy an agent →][next-lesson] |
 |--:|

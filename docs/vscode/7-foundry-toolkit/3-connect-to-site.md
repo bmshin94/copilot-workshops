@@ -74,13 +74,10 @@ The UI now has a verified backend. End-to-end tests check both usability and the
 
 ## Completion checkpoint
 
-The optional feature now connects a tested hosted concierge to an accessible local site through a server-side proxy. This is not a production deployment of the site integration.
+You built a local credential-safe proxy, connected an accessible chat widget, and verified the full conversation flow against the hosted Backer Concierge. The checkpoint for this module is a locally tested site integration that preserves the catalog boundary and keeps credentials and internal Foundry identifiers out of the browser. It is not a production deployment of the proxy or site.
 
-1. Review and save the proxy, widget, and tests on `foundry-agent-vscode` in the Tailspin Toys repository. Confirm no credentials or local environment files are included.
-2. Complete [Clean up your resources][cleanup] when finished, using the recorded deployment directory and environment only if applicable. Verify Azure deletion, not just local process shutdown.
-3. Return to [Optional: Incorporate Foundry][overview] for the three checkpoints or the [VS Code overview][vscode-overview]. The required harness was already complete after Exercise 6.
+When you're finished experimenting, stop the local services and [clean up your Azure resources][cleanup] to avoid ongoing costs. Then return to the [VS Code overview][vscode-overview] on the core workshop.
 
 [previous-lesson]: ../2-build-and-deploy/
 [cleanup]: ../#clean-up-your-resources
-[overview]: ../
 [vscode-overview]: ../../

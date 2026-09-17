@@ -29,37 +29,56 @@ Cada módulo termina com uma etapa funcional concluída. O mesmo repositório do
 > [!IMPORTANT]
 > O Microsoft Foundry Toolkit e os agentes hospedados estão em versão prévia pública. Estes módulos criam recursos do Azure sujeitos a cobrança, incluindo uma implantação de modelo e um agente hospedado. Permissões da assinatura, disponibilidade regional, cota e custo podem limitar a participação.
 
-## Escolher um ponto de partida
+## Antes de começar
 
 A extensão usa como base o seu repositório da Tailspin Toys, não o repositório de documentação do workshop.
 
 1. Confirme que o trabalho obrigatório do workshop foi salvo, registrado em commits e enviado ao repositório remoto antes de iniciar a funcionalidade opcional.
-2. Revise a assinatura do Azure selecionada, a região, as permissões, a cota e os custos estimados antes de aprovar a criação de recursos.
-3. Comece por [Preparar um projeto e um modelo][module-1]. Se estiver retomando o trabalho, use o marco de conclusão desse módulo para identificar o repositório, a branch, o projeto e a implantação existentes antes de continuar.
-4. Ao parar após qualquer módulo, siga [Limpar os recursos][cleanup], a menos que decida manter os recursos para o próximo módulo e aceite os custos contínuos.
+2. Comece por [Preparar um projeto e um modelo][module-1]. Se estiver retomando o trabalho, reabra o repositório do Tailspin Toys na branch `foundry-agent-vscode` e confirme que o projeto `tailspin-toys` e a respectiva implantação do modelo ainda existem em **Foundry Toolkit** > **My Resources**.
+3. Ao parar após qualquer módulo, siga [Limpar os recursos][cleanup], a menos que decida manter os recursos para o próximo módulo e aceite os custos contínuos.
 
 ## Limpar os recursos
 
-A limpeza se aplica mesmo se você parar após criar apenas o projeto e o modelo. Ela não exige a estrutura inicial de um agente nem um projeto `azd`.
+Quando terminar de experimentar em qualquer marco de conclusão, remova os recursos do Azure para evitar custos indesejados. A limpeza remove recursos necessários para os módulos seguintes, portanto continuar depois exige recriá-los.
 
 > [!WARNING]
-> A exclusão de recursos é destrutiva. `azd down --purge` pode remover permanentemente o projeto do Foundry, a implantação do modelo e o agente hospedado gerenciados por essa implantação. A exclusão de um grupo de recursos remove tudo o que ele contém. Nunca exclua um grupo de recursos compartilhado nem recursos que pertençam a outro exercício ou a outra pessoa.
+> Só exclua `rg-tailspin-toys` se ele for exclusivo deste exercício e não contiver recursos que você queira manter. Excluir um grupo de recursos compartilhado removeria também recursos não relacionados.
+>
+> Se você aprovou outro nome de grupo de recursos no módulo 1, substitua `rg-tailspin-toys` por esse nome em todos os comandos a seguir.
 
-1. Salve o código que deseja manter no repositório da Tailspin Toys, excluindo credenciais e arquivos de ambiente local. Pare todos os processos locais de agente, host do Functions e site que você iniciou.
-2. No Azure, verifique a assinatura ativa e inspecione os recursos em `rg-tailspin-toys`. Confirme quais projeto, modelo, agente hospedado e recursos de suporte pertencem a este exercício opcional antes de excluir qualquer coisa.
-3. Se você implantou com `azd`, abra o diretório de implantação gerado e verifique o ambiente `azd` selecionado e os recursos que ele gerencia. Somente se eles forem exclusivos deste exercício, execute o comando a seguir e revise a confirmação. Esta é uma opção de limpeza, não um pré-requisito para a próxima etapa.
+1. Pare, no respectivo terminal, qualquer sessão de depuração do Agent Inspector, host do Azure Functions ou servidor de desenvolvimento do Astro que você tenha iniciado.
+2. Se você implantou o agente hospedado no módulo 2, abra um terminal no diretório do agente gerado que contém `azure.yaml`, selecione o mesmo ambiente `azd` e execute:
 
    ```bash
    azd down --purge
    ```
 
-4. Se você criou o projeto e o modelo sem uma implantação `azd`, ou se ainda houver recursos depois dela, use o Azure para remover apenas os recursos que pertencem a você. Se, e somente se, todo o grupo `rg-tailspin-toys` for exclusivo deste exercício e a CLI do Azure estiver direcionada à assinatura verificada, o comando a seguir será uma alternativa à exclusão individual. Ele pula a confirmação e retorna antes que a exclusão termine.
+3. Verifique a assinatura selecionada e se o grupo de recursos do workshop ainda existe:
+
+   ```bash
+   az account show --output table
+   az group exists --name rg-tailspin-toys
+   ```
+
+   Se o comando retornar `false`, a limpeza está concluída. Se retornar `true`, inspecione os recursos do grupo:
+
+   ```bash
+   az resource list --resource-group rg-tailspin-toys --output table
+   ```
+
+   Verifique se todos os recursos restantes pertencem a este exercício. Se você parou após o módulo 1, o projeto e o modelo do Foundry ainda precisam de limpeza, mesmo que você não tenha implantado um serviço `azd`.
+
+4. Se o grupo de recursos exclusivo do workshop ainda existir e contiver apenas recursos que você pretende remover, execute:
 
    ```bash
    az group delete --name rg-tailspin-toys --yes --no-wait
    ```
 
-5. Confirme no Azure que a exclusão foi concluída e que não restam recursos deste exercício sujeitos a cobrança. Se as permissões impedirem a exclusão, peça ao proprietário da assinatura que remova os recursos identificados; parar apenas os processos locais não interrompe as cobranças do Azure.
+5. Como `--no-wait` retorna antes de a exclusão terminar, execute novamente o comando a seguir até que ele retorne `false`:
+
+   ```bash
+   az group exists --name rg-tailspin-toys
+   ```
 
 ## Recursos
 

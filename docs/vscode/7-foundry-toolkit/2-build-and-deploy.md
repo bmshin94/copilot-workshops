@@ -93,10 +93,9 @@ The **Go production** handoff packages the existing agent for Foundry. It does n
 
 ## Completion checkpoint
 
-The result is a locally debugged agent and a running hosted deployment that respects the catalog.
+You scaffolded the Backer Concierge, debugged its catalog grounding in Agent Inspector, deployed it to Foundry through the **Go production** handoff, and retested the hosted version in the Playground. The checkpoint for this module is a running hosted agent that respects the catalog without inventing missing information.
 
-1. Save the generated agent and tests on `foundry-agent-vscode`, excluding credentials and local environment files. Record the hosted-agent connection details, generated deployment directory, and `azd` environment for integration and cleanup without committing secrets.
-2. Continue to [Connect the agent to the site][next-lesson] in the same repository, branch, and VS Code workspace. That module starts a regular **Agent** chat using this deployed agent, not a new project. If stopping here, follow [Clean up your resources][cleanup].
+Next, you'll use the same `tailspin-toys` project, model deployment, and hosted agent to connect the agent to the site. If you're stopping here, [clean up your Azure resources][cleanup] to avoid ongoing costs.
 
 | [Next module: Connect the agent to the site →][next-lesson] |
 |--:|

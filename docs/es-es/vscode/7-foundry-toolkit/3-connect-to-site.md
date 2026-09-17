@@ -74,13 +74,10 @@ La interfaz ya tiene un backend verificado. Las pruebas de extremo a extremo com
 
 ## Punto de control al finalizar
 
-La funcionalidad opcional ya conecta un asistente hospedado probado a un sitio local accesible a través de un proxy del lado del servidor. Esto no es una implementación de producción de la integración del sitio.
+Has creado un proxy local que protege las credenciales, has conectado un widget de chat accesible y has verificado el flujo completo de conversación con el Backer Concierge hospedado. El punto de control de este módulo es una integración del sitio probada localmente que respeta los límites del catálogo y mantiene las credenciales y los identificadores internos de Foundry fuera del navegador. No es una implementación de producción del proxy ni del sitio.
 
-1. Revisa y guarda el proxy, el widget y las pruebas en `foundry-agent-vscode` en el repositorio de Tailspin Toys. Confirma que no se incluyen credenciales ni archivos de entorno locales.
-2. Completa [Eliminar los recursos][cleanup] cuando termines, utilizando el directorio de implementación y el entorno anotados solo si procede. Verifica la eliminación en Azure, no solo la detención de los procesos locales.
-3. Vuelve a [Opcional: Incorporar Foundry][overview] para consultar los tres puntos de control o a la [introducción a VS Code][vscode-overview]. El itinerario obligatorio ya estaba completo tras el ejercicio 6.
+Cuando termines de experimentar, detén los servicios locales y [elimina los recursos de Azure][cleanup] para evitar costes continuados. Después, vuelve a la [introducción a VS Code][vscode-overview] del taller principal.
 
 [previous-lesson]: ../2-build-and-deploy/
 [cleanup]: ../#eliminar-los-recursos
-[overview]: ../
 [vscode-overview]: ../../

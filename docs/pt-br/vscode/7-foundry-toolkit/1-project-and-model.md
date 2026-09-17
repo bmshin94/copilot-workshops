@@ -129,10 +129,9 @@ O Model Playground não tem o arquivo do catálogo. Um subconjunto reduzido de n
 
 ## Marco de conclusão
 
-O marco de conclusão é um catálogo exportado e um modelo implantado que passa nos seis prompts de teste, ainda não um agente implantado.
+Você preparou o espaço de trabalho do VS Code, exportou o catálogo, criou um projeto do Foundry e testou um modelo implantado em relação às regras de fundamentação do Backer Concierge. O marco de conclusão deste módulo é um modelo que recomenda jogos reais do catálogo sem inventar informações ausentes; ainda não há um agente implantado.
 
-1. Salve o trabalho do catálogo em `foundry-agent-vscode` no repositório da Tailspin Toys, excluindo credenciais e configurações locais. Registre a assinatura, o grupo de recursos, o projeto, a região e o nome da implantação do modelo para o próximo módulo.
-2. Continue em [Criar e implantar um agente][next-lesson] no mesmo espaço de trabalho do VS Code e na mesma branch, reutilizando `tailspin-toys` e o modelo testado. Se parar aqui, conclua [Limpar os recursos][cleanup]; não é necessária uma estrutura inicial de agente.
+Em seguida, você usará o mesmo projeto `tailspin-toys` e a implantação do modelo selecionada para criar e implantar o agente. Se parar aqui, [limpe os recursos do Azure][cleanup] para evitar custos contínuos.
 
 | [Próximo módulo: Criar e implantar um agente →][next-lesson] |
 |--:|

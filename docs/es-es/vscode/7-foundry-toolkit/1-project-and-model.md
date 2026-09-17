@@ -129,10 +129,9 @@ Model Playground no dispone del archivo del catálogo. Un subconjunto reducido d
 
 ## Punto de control al finalizar
 
-El resultado es un catálogo exportado y un modelo implementado que supera los seis prompts de prueba, pero todavía no un agente implementado.
+Has preparado el área de trabajo de VS Code, exportado el catálogo, creado un proyecto de Foundry y probado un modelo implementado frente a las reglas de fundamentación del Backer Concierge. El punto de control de este módulo es un modelo que recomienda juegos reales del catálogo sin inventar la información que falta; todavía no hay un agente implementado.
 
-1. Guarda el trabajo del catálogo en `foundry-agent-vscode` en tu repositorio de Tailspin Toys, sin incluir credenciales ni ajustes locales. Anota la suscripción, el grupo de recursos, el proyecto, la región y el nombre de la implementación del modelo para el siguiente módulo.
-2. Continúa con [Crear e implementar un agente][next-lesson] en la misma área de trabajo de VS Code y en la misma rama, reutilizando `tailspin-toys` y el modelo probado. Si paras aquí, completa [Eliminar los recursos][cleanup]; no necesitas una estructura de agente generada.
+A continuación, utilizarás el mismo proyecto `tailspin-toys` y la implementación del modelo seleccionada para crear e implementar el agente. Si paras aquí, [elimina los recursos de Azure][cleanup] para evitar costes continuados.
 
 | [Siguiente módulo: Crear e implementar un agente →][next-lesson] |
 |--:|
