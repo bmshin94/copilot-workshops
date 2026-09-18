@@ -1,23 +1,23 @@
 ---
-title: "Lección 9 - Crear un lienzo de clasificación de incidencias"
-description: "Crea y revisa un lienzo de clasificación guardado en el repositorio, combina la PR 4 y vuelve a abrirlo para añadir contexto de incidencias sin iniciar otra funcionalidad."
+title: "Lección 9 - Explorar y crear lienzos"
+description: "Utiliza el lienzo Database Explorer existente y, después, crea y revisa un lienzo de clasificación respaldado por el repositorio."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-09-17
 ---
 
-Hasta ahora has dirigido a los agentes mediante el chat. Sin embargo, gran parte del trabajo no reside en una conversación, sino en un tablero, un documento o una lista de comprobación. Los **lienzos** ofrecen al agente y a ti una superficie compartida para ese tipo de trabajo, directamente en la aplicación. En esta lección crearás un lienzo sencillo para planificar y realizar el seguimiento de la lista de trabajo pendiente que has estado abordando.
+Hasta ahora has dirigido a los agentes mediante el chat. Sin embargo, gran parte del trabajo no reside en una conversación, sino en un tablero, un documento o una lista de comprobación. Los **lienzos** ofrecen al agente y a ti una superficie compartida para ese tipo de trabajo, directamente en la aplicación. En esta lección utilizarás primero un lienzo incluido con Tailspin Toys y, después, crearás otro para la lista de trabajo pendiente que has estado abordando.
 
 En esta lección:
 
 - comprenderás qué es un lienzo y cuándo utilizarlo.
+- utilizarás el lienzo Database Explorer existente para examinar los datos del proyecto.
 - crearás un lienzo compartido con un tablero Kanban para clasificar la lista de trabajo pendiente.
-- guardarás el lienzo en el repositorio y lo combinarás para el equipo.
-- volverás a abrir el lienzo y añadirás contexto de incidencias sin implementar otra funcionalidad.
+- examinarás y probarás el nuevo lienzo sin implementar otra funcionalidad.
 
 ## Escenario
 
-Examinar una lista de incidencias puede resultar abrumador. Los desarrolladores de Tailspin Toys quieren una herramienta para clasificarlas y añadir sus detalles al contexto de una sesión. Añadir contexto no autoriza a implementar una incidencia; este ejercicio termina con un tablero reutilizable, no con una quinta PR.
+Tailspin Toys ya incluye un lienzo para explorar su base de datos. Después de utilizarlo para comprender cómo transforma un lienzo los datos del proyecto en una superficie interactiva, crearás un tablero reutilizable para elegir en qué trabajar a continuación sin iniciar otra funcionalidad.
 
 ## ¿Qué es un lienzo?
 
@@ -39,99 +39,69 @@ Utiliza un lienzo cuando una tarea requiera estructura, iteración y verificaci�
 - orientar o corregir el trabajo directamente en la superficie compartida y, después, permitir que el agente continúe a partir de los cambios.
 - inspeccionar el progreso como cambios visibles en un recurso, no solo como respuestas del chat.
 
-## Crear un lienzo para realizar el seguimiento del trabajo
+## Utilizar el lienzo Database Explorer
 
-Confirma que la PR 3 se ha combinado. Las valoraciones por estrellas, el estándar de documentación, la funcionalidad de filtrado, la habilidad de calidad y el perfil QA deben estar en `main` antes de empezar el lienzo. Utiliza una sesión nueva y una rama para este último hito de PR.
+Empieza con el lienzo Database Explorer existente del proyecto. Utilizar un ejemplo funcional permite observar cómo se comporta un lienzo limitado al repositorio antes de crear uno.
 
-1. Vuelve a la aplicación GitHub Copilot o ábrela.
-2. Selecciona **Home screen**.
-3. Comprueba que `tailspin-toys` esté seleccionado como repositorio.
-4. Elige **new working tree** y el modo **Interactive**. Envía esta solicitud de estado inicial antes de crear archivos:
+1. Confirma que la solicitud de incorporación de cambios (PR) de filtrado está combinada y actualiza la rama `main` local.
+2. Vuelve a la aplicación GitHub Copilot y selecciona **Home screen**.
+3. Confirma que `tailspin-toys` es el repositorio seleccionado.
+4. Crea una sesión en un **new working tree** basado en la rama `main` actualizada y selecciona el modo **Interactive**.
+5. Pide a Copilot que prepare la base de datos local si es necesario y abra el lienzo existente sin modificarlo:
+
+    ```plaintext
+    Set up the local database if needed, then open the repository's Database Explorer canvas. Do not change any files.
+    ```
+
+6. En Database Explorer, examina las tablas disponibles y selecciona `games`.
+7. Ejecuta una consulta de solo lectura que muestre cinco juegos con una valoración alta:
+
+    ```sql
+    SELECT title, star_rating
+    FROM games
+    ORDER BY star_rating DESC
+    LIMIT 5;
+    ```
+
+8. Confirma que los resultados contienen cinco juegos como máximo, ordenados por valoración descendente.
+9. Abre **Files** y examina `.github/extensions/database-explorer/extension.mjs`. Observa cómo se guarda el lienzo con el proyecto y restringe las consultas a instrucciones `SELECT` y `WITH` de solo lectura.
+10. Confirma que la sesión no contiene cambios de archivos.
+
+## Crear un lienzo para clasificar incidencias
+
+Ahora crea otro tipo de superficie compartida. Al guardar el lienzo de clasificación en el ámbito del proyecto, se convierte en un recurso del repositorio que el equipo puede revisar y reutilizar.
+
+1. En la misma sesión, introduce `/create-canvas` y describe el lienzo que quieres crear:
 
    ```plaintext
-   Prepara esta nueva sesión de lienzo sin implementar nada. Confirma que es un worktree nuevo y limpio, obtén los cambios de origin y actualiza la rama de la sesión actual mediante un avance rápido hasta origin/main. Informa de la copia de trabajo, la rama y las revisiones coincidentes de HEAD y origin/main. Verifica que la PR de filtrado está combinada y que están presentes la funcionalidad de filtrado, la habilidad quality-checks y el perfil QA.
+   Create a Kanban triage canvas for this repo's open issues and save it under .github/extensions/. Highlight the three issues you'd prioritize and explain why, with the rest below. Include summaries and links.
 
-   Detente si hay cambios pendientes, divergencias o falta la combinación anterior. No restablezcas, no descartes trabajo, no cambies de rama ni crees otra rama. Detente después de comunicar el estado inicial.
+   Give each card an "Add to current context" action that adds the issue details without starting work or changing the issue. Make it keyboard-accessible and open it so I can try it.
    ```
 
-5. Comprueba el informe del estado inicial y solicita el lienzo guardado en el repositorio:
+Copilot crea la extensión del lienzo en `.github/extensions` y abre la superficie compartida en el panel derecho de la aplicación. La extensión generada es contenido ejecutable del repositorio, no solo un recurso visual, por lo que a continuación examinarás sus archivos y su comportamiento.
 
-   ```plaintext
-   Crea un lienzo Kanban básico de clasificación de incidencias guardado en este repositorio mediante el flujo de extensiones de lienzo compatible con la aplicación. Guarda su definición en .github/extensions/ para que el equipo pueda reutilizarlo. Examina las extensiones existentes y consérvalas; no sobrescribas el explorador de base de datos incluido.
+## Examinar y probar el lienzo
 
-   Lee las incidencias abiertas actuales. Destaca las tres con más probabilidades de necesitar atención y muestra las demás debajo. Incluye en cada incidencia destacada su título, un resumen del contenido, la URL y una justificación de su prioridad. Trata la clasificación como sugerencia, no como instrucción para modificar incidencias.
-
-   Proporciona en cada tarjeta una acción Add to current context que adjunte los detalles de la incidencia solo a esta sesión. No debe iniciar la implementación, crear sesiones o ramas, cambiar el estado de la incidencia ni crear PR. Mantén el alcance del lienzo acotado y hazlo accesible mediante teclado.
-
-   Muéstrame los archivos generados y abre el lienzo para revisarlo. No cambies el código de la aplicación, no crees commits, no envíes cambios ni crees una PR. Pregunta antes de instalar cualquier cosa o añadir dependencias.
-   ```
-
-Copilot crea los archivos del lienzo y abre la superficie compartida. Revisa la extensión generada antes de confiar en sus acciones; es contenido ejecutable del repositorio, no solo una imagen.
-
-> [!NOTE]
-> Si la primera versión necesita mejoras, solicita cambios específicos dentro del alcance de clasificación de incidencias. No conviertas este ejercicio en la implementación de una incidencia pendiente.
-
-## Revisar y probar el lienzo
+Antes de compartir el lienzo, compáralo con las incidencias reales del repositorio y prueba sus controles. Así confirmarás que el contenido es preciso, que la interacción es accesible y que la acción de la incidencia añade contexto sin iniciar trabajo.
 
 1. Abre **Changes** y confirma que la definición del lienzo se guarda en el repositorio bajo `.github/extensions/`, no solo para tu usuario o sesión. Comprueba que las extensiones existentes y los archivos de la aplicación no han cambiado.
 2. Compara el tablero con las incidencias abiertas reales y evalúa las explicaciones de la clasificación.
 3. Comprueba que las tarjetas y los controles se leen bien y se pueden utilizar con teclado.
 4. Selecciona **Add to current context** en una incidencia y confirma que solo sus detalles se añaden a la conversación. No debe iniciarse ninguna implementación ni cambio de estado de la incidencia.
 5. Revisa las correcciones y pide a Copilot que ejecute la validación existente aplicable a los archivos modificados. Registra resultados y bloqueos, en lugar de suponer que una superficie interactiva funciona correctamente solo porque se ha abierto.
+6. Si el lienzo necesita cambios, solicita mejoras específicas dentro del alcance de clasificación y repite las comprobaciones afectadas. No implementes una de las incidencias pendientes como parte de este trabajo del lienzo.
 
-## Guardar el lienzo y combinarlo con el repositorio
-
-El lienzo ya es un recurso del repositorio. Crea un commit y envía solo el trabajo revisado del lienzo como PR 4:
-
-1. En la misma sesión, envía:
-
-   ```plaintext
-   Revisa las diferencias del lienzo de clasificación guardado en el repositorio y sus pruebas de validación. Crea un commit con los archivos del lienzo aprobados en la rama de esta sesión, envíala y crea una única PR destinada a main con la plantilla de PR del repositorio. Describe el comportamiento del lienzo y cómo hemos verificado que añadir una incidencia solo añade contexto. No combines todavía ni implementes una incidencia pendiente.
-   ```
-
-2. Revisa todas las diferencias y comprobaciones de la PR en **My work**. Confirma que contiene el lienzo, no trabajo de la aplicación ajeno a la tarea.
-3. En la misma sesión del lienzo, abre el menú desplegable de acciones de PR y selecciona **Agent merge**. Revisa sus acciones permitidas y mantén **Merge pull request** desactivado hasta aprobar el resultado final.
-4. Define el alcance antes de iniciar Agent Merge:
-
-   ```plaintext
-   Gestiona esta PR de lienzo existente con Agent Merge. Resuelve solo los bloqueos de revisión y CI dentro del alcance; pregunta antes de realizar cambios ajenos o instalaciones. Si cambia el lienzo, repite la validación afectada y actualiza las pruebas de verificación. No combines hasta que habilite explícitamente Merge pull request tras la revisión. No implementes incidencias pendientes ni crees otra PR.
-   ```
-
-5. Selecciona **Agent merge** y revisa los cambios posteriores. Examina las comprobaciones reales de CI del repositorio del participante y resuelve los fallos; CI no sustituye las pruebas de uso del lienzo.
-
-6. Cuando las diferencias finales y las pruebas de verificación actuales estén aprobadas y se hayan superado las comprobaciones y revisiones obligatorias, autoriza explícitamente a Agent Merge a combinar seleccionando su menú desplegable y después **Merge pull request**.
-
-   ![Menú desplegable Agent merge con las acciones permitidas al agente —Address reviews, Fix CI failures y Resolve conflicts— y una flecha que señala Merge pull request](../../_images/app-agent-merge-merge.png)
-
-7. Confirma que GitHub muestra la PR 4 como **Merged** antes de continuar.
-
-Ya has creado un lienzo compartido para el equipo.
-
-## Volver a abrir el lienzo sin iniciar otra funcionalidad
-
-Vuelve a abrir el lienzo guardado en el repositorio en la misma sesión del lienzo después de combinar su PR. Es un paso de inspección, no otra rama ni otro hito de PR.
-
-1. Vuelve a la sesión del lienzo, mantén el modo **Interactive** y cierra el panel del lienzo si sigue abierto.
-2. Envía:
-
-   ```plaintext
-   Vuelve a abrir el lienzo de clasificación de incidencias del repositorio en esta misma sesión. Añadiré una incidencia al contexto solo para examinar sus detalles. No edites archivos, no implementes la incidencia, no cambies su estado, no crees otra sesión o rama, no crees commits, no envíes cambios ni abras una PR.
-   ```
-
-3. Confirma que el lienzo guardado se abre de nuevo sin regenerar su definición.
-4. Selecciona **Add to current context** en una de las incidencias que más te interese.
-5. Confirma que los detalles de la incidencia seleccionada aparecen en el contexto sin iniciar la implementación. Detente aquí: el taller tiene cuatro hitos de PR, no cinco.
-
-Has utilizado un lienzo creado por ti para agilizar el proceso de desarrollo.
+El taller termina antes de crear otra PR porque ya has practicado tanto la combinación manual como Agent Merge. En un entorno de producción, revisa y combina el lienzo mediante el proceso habitual del equipo antes de que otros dependan de él.
 
 ## Resumen y pasos siguientes
 
 Has creado una superficie compartida en la que puedes colaborar con el agente. En concreto:
 
-- has aprendido qué son los lienzos y cuándo utilizarlos.
-- has creado con el agente un lienzo compartido con un tablero Kanban para clasificar incidencias.
-- has guardado y combinado el lienzo con el repositorio mediante Agent Merge.
-- has vuelto a abrir el lienzo combinado y añadido contexto de incidencias sin iniciar otra funcionalidad.
+- has comprendido qué es un lienzo y cuándo utilizarlo.
+- has utilizado el lienzo Database Explorer existente para examinar los datos del proyecto.
+- has creado un lienzo compartido con un tablero Kanban para clasificar la lista de trabajo pendiente.
+- has examinado y probado el nuevo lienzo sin implementar otra funcionalidad.
 
 Con la lista de trabajo pendiente organizada, da un paso atrás para revisar todo lo que has creado y descubrir cómo continuar. Continúa con la [Lección 10 - Repaso y pasos siguientes][next-lesson].
 
@@ -141,7 +111,6 @@ Con la lista de trabajo pendiente organizada, da un paso atrás para revisar tod
 - [Lienzos en Awesome Copilot][awesome-copilot-canvases]
 - [Acerca de la aplicación GitHub Copilot][about-copilot-app]
 
-[previous-lesson]: ../8-create-pull-request/
 [next-lesson]: ../10-review/
 [canvas-docs]: https://docs.github.com/copilot/how-tos/github-copilot-app/working-with-canvas-extensions
 [awesome-copilot-canvases]: https://awesome-copilot.github.com/extensions/

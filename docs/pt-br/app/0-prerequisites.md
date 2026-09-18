@@ -15,18 +15,18 @@ Nesta lição, você vai:
 
 ## Instalar o Node.js
 
-Em várias lições, você pedirá a um agente que crie recursos e execute localmente o conjunto de testes do Tailspin Toys. Para isso, é necessário o [**Node.js**][nodejs]. Use **Node.js 22.13 ou posterior** e confirme a versão compatível em `package.json` e README da sua cópia de trabalho.
+Em várias lições, você pedirá a um agente que crie recursos e execute localmente o conjunto de testes do Tailspin Toys. Para isso, é necessário o [**Node.js**][nodejs], o único ambiente de execução exigido pelo projeto. Instale a versão **LTS** atual.
 
 A opção mais simples em todas as plataformas é o instalador oficial:
 
 1. No sistema operacional, abra uma janela de terminal usando o Windows Terminal, o Terminal do macOS ou o aplicativo que você costuma usar.
-2. Execute o comando a seguir para confirmar que você tem o Node.js 22.13 ou posterior instalado:
+2. Execute o comando a seguir para verificar a versão do Node.js instalada:
 
     ```shell
     node --version
     ```
 
-3. Se a versão informada for pelo menos `v22.13.0` e compatível com o projeto, pule para a próxima seção.
+3. Se ela atender aos requisitos do README e do `package.json` do projeto, pule para a próxima seção.
 
 > [!TIP]
 > Você só precisa concluir estas etapas se não tiver o Node instalado ou se precisar atualizá-lo.
@@ -41,10 +41,10 @@ A opção mais simples em todas as plataformas é o instalador oficial:
     node --version
     ```
 
-9. Confirme que a versão informada é pelo menos `v22.13.0` e compatível com o projeto.
+9. Você deve ver a versão que instalou.
 
 > [!IMPORTANT]
-> Este percurso do aplicativo usa worktrees locais. Um runtime instalado apenas em um contêiner não está disponível para essas sessões locais. Cada worktree também precisa das dependências do projeto e do Chromium do Playwright para verificações E2E. Siga o README do repositório do participante ao preparar um worktree e revise qualquer solicitação de instalação antes de aprová-la.
+> Cada worktree também precisa das dependências do projeto e do Chromium do Playwright para verificações E2E. Siga o README do repositório Tailspin Toys ao preparar uma worktree e revise qualquer solicitação de instalação antes de aprová-la.
 
 ## Configurar o repositório do laboratório
 
@@ -64,13 +64,16 @@ Você trabalhará na sua própria cópia do projeto Tailspin Toys. Crie-a agora 
 > [!NOTE]
 > Quando você cria o repositório a partir do modelo, um backlog de issues do GitHub é criado automaticamente. Você trabalhará com essas issues durante todo o workshop e não precisará criar nenhuma.
 
-Use uma cópia nova do modelo revisado: ele inclui instruções do repositório, código da aplicação, testes e uma extensão de canvas existente, mas não inclui agentes personalizados nem skills. Você criará sua própria skill quality-checks e um perfil QA durante o workshop. Se usar uma cópia mais antiga, examine as personalizações existentes em vez de sobrescrevê-las.
+Use uma cópia nova do modelo do workshop. Ele inclui instruções do repositório, código da aplicação, testes, uma skill quality-checks e uma extensão de canvas existente. Você personalizará a skill e criará um agente de QA durante o workshop. Se usar uma cópia mais antiga, confirme com a pessoa que conduz o workshop se ela contém os arquivos necessários.
 
 ## Resumo e próximos passos
 
-Tudo pronto! Você instalou o Node.js para criar e testar o projeto no seu computador e criou sua própria cópia do repositório Tailspin Toys a partir do modelo.
+Tudo pronto! Nesta lição, você:
 
-Em seguida, você instalará o aplicativo GitHub Copilot, conectará o repositório que acabou de criar e conhecerá o espaço de trabalho. Continue para a [Lição 1 - Instalar o aplicativo GitHub Copilot][next-lesson].
+- instalou o Node.js para que o projeto possa ser criado e testado no seu computador.
+- criou sua própria cópia do repositório Tailspin Toys a partir do modelo.
+
+Em seguida, você [instalará o aplicativo GitHub Copilot][next-lesson], conectará o repositório que acabou de criar e conhecerá o espaço de trabalho.
 
 ## Recursos
 

@@ -3,15 +3,15 @@ title: "Lição 6 - Validar a funcionalidade com o MCP do Playwright"
 description: "Configure o MCP do Playwright pelo Customize e observe a filtragem no navegador, no worktree existente do recurso."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-07-09
 ---
 
-Na lição anterior, você reuniu e executou as verificações do projeto por meio da skill quality-checks. Agora dê ao agente acesso a um navegador para observar diretamente a interface de filtragem. Permaneça na mesma sessão, worktree e branch de filtragem. Esta lição acrescenta evidências do navegador, não outro recurso, uma nova execução de toda a suíte de testes ou um PR.
+Como já destacamos, escrever código envolve mais do que apenas escrever código. Precisamos trabalhar com dados e serviços externos e até disponibilizar automações adicionais ao Copilot. É aí que entram os servidores MCP. Eles permitem que o Copilot vá além do que está integrado ao aplicativo, oferecendo ainda mais ferramentas e serviços.
 
 Nesta lição, você vai:
 
 - entender o que é o Model Context Protocol (MCP) e como o aplicativo GitHub Copilot o utiliza.
-- adicionar o servidor MCP do Playwright pelo **Customize**.
+- adicionar o servidor MCP do Playwright.
 - pedir ao agente que controle um navegador e explore o recurso de filtragem.
 
 ## Cenário
@@ -20,7 +20,7 @@ Embora os testes de unidade e de ponta a ponta sejam importantes, validar atuali
 
 ## O que é o Model Context Protocol (MCP)?
 
-O [Model Context Protocol (MCP)][mcp-blog-post] oferece aos agentes de IA uma forma de se comunicar com ferramentas e serviços externos em tempo real. Isso permite que eles acessem informações atualizadas, usando recursos, e realizem ações em seu nome, usando ferramentas.
+O [Model Context Protocol (MCP)][mcp-blog-post] oferece aos agentes de IA uma forma de se comunicar com ferramentas e serviços externos. Com o MCP, os agentes de IA podem se comunicar com essas ferramentas e serviços em tempo real. Isso permite que eles acessem informações atualizadas, usando recursos, e realizem ações em seu nome, usando ferramentas.
 
 Essas ferramentas e esses recursos são acessados por meio de um servidor MCP, que funciona como uma ponte entre o agente de IA e as ferramentas e os serviços externos. O servidor MCP é responsável por gerenciar essa comunicação, seja com APIs existentes ou com ferramentas locais, como pacotes NPM. Cada servidor MCP representa um conjunto diferente de ferramentas e recursos que o agente de IA pode acessar.
 
@@ -36,46 +36,42 @@ Há muitos outros servidores MCP que fornecem acesso a diferentes ferramentas e 
 
 ## Adicionar o servidor MCP do Playwright
 
-A [documentação atual de personalização do aplicativo][customize-app] usa **Customize** na barra lateral para descobrir e gerenciar MCP. Servidores MCP configurados para seus repositórios ou para o Copilot CLI já podem estar disponíveis no aplicativo; examine os servidores instalados antes de adicionar um duplicado.
+Você gerencia os servidores MCP por meio de **Customize** na barra lateral. Servidores configurados para seus repositórios ou para o Copilot CLI já podem estar disponíveis no aplicativo, então verifique antes de adicionar um duplicado. A [documentação de personalização do aplicativo][customize-app] apresenta as opções disponíveis.
 
 1. Selecione **Customize** na barra lateral.
 2. Selecione **MCP** e verifique em **Installed** se já existe um servidor Playwright.
 3. Se necessário, encontre **Playwright** entre os servidores disponíveis ou use o fluxo de servidor personalizado documentado pelo publicador.
 4. Revise o publicador, a configuração e as solicitações de instalação antes de aprová-las. Siga as instruções para adicionar o servidor; políticas da organização ou pré-requisitos ausentes podem bloquear a configuração.
-5. Volte à sessão de filtragem existente e mantenha o modo **Interactive**. Confirme que as ferramentas de navegador do MCP do Playwright estão disponíveis antes de solicitar a validação. Não crie um novo worktree do recurso como solução alternativa de configuração.
+5. Volte à sessão de filtragem no modo **Interactive** e confirme que as ferramentas MCP do Playwright estão disponíveis.
 
-Se a configuração falhar, resolva o problema de configuração ou permissão em vez de aceitar uma afirmação de que o agente navegou sem ferramentas. A visibilidade do navegador depende da configuração do servidor; a atividade real das ferramentas e as observações são as evidências.
+Se a configuração falhar, resolva o problema de configuração ou permissão antes de continuar.
 
 ## Pedir ao Copilot que explore o recurso com o Playwright
 
-Use a URL real da issue e os esclarecimentos aprovados salvos na Lição 4. Pare qualquer servidor de desenvolvimento manual das lições anteriores antes de o agente iniciar o próprio servidor. Ele deve identificar a cópia de trabalho e o servidor em teste.
+A issue e suas decisões de planejamento já estão no contexto. Interrompa qualquer servidor de desenvolvimento iniciado anteriormente antes de pedir ao Copilot que inicie um.
 
 1. Use o prompt a seguir para pedir ao Copilot que valide a nova funcionalidade:
 
-   ```plaintext
-   Use o servidor MCP do Playwright configurado para observar o recurso de filtragem conforme esta issue: <filtering-issue-URL>. Estes são meus esclarecimentos de planejamento aprovados: <cole os esclarecimentos acordados ou escreva none>. Permaneça neste worktree e branch de filtragem.
+    ```plaintext
+    Start the app and use Playwright MCP to check filtering against the issue and our plan. Tell me what works and what doesn't, without making changes. Stop the server you started when you're done.
+    ```
 
-   Identifique a cópia de trabalho, inicie seu servidor de desenvolvimento e use ferramentas reais de navegador para exercitar a seleção de várias categorias, a filtragem por distribuidora, a filtragem combinada, os controles acessíveis e qualquer comportamento acordado de limpeza de filtros ou resultados vazios. Relate observações em relação aos critérios, incluindo falhas ou verificações bloqueadas. Não afirme comportamentos que não observou.
+> [!NOTE]
+> Você não precisa dizer ao Copilot para usar um servidor MCP específico; normalmente, ele encontrará o servidor adequado com base no contexto atual. No entanto, não há problema em informar ao Copilot algo que você considera importante.
 
-   Esta etapa é uma observação no navegador, não outra execução automatizada completa de testes. Não altere código da aplicação, testes, skills ou perfis de agente, não faça commit, push nem crie um PR. Relate ferramentas MCP ou pré-requisitos ausentes como bloqueios e pergunte antes de instalar qualquer coisa. Não reutilize o servidor de outra cópia de trabalho nem interrompa processos não relacionados. Ao terminar, pare apenas o servidor que você iniciou.
-   ```
+2. Acompanhe o processo!
 
-Examine as chamadas de ferramentas MCP do Playwright, a URL em teste e as observações relatadas do navegador. Uma narrativa baseada apenas no código-fonte ou em resultados E2E anteriores não demonstra o uso de MCP.
-
-2. Compare o resumo com a issue e os esclarecimentos aprovados. Se houver um defeito, autorize uma correção específica separadamente, revise o diff alterado e repita as verificações automatizadas e observações do navegador relevantes. Evidências anteriores à correção não comprovam a revisão resultante.
-3. Confirme que o agente parou o próprio servidor. Mantenha esta sessão de filtragem aberta e permaneça no modo **Interactive** antes de criar o perfil QA na Lição 7.
-
-Esta etapa estabelece observação direta, não substitui a cobertura automatizada. Falhas ou observações bloqueadas permanecem visíveis para o QA.
+O Copilot iniciará o servidor, abrirá um navegador e interagirá com o site! Ao terminar, ele interromperá o servidor e apresentará um relatório.
 
 ## Resumo e próximos passos
 
 Parabéns! Você usou o servidor MCP do Playwright para explorar o recurso em um navegador real a partir do aplicativo GitHub Copilot. Recapitulando, você:
 
-- aprendeu o que é o Model Context Protocol (MCP) e como o aplicativo disponibiliza ferramentas MCP.
-- configurou o servidor MCP do Playwright pelo **Customize**.
+- aprendeu o que é o Model Context Protocol (MCP) e como o aplicativo GitHub Copilot o utiliza.
+- adicionou o servidor MCP do Playwright.
 - pediu ao agente que controlasse um navegador e explorasse o recurso de filtragem.
 
-Em seguida, reúna os requisitos, as observações do navegador, a cobertura e a skill em um perfil especializado. Continue nesta mesma sessão para a [Lição 7 - Criar e usar um agente QA][next-lesson]. Não crie o PR do recurso ainda.
+Em seguida, você [criará um agente personalizado de QA][next-lesson] que reúne a skill e as ferramentas de navegador em um papel especializado.
 
 ## Recursos
 
@@ -83,7 +79,6 @@ Em seguida, reúna os requisitos, as observações do navegador, a cobertura e a
 - [Servidor MCP do Microsoft Playwright][playwright-mcp-server]
 - [Configurar servidores MCP no aplicativo GitHub Copilot][customize-app]
 
-[previous-lesson]: ../5-agent-skills/
 [next-lesson]: ../7-qa-agent/
 [mcp-blog-post]: https://github.blog/ai-and-ml/llms/what-the-heck-is-mcp-and-why-is-everyone-talking-about-it/
 [playwright-mcp-server]: https://github.com/microsoft/playwright-mcp

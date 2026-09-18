@@ -3,14 +3,24 @@ slug: pt-br/app
 title: "Aplicativo GitHub Copilot"
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-09-17
 ---
 
 O [**aplicativo GitHub Copilot**](https://docs.github.com/copilot/concepts/agents/github-copilot-app) é um aplicativo para desktop criado com base no Copilot CLI que reúne o desenvolvimento orientado por agentes em um espaço de trabalho único e focado. Ele oferece sessões paralelas de agentes, modos de sessão alternáveis, canvases compartilhados e gerenciamento nativo de issues e pull requests do GitHub, incluindo o **Agent Merge**, que conduz um pull request por rebases, feedback de revisão, correções de CI e merge.
 
-As Lições 0–1 de configuração preparam o projeto e o espaço de trabalho do aplicativo. Os nove módulos principais, as Lições 2–10, começam com uma melhoria rápida de avaliações por estrelas e uma convenção de documentação demonstrada em código real. Depois, você planejará e criará a filtragem, criará e executará uma skill quality-checks com scripts de shell, observará o recurso pelo MCP do Playwright e criará um agente personalizado QA para avaliar requisitos e cobertura. Você revisará o PR completo do recurso e autorizará o Agent Merge e, depois, criará e integrará um canvas compartilhado de triagem.
+O workshop segue um fluxo contínuo da Tailspin Toys:
 
-O workshop tem quatro marcos de PR: avaliações por estrelas; instruções com sua demonstração; filtragem com a skill, o perfil QA e os testes; e, por fim, o canvas. Comece cada marco a partir de `main` atualizado, usando uma branch por PR em vez de uma por módulo. As Lições 4–8 permanecem na mesma sessão, worktree e branch de filtragem. Reabrir o canvas adiciona contexto de issues sem iniciar outro recurso ou um quinto PR. As automações são vinculadas como próximo passo, não como exercício adicional.
+1. Prepare o projeto, instale o aplicativo, conecte o repositório e explore o espaço de trabalho e o backlog predefinido.
+2. Faça uma alteração específica de avaliação por estrelas, revise-a no navegador e faça manualmente o merge do primeiro pull request (PR).
+3. Comece pela issue de filtragem, defina a abordagem no modo **Plan**, desenvolva-a no modo **Autopilot** e revise-a no modo **Interactive**.
+4. Atualize as instruções do repositório e aplique-as ao trabalho de filtragem.
+5. Personalize a skill `quality-checks` existente e use-a para executar as verificações do projeto.
+6. Adicione o servidor do Model Context Protocol (MCP) do Playwright e use-o para explorar a filtragem em um navegador.
+7. Crie um agente personalizado de garantia de qualidade (QA) e use-o para revisar requisitos, cobertura e evidências de verificação.
+8. Revise toda a alteração de filtragem e use o Agent Merge no segundo PR.
+9. Use o canvas Database Explorer existente e, em seguida, crie e teste um canvas de triagem vinculado ao repositório.
+
+Para manter o foco do workshop, você criará dois PRs: um para avaliações por estrelas e outro para filtragem, com as atualizações de instruções e da skill, o perfil de QA e os testes. Comece cada um a partir de `main` atualizado. O fluxo de filtragem e qualidade compartilha uma sessão, worktree e branch para que você possa aproveitar seu trabalho à medida que explora cada ferramenta. O exercício final de canvas permanece em sua própria sessão para que você se concentre na criação e no teste da superfície compartilhada sem repetir o fluxo de PR.
 
 ## Lições
 
@@ -19,13 +29,13 @@ O workshop tem quatro marcos de PR: avaliações por estrelas; instruções com 
 | [0. Pré-requisitos][ex0] | Configuração | Instale o Node.js e crie sua cópia do projeto Tailspin Toys |
 | [1. Instalar o aplicativo Copilot][ex1] | Configuração | Instale o aplicativo, conecte seu projeto e conheça o espaço de trabalho |
 | [2. Adicionar avaliações por estrelas: uma melhoria rápida][ex2] | Primeira alteração | Exiba as avaliações existentes e a alternativa para null e integre o PR 1 |
-| [3. Orientar o Copilot com instruções personalizadas][ex3] | Contexto | Adicione um padrão de documentação e uma demonstração real e integre o PR 2 |
-| [4. Criar a filtragem com Plan e Autopilot][ex4] | Implementação | Aprove o plano, implemente e verifique a filtragem e salve um checkpoint |
-| [5. Criar e usar uma skill quality-checks][ex5] | Verificações repetíveis | Crie, revise e execute os scripts de shell incluídos |
+| [3. Modos de agente: Plan e Autopilot][ex3] | Modos de agente | Planeje o recurso a partir da issue, desenvolva-o com o Autopilot e revise-o no modo Interactive |
+| [4. Orientar o Copilot com instruções personalizadas][ex4] | Contexto | Explore e atualize as instruções e aplique-as à filtragem |
+| [5. Personalizar e usar uma skill quality-checks][ex5] | Verificações repetíveis | Explore a skill existente, altere o formato do relatório e execute-a |
 | [6. Validar a funcionalidade com o MCP do Playwright][ex6] | Observação no navegador | Configure MCP pelo Customize e examine o comportamento da filtragem |
-| [7. Criar e usar um agente QA][ex7] | Requisitos e cobertura | Selecione um perfil especializado e reúna evidências de verificação final |
-| [8. Criar e integrar o PR do recurso][ex8] | Revisão e merge | Revise a filtragem, a skill, o perfil QA e os testes e autorize o Agent Merge para o PR 3 |
-| [9. Criar um canvas de triagem][ex9] | Colaboração | Compartilhe um canvas salvo no repositório no PR 4 e adicione contexto de issues |
+| [7. Criar e usar um agente de QA][ex7] | Requisitos e cobertura | Selecione um perfil especializado e reúna evidências de verificação final |
+| [8. Criar e integrar o PR do recurso][ex8] | Revisão e merge | Revise a filtragem, as instruções, a skill, o perfil de QA e os testes e use o Agent Merge no segundo PR |
+| [9. Explorar e criar canvases][ex9] | Colaboração | Use o Database Explorer e depois crie e teste um canvas de triagem vinculado ao repositório |
 | [10. Revisão e próximos passos][ex10] | Resumo | Revise o fluxo, os artefatos e outros recursos |
 
 ## Pré-requisitos
@@ -52,8 +62,8 @@ Antes de participar deste workshop, verifique se você tem:
 [ex0]: 0-prerequisites/
 [ex1]: 1-install-copilot-app/
 [ex2]: 2-add-star-rating/
-[ex3]: 3-custom-instructions/
-[ex4]: 4-build-filtering/
+[ex3]: 3-agent-modes/
+[ex4]: 4-custom-instructions/
 [ex5]: 5-agent-skills/
 [ex6]: 6-mcp-playwright/
 [ex7]: 7-qa-agent/

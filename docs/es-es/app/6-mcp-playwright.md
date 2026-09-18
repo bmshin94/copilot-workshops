@@ -3,15 +3,15 @@ title: "Lección 6 - Validar la funcionalidad con MCP de Playwright"
 description: "Configura MCP de Playwright mediante Customize y observa el filtrado en un navegador desde el worktree existente de la funcionalidad."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-07-09
 ---
 
-En la lección anterior agrupaste y ejecutaste las comprobaciones del proyecto mediante tu habilidad quality-checks. Ahora da al agente acceso a un navegador para que pueda observar directamente la interfaz de filtrado. Permanece en la misma sesión, worktree y rama de filtrado. Esta lección aporta pruebas de observación en el navegador, no otra funcionalidad, una nueva ejecución de todo el conjunto de pruebas ni una PR.
+Como ya hemos destacado, escribir código implica mucho más que limitarse a escribirlo. Necesitamos trabajar con datos y servicios externos e incluso permitir que Copilot disponga de automatizaciones adicionales. Aquí es donde entran en juego los servidores MCP. Estos permiten a Copilot ir más allá de lo que incorpora la aplicación y le proporcionan aún más herramientas y servicios.
 
 En esta lección:
 
 - comprenderás qué es Model Context Protocol (MCP) y cómo lo utiliza la aplicación GitHub Copilot.
-- añadirás el servidor MCP de Playwright mediante **Customize**.
+- añadirás el servidor MCP de Playwright.
 - pedirás al agente que controle un navegador y explore la funcionalidad de filtrado.
 
 ## Escenario
@@ -36,46 +36,42 @@ Hay muchos otros servidores MCP que proporcionan acceso a distintas herramientas
 
 ## Añadir el servidor MCP de Playwright
 
-La [documentación actual de personalización de la aplicación][customize-app] utiliza **Customize** en la barra lateral para descubrir y gestionar MCP. Los servidores MCP configurados para tus repositorios o Copilot CLI pueden estar ya disponibles en la aplicación; examina los servidores instalados antes de añadir un duplicado.
+Los servidores MCP se gestionan desde **Customize** en la barra lateral. Los servidores configurados para tus repositorios o Copilot CLI pueden estar ya disponibles en la aplicación, así que compruébalo antes de añadir un duplicado. La [documentación de personalización de la aplicación][customize-app] explica las opciones disponibles.
 
 1. Selecciona **Customize** en la barra lateral.
 2. Selecciona **MCP** y comprueba en **Installed** si ya existe un servidor de Playwright.
 3. Si es necesario, busca **Playwright** entre los servidores disponibles o utiliza el procedimiento de servidor personalizado documentado por el editor.
 4. Revisa el editor, la configuración y cualquier solicitud de instalación antes de aprobarla. Sigue las indicaciones para añadir el servidor; las directivas de la organización o la falta de requisitos previos pueden bloquear la configuración.
-5. Vuelve a la sesión de filtrado existente y mantén el modo **Interactive**. Confirma que las herramientas de navegador de MCP de Playwright están disponibles antes de solicitar la validación. No crees un worktree nuevo de la funcionalidad para solucionar problemas de configuración.
+5. Vuelve a la sesión de filtrado en modo **Interactive** y confirma que las herramientas MCP de Playwright están disponibles.
 
-Si la configuración falla, resuelve el problema de configuración o permisos en lugar de aceptar una afirmación de que el agente ha navegado sin herramientas. La visibilidad del navegador depende de la configuración del servidor; la actividad real de las herramientas y las observaciones son las pruebas.
+Si la configuración falla, resuelve el problema de configuración o permisos antes de continuar.
 
 ## Pedir a Copilot que explore la funcionalidad mediante Playwright
 
-Utiliza la URL real de la incidencia y las aclaraciones aprobadas que guardaste en la Lección 4. Detén cualquier servidor de desarrollo manual de lecciones anteriores antes de que el agente inicie el suyo. Debe identificar la copia de trabajo y el servidor que está probando.
+La incidencia y tus decisiones de planificación ya están en el contexto. Detén cualquier servidor de desarrollo que hayas iniciado antes de pedir a Copilot que inicie uno.
 
 1. Utiliza la indicación siguiente para pedir a Copilot que valide la nueva funcionalidad:
 
-   ```plaintext
-   Utiliza el servidor MCP de Playwright configurado para observar la funcionalidad de filtrado según esta incidencia: <filtering-issue-URL>. Estas son mis aclaraciones de planificación aprobadas: <pega las aclaraciones acordadas o escribe none>. Permanece en este worktree y rama de filtrado.
+    ```plaintext
+    Start the app and use Playwright MCP to check filtering against the issue and our plan. Tell me what works and what doesn't, without making changes. Stop the server you started when you're done.
+    ```
 
-   Identifica la copia de trabajo, inicia su servidor de desarrollo y utiliza herramientas reales de navegador para probar la selección de varias categorías, el filtrado por editor, el filtrado combinado, los controles accesibles y cualquier comportamiento acordado de borrado de filtros o resultados vacíos. Informa de las observaciones frente a los criterios, incluidos fallos o comprobaciones bloqueadas. No afirmes comportamientos que no hayas observado.
+  > [!NOTE]
+  > No es obligatorio indicar a Copilot que utilice un servidor MCP concreto; normalmente encontrará el adecuado según el contexto actual. Sin embargo, nunca está de más indicarle algo que consideras importante.
 
-   Este paso es una observación en el navegador, no otra ejecución automatizada completa de pruebas. No cambies código de la aplicación, pruebas, habilidades ni perfiles de agente, no crees commits, no envíes cambios ni crees una PR. Informa como bloqueadas las herramientas MCP o los requisitos previos ausentes y pregunta antes de instalar cualquier cosa. No reutilices el servidor de otra copia de trabajo ni detengas procesos ajenos. Al terminar, detén solo el servidor que hayas iniciado.
-   ```
+  2. Observa cómo trabaja.
 
-Examina las llamadas a herramientas MCP de Playwright, la URL probada y las observaciones comunicadas del navegador. Un relato basado solo en el código fuente o en resultados E2E anteriores no demuestra el uso de MCP.
-
-2. Compara el resumen con la incidencia y las aclaraciones aprobadas. Si hay un defecto, autoriza por separado una corrección específica, revisa las diferencias y repite las comprobaciones automatizadas y observaciones del navegador pertinentes. Las pruebas anteriores a la corrección no demuestran la revisión resultante.
-3. Confirma que el agente ha detenido su propio servidor. Mantén abierta esta sesión de filtrado y permanece en modo **Interactive** antes de crear el perfil QA en la Lección 7.
-
-Esta etapa aporta observación directa, no sustituye la cobertura automatizada. Los fallos y las observaciones bloqueadas siguen siendo visibles para QA.
+  Copilot iniciará el servidor, abrirá un navegador e interactuará con el sitio web. Cuando termine, detendrá el servidor y te proporcionará un informe.
 
 ## Resumen y pasos siguientes
 
-Has utilizado el servidor MCP de Playwright para explorar la funcionalidad en un navegador real desde la aplicación GitHub Copilot. En resumen:
+Has utilizado el servidor MCP de Playwright para explorar la funcionalidad en un navegador real desde la aplicación GitHub Copilot. En concreto:
 
-- has aprendido qué es Model Context Protocol (MCP) y cómo la aplicación pone a disposición las herramientas MCP.
-- has configurado el servidor MCP de Playwright mediante **Customize**.
+- has aprendido qué es Model Context Protocol (MCP) y cómo lo utiliza la aplicación GitHub Copilot.
+- has añadido el servidor MCP de Playwright.
 - has pedido al agente que controle un navegador y explore la funcionalidad de filtrado.
 
-A continuación, reúne los requisitos, las observaciones del navegador, la cobertura y la habilidad en un perfil especializado. Continúa en esta misma sesión con la [Lección 7 - Crear y utilizar un agente QA][next-lesson]. No crees todavía la PR de la funcionalidad.
+A continuación, [crearás un agente personalizado de QA][next-lesson] que reúne la habilidad y las herramientas del navegador en un rol especializado.
 
 ## Recursos
 
@@ -83,7 +79,6 @@ A continuación, reúne los requisitos, las observaciones del navegador, la cobe
 - [Servidor MCP de Playwright de Microsoft][playwright-mcp-server]
 - [Configurar servidores MCP en la aplicación GitHub Copilot][customize-app]
 
-[previous-lesson]: ../5-agent-skills/
 [next-lesson]: ../7-qa-agent/
 [mcp-blog-post]: https://github.blog/ai-and-ml/llms/what-the-heck-is-mcp-and-why-is-everyone-talking-about-it/
 [playwright-mcp-server]: https://github.com/microsoft/playwright-mcp

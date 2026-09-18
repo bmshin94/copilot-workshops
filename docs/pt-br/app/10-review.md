@@ -1,43 +1,40 @@
 ---
-title: "Lição 10 - Revisão e próximos passos"
-description: "Recapitule os nove módulos principais do aplicativo, os quatro marcos de PR e o fluxo reutilizável de qualidade e explore outros recursos."
+title: "Lição 10 - Encerramento e próximos passos"
+description: "Recapitule o fluxo do aplicativo, os dois marcos de PR, os exercícios de canvas e as práticas reutilizáveis de qualidade e explore outros recursos."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-07-09
 ---
 
-Nas últimas lições, você levou um recurso da ideia ao merge com o aplicativo GitHub Copilot. Nesse processo, você:
+Você usou o aplicativo GitHub Copilot em um fluxo contínuo da Tailspin Toys. Você:
 
-- conectou um repositório e conheceu o espaço de trabalho do aplicativo e o backlog criado pelo modelo.
-- iniciou sessões a partir de uma tarefa direta e de issues e usou os modos Plan e Autopilot para controlar como o agente trabalha.
-- orientou o agente com instruções personalizadas e depois pediu que ele criasse uma skill reutilizável com scripts de shell que você revisou e executou para lint, testes de unidade, testes de ponta a ponta e verificações de tipos.
-- testou o trabalho com o servidor MCP do Playwright em um navegador real.
+- conectou um repositório, explorou o espaço de trabalho do aplicativo e o backlog predefinido e experimentou um chat rápido.
+- iniciou uma sessão específica de avaliação por estrelas, revisou o resultado em um canvas de navegador e fez manualmente o merge do primeiro pull request (PR).
+- começou pela issue de filtragem, definiu a abordagem no modo **Plan**, desenvolveu-a no modo **Autopilot** e a revisou no modo **Interactive**.
+- orientou o agente com instruções personalizadas e depois personalizou a skill `quality-checks` existente e a usou para executar lint, testes de unidade, testes de ponta a ponta e verificações de tipos.
+- adicionou o servidor do Model Context Protocol (MCP) do Playwright e o usou para explorar a filtragem em um navegador real.
 - criou e selecionou um agente personalizado QA para avaliar requisitos, cobertura, resultados dos scripts da skill e evidências do navegador.
-- colaborou com o agente em um canvas compartilhado.
-- fez o merge explicitamente dos primeiros PRs por conta própria e depois autorizou o **Agent Merge** nos fluxos de PR do recurso e do canvas.
-
-As Lições 0–1 de configuração levaram aos nove módulos principais, as Lições 2–10. Reserve um momento para revisar os artefatos e os próximos passos; este encerramento não inicia outra tarefa prática.
+- revisou toda a alteração de filtragem e autorizou o **Agent Merge** no segundo PR.
+- usou o canvas Database Explorer existente e depois criou e testou um canvas de triagem vinculado ao repositório.
 
 ## O que você entregou
 
-O workshop tem quatro marcos de PR, cada um em sua própria branch a partir de `main` atualizado:
+O workshop tem dois marcos de PR, cada um em sua própria branch a partir de `main` atualizado:
 
 1. **Avaliações por estrelas:** exibir o `starRating` existente e um estado explícito sem avaliação nos cards dos jogos.
-2. **Instruções e demonstração:** adicionar a convenção de documentação e verificar seu efeito em uma pequena alteração real de código.
-3. **Filtragem e fluxo de qualidade:** implementar a issue, criar a skill `quality-checks` com scripts de shell e o perfil QA e incluir os testes associados.
-4. **Canvas de triagem salvo no repositório:** compartilhar um quadro que adiciona contexto de issues sem implementar automaticamente outro recurso.
+2. **Filtragem e fluxo de qualidade:** implementar a filtragem, atualizar as instruções e aplicá-las ao recurso, personalizar o relatório de `quality-checks`, criar um perfil de QA e incluir os testes associados.
 
-As Lições 4–8 usaram a mesma sessão, worktree e branch de filtragem. Os commits de checkpoint preservaram o progresso dentro do PR 3; skills, configuração MCP e QA não precisaram de branches de recurso separadas. Cada marco posterior começou apenas depois do merge do PR anterior e da atualização da branch da nova sessão a partir de `origin/main`.
+Desde o planejamento da filtragem até a abertura do PR, você usou a mesma sessão, worktree e branch. Combinamos esse trabalho em um único PR para simplificar o workshop. Depois, você usou o Database Explorer existente e criou um canvas de triagem vinculado ao repositório sem repetir o fluxo de PR.
 
 ## Diferentes tipos de verificação
 
-Os primeiros recursos usaram as verificações npm existentes. A filtragem acrescentou sua inspeção manual no navegador. A skill tornou as quatro verificações repetíveis por meio de scripts incluídos, o MCP acrescentou observações diretas do agente no navegador e o QA combinou requisitos e cobertura com a verificação final. O PR reutilizou evidências de QA apenas enquanto elas se aplicavam à revisão enviada.
+Você verificou o código de várias formas: testes automatizados, sua própria inspeção no navegador e a exploração do navegador pelo Copilot via MCP. A skill quality-checks executou as verificações do projeto e apresentou os resultados no novo formato. O QA reuniu esses resultados com uma revisão dos requisitos e da cobertura de testes antes do PR.
 
 Os testes adicionados devem cobrir lacunas reais; uma execução de QA que não precisa de testes novos pode estar correta. Ferramentas ausentes, verificações ignoradas e falhas são bloqueios visíveis, não aprovações. Revise código e evidências antes de autorizar o merge e atualize as evidências afetadas após alterações.
 
 ## Boas práticas
 
-Ao usar qualquer ferramenta de IA, a infraestrutura ao redor dela influencia a qualidade dos resultados. Você criou instruções, uma skill e um perfil QA neste workshop; revise-os e reutilize-os entre sessões. Agentes personalizados definem papéis especializados e instruções, com ferramentas disponíveis conforme a configuração e as permissões do ambiente; skills reúnem instruções reutilizáveis para tarefas, scripts executáveis e recursos de apoio carregados sob demanda. Um agente personalizado também pode executar scripts, incluindo os que fazem parte de uma skill. Confirme a execução real dos scripts e a seleção do agente personalizado em vez de confiar em uma descrição convincente.
+O contexto e as ferramentas que você fornece ao Copilot orientam seu trabalho. Neste workshop, você atualizou instruções, personalizou uma skill, criou um perfil de QA, configurou um servidor MCP e criou um canvas. Reutilize essas personalizações entre sessões e ajuste-as conforme as necessidades da equipe mudarem. As instruções definem padrões, as skills descrevem tarefas repetíveis, os agentes personalizados definem papéis especializados, os servidores MCP conectam ferramentas externas e os canvases fornecem superfícies interativas compartilhadas. Revise as alterações reais e os resultados das ferramentas, não apenas o resumo do agente.
 
 Associe o **modo e o modelo** à tarefa. Use **Plan** para analisar uma abordagem antes de desenvolver, **Interactive** para acompanhar alterações específicas e **Autopilot** somente para tarefas isoladas e com escopo bem definido. Escolha um modelo mais rápido para edições rotineiras e um modelo mais avançado, com maior esforço de raciocínio, para trabalhos complexos.
 
@@ -47,13 +44,10 @@ O contexto continua tão importante quanto a infraestrutura. Descrever clarament
 
 Você percorreu o fluxo de trabalho principal. Veja outros recursos que valem a pena conhecer:
 
-- **Quick chats** para perguntas rápidas e descartáveis que não exigem uma sessão completa.
 - [**Automações**][using-automations] para tarefas recorrentes ou sob demanda, como resumir trabalhos recentes. Revise a agenda, as permissões e o escopo antes de adotar uma; criar uma automação é um próximo passo, não parte deste workshop.
 - **Rubber duck** para analisar um problema e receber feedback relevante antes de começar a desenvolver.
-- [**Agentes personalizados**][custom-agents] para empacotar uma função, suas ferramentas e instruções para trabalhos especializados e repetíveis.
 - [`/chronicle`][chronicle] para gerar uma narrativa do que aconteceu em uma sessão.
 - [Bring your own key (BYOK)][byok] para usar modelos do seu próprio provedor, incluindo modelos locais por meio de Ollama, Foundry Local ou LM Studio.
-- [Sandboxes na nuvem][sandboxes] para executar sessões em um ambiente isolado hospedado pelo GitHub.
 - [Deep links][deep-links] para abrir o aplicativo diretamente em um repositório, uma sessão ou um prompt.
 
 ## Próximos passos
@@ -69,9 +63,7 @@ Para conhecer melhor o ecossistema do GitHub Copilot, confira o [percurso do VS 
 - [Personalizar o aplicativo GitHub Copilot][customize]
 - [Usar automações][using-automations]
 - [Trabalhar com extensões de canvas][canvas-docs]
-- [Sobre sandboxes locais e na nuvem][sandboxes]
 
-[previous-lesson]: ../9-canvases/
 [vscode-harness]: ../../vscode/
 [cli-harness]: ../../cli/
 [cloud-harness]: ../../cloud/
@@ -80,8 +72,6 @@ Para conhecer melhor o ecossistema do GitHub Copilot, confira o [percurso do VS 
 [customize]: https://docs.github.com/copilot/how-tos/github-copilot-app/customize-github-copilot-app
 [using-automations]: https://docs.github.com/copilot/how-tos/github-copilot-app/using-automations
 [canvas-docs]: https://docs.github.com/copilot/how-tos/github-copilot-app/working-with-canvas-extensions
-[sandboxes]: https://docs.github.com/copilot/concepts/about-cloud-and-local-sandboxes
 [chronicle]: https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle
-[custom-agents]: https://docs.github.com/copilot/concepts/agents/cloud-agent/about-custom-agents
 [byok]: https://docs.github.com/copilot/how-tos/github-copilot-app/use-byok-models
 [deep-links]: https://docs.github.com/copilot/how-tos/github-copilot-app/open-with-deep-links

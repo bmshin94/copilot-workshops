@@ -6,7 +6,7 @@ authors:
 lastUpdated: 2026-07-09
 ---
 
-在上一课中，你介绍了工作区并使用了快速聊天。现在可以启动**智能体会话**，对项目进行第一次更改。此次改动很小：游戏数据中已有星级评分，但主页上的游戏卡片尚未显示。你将要求智能体显示评分、审查更改，并通过第一个拉取请求合并更改。
+在上一课中，你浏览了工作区并使用了快速聊天。现在可以启动**智能体会话**，对项目进行第一次更改。此次改动很小：游戏数据中已有星级评分，但主页上的游戏卡片尚未显示。你将要求智能体显示评分、审查更改，并通过第一个拉取请求合并更改。
 
 本课将介绍如何：
 
@@ -22,7 +22,7 @@ Tailspin Toys 中的每款游戏都可以有星级评分，该评分已显示在
 
 ## 会话剖析
 
-**会话**是与智能体的对话。本研讨会选择 **new working tree**，为会话提供专用的检出目录和分支。这样可以隔离每个 PR 里程碑，而无需为每课单独创建分支。会话按存储库分组显示在侧边栏中，选择任一会话即可切换。
+**会话**是与智能体的对话，在独立工作区中运行。每个会话都有**专用的 git 工作树和分支**，因此可以同时运行多个会话，例如一个添加功能，另一个修复 bug，而不会造成更改冲突。会话按存储库分组显示在侧边栏中，选择任一会话即可切换。
 
 会话中包含三类内容：与智能体的**对话**、智能体探索和编辑文件时的**工具活动**，以及带有差异的**已更改文件**列表。
 
@@ -31,23 +31,13 @@ Tailspin Toys 中的每款游戏都可以有星级评分，该评分已显示在
 现在启动新会话，探索项目并实现功能。在[上一课][prior-lesson]中，你从 GitHub 存储库添加了项目。接下来为该存储库创建新会话并请求更改。
 
 1. 返回（或打开）GitHub Copilot app。
-2. 选择 **Home screen**。
-3. 确保为存储库选择了 `tailspin-toys`。
-
-   ![GitHub Copilot app 提示框，其中存储库选择器设为 tailspin-toys，提示框下方显示模型选择器](../../_images/app-2-start-session.png)
-
+2. 选择 **Projects** 旁的 **+**。
+3. 选择 `tailspin-toys` 作为存储库。
 4. 在提示框下方选择 **new working tree** 和 **Interactive** 模式。使用以下提示词请求更改：
 
-   ```plaintext
-   编辑前，确定当前检出目录和分支，确认这是一个干净的新工作树，获取 origin，并将当前会话分支快进到 origin/main。确认 HEAD 与 origin/main 一致。如果工作树不干净、已发生分叉或无法更新，停止并说明原因；不要重置或丢弃工作。
-
-   在游戏卡片上显示每款游戏的星级评分。Game 类型已包含 starRating 字段，表示满分为 5 的评分，游戏尚未评分时为 null。在 src/components/GameCard.astro 的每张卡片上显示评分；当 starRating 为 null 时，改为显示 "No rating yet"。保持改动小，不要重构卡片布局或更改数据模型。
-
-   遵循存储库指令，添加或更新适当的测试，并运行相关的现有 npm 检查。检查先决条件，并在安装任何内容前先询问。报告更改的文件和检查结果，然后停止，供我审查。不要提交、推送、打开拉取请求或实现其他功能。
-   ```
-
-> [!NOTE]
-> 请注意，提示词包含了 Copilot 要更新的文件名。虽然不要求指定 Copilot 应在工作中包含哪些文件，但指出正确方向既能帮助 Copilot 快速生成代码，也能减少令牌用量。
+    ```plaintext
+    Show each game's starRating out of 5 in the game cards on the list page. If the rating is null, show "No rating yet". Keep the card layout as it is, add tests, and run the relevant checks.
+    ```
 
 5. 按 <kbd>Enter</kbd> 将提示词发送给 Copilot。
 
@@ -80,45 +70,37 @@ Copilot app 首先创建新的工作树，即项目的隔离副本。随后，�
 
 ## 检查更改
 
-打开浏览器前，先审查智能体的自动化检查结果。确认测试覆盖数值类型的 `starRating` 和 `null` 回退状态，并使用项目现有的 npm 脚本，而不是尚未创建的技能。缺少先决条件或跳过检查不算通过。
+打开浏览器前，先审查智能体的自动化检查结果。确认测试覆盖数值类型的 `starRating` 和 `null` 回退状态。缺少先决条件或跳过检查不算通过；批准安装请求前先审查。
 
-然后使用会话内置的终端手动检查应用。启动服务器前先确定工作树，不要复用其他检出目录的服务器。
+当然，不能只阅读代码就假定它能正常运行。让 Copilot 打开网站，以便检查更新后的 UI。可以让它启动网站，并在浏览器画布中打开。
 
-1. 在 Copilot app 右侧的审查面板中选择 **Terminal**。如果没有 **Terminal** 按钮，请选择 **+**（标记为 **Open in panel**），再选择 **Terminal**。
+> [!TIP]
+> 画布是 Copilot app 内的交互式小组件。稍后你将探索自定义画布，甚至创建自己的画布；现在先使用内置的浏览器画布。
 
-   ![GitHub Copilot app 审查面板中的 Terminal 按钮](../../_images/app-terminal-screenshot.png)
+1. 使用以下提示词，让 Copilot 启动应用并在浏览器画布中打开页面：
 
-2. 在终端窗口中输入以下命令，启动 Web 应用的开发服务器：
+    ```plaintext
+    Start the app and open it in the browser canvas.
+    ```
 
-   ```shell
-   npm run dev
-   ```
+2. 稍等片刻，应用将启动，Copilot app 内会打开浏览器窗口。
+3. 确认已评分的游戏卡片显示满分为五分的评分值。
+4. 完成后，使用以下提示词让 Copilot 停止为此会话启动的开发服务器，并关闭浏览器画布：
 
-3. 服务器启动后（只需片刻），打开浏览器窗口。
-4. 打开服务器输出的本地 URL，通常是 `http://localhost:4321`。如果端口已被占用，应先确认其归属，而不是停止无关进程。
-5. 确认已评分的游戏卡片显示满分为五分的评分值。如果有未评分数据，确认显示 **No rating yet**；否则，使用自动化测试验证空值情况，不要声称已亲眼观察到它。
-6. 返回终端窗口。
-7. 按 <kbd>Control</kbd>+<kbd>C</kbd>（Mac）或 <kbd>Ctrl</kbd>+<kbd>C</kbd>（Windows/Linux），停止自己启动的开发服务器。
+    ```plaintext
+    Stop the dev server and close the browser canvas.
+    ```
 
 ## 打开并合并第一个拉取请求
 
-更改看起来没有问题，现在可以交付 PR 1。先单独授权提交和创建 PR，不要与实现授权混在一起：
+你已创建该功能。现在创建拉取请求 (PR)，将新代码合并到现有代码库中。
 
-```plaintext
-审查星级评分改动及其测试的完整差异，汇总验证结果，并在当前会话分支上提交已审查的更改。推送分支，并使用存储库的 PR 模板创建以 main 为目标的拉取请求。不要合并。
-```
-
-1. 打开会话中已创建的 PR 链接。如果应用显示 **Create PR** 确认提示，选择它以批准请求，不要创建第二个 PR。
+1. 选择右上角的 **Create PR**。
 2. 如果系统提示，请选择 **Sign in with your browser**，并按照提示完成身份验证。
 3. Copilot 开始创建 PR。
-
-PR 创建后，在 **My work** 中检查完整的 PR 差异和检查结果。阅读练习存储库的工作流结果，等待必需的检查和审查完成，并在合并前解决失败项。**Ready to merge** 不能替代对更改或本地验证证据的审查。
-
 4. 选择聊天上方的 **PR** 气泡，在审查窗格中打开并查看拉取请求。可根据需要在此审查 PR。
 5. 准备好后，选择 **Ready to merge**。
 6. 在新对话框窗口中选择 **Merge pull request**，合并拉取请求。
-
-确认 PR 1 已合并到 `main` 后再继续。合并练习存储库本身并不会部署网站。下一课会创建新工作树，并从 `origin/main` 更新，以包含此 PR。
 
 ## 总结与后续步骤
 
@@ -130,7 +112,7 @@ PR 创建后，在 **My work** 中检查完整的 PR 差异和检查结果。阅
 - 在本地运行应用，并在浏览器中确认了星级评分。
 - 打开了 PR 1，审查了检查结果，并明确执行了合并。
 
-接下来，你将从待办事项中的一个议题开始，使用应用向存储库添加自定义指令标准。继续学习[第 3 课 - 使用自定义指令引导 Copilot][next-lesson]。
+接下来，你将[从筛选功能议题开始，并使用 Plan 和 Autopilot 模式][next-lesson]构建一项更大的功能。
 
 ## 资源
 
@@ -139,8 +121,7 @@ PR 创建后，在 **My work** 中检查完整的 PR 差异和检查结果。阅
 - [使用 GitHub Copilot app 管理议题和拉取请求][managing-issues-prs]
 
 [prior-lesson]: ../1-install-copilot-app/#安装并配置-github-copilot-app
-[previous-lesson]: ../1-install-copilot-app/
-[next-lesson]: ../3-custom-instructions/
+[next-lesson]: ../3-agent-modes/
 [agent-sessions]: https://docs.github.com/copilot/how-tos/github-copilot-app/agent-sessions
 [about-copilot-app]: https://docs.github.com/copilot/concepts/agents/github-copilot-app
 [managing-issues-prs]: https://docs.github.com/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests

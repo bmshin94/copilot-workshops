@@ -3,7 +3,7 @@ title: "Hands-on with GitHub Copilot's agents"
 slug: index
 authors:
   - geektrainer
-lastUpdated: 2026-06-30
+lastUpdated: 2026-09-17
 ---
 
 The recent additions to the capabilities of GitHub Copilot provide powerful tools to the developer across the entire software development lifecycle (SDLC). This includes working with issues and pull requests on GitHub, interacting with external services, and of course code creation. This lab explores the functionality, providing real-world use cases and tips on how to get the most out of the tools.
@@ -27,7 +27,7 @@ GitHub Copilot inside **Visual Studio Code** and GitHub Codespaces. Work with Co
 
 ### 🤖 [Copilot App](app/)
 
-The **GitHub Copilot app** — a desktop application built on Copilot CLI. Follow the same setup and nine core modules through the star-rating, instructions, filtering, skill, MCP, QA, and feature-PR workflow, using the app's isolated sessions and **Agent Merge**. Create and merge a repository-backed canvas as the fourth pull-request milestone, then wrap up.
+The **GitHub Copilot app** — a desktop application built on Copilot CLI. Set up the app and repository, manually merge a focused star-rating change, then take filtering from its issue through Plan, Autopilot, custom instructions, a customized skill, browser validation with the Model Context Protocol (MCP), and quality assurance (QA) review. Use **Agent Merge** for the filtering pull request, then use an existing database canvas and create a repository-backed triage canvas.
 
 ### ☁️ [Copilot Cloud Agent](cloud/)
 

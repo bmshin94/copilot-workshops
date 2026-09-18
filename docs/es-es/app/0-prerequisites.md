@@ -15,18 +15,18 @@ En esta lección:
 
 ## Instalar Node.js
 
-En varias lecciones se pide a un agente que desarrolle funcionalidades y ejecute en local el conjunto de pruebas de Tailspin Toys, para lo que se necesita [**Node.js**][nodejs]. Utiliza **Node.js 22.13 o posterior** y confirma la versión compatible en `package.json` y README de tu copia de trabajo.
+En varias lecciones se pide a un agente que desarrolle funcionalidades y ejecute en local el conjunto de pruebas de Tailspin Toys, para lo que se necesita [**Node.js**][nodejs], el único entorno de ejecución que requiere el proyecto. Instala la versión **LTS** actual.
 
 La opción más sencilla en cualquier plataforma es usar el instalador oficial:
 
 1. En el sistema operativo, abre una ventana de terminal con Windows Terminal, Terminal de macOS o la aplicación que utilices habitualmente.
-2. Ejecuta el comando siguiente para confirmar que tienes instalado Node.js 22.13 o posterior:
+2. Ejecuta el comando siguiente para comprobar la versión de Node.js instalada:
 
     ```shell
     node --version
     ```
 
-3. Si la versión indicada es al menos `v22.13.0` y es compatible con el proyecto, puedes pasar a la sección siguiente.
+3. Si cumple los requisitos del README y `package.json` del proyecto, puedes pasar a la sección siguiente.
 
 > [!TIP]
 > Solo tienes que completar estos pasos si no tienes Node instalado o si necesitas actualizarlo.
@@ -41,10 +41,10 @@ La opción más sencilla en cualquier plataforma es usar el instalador oficial:
     node --version
     ```
 
-9. Confirma que la versión indicada es al menos `v22.13.0` y es compatible con el proyecto.
+9. Debería aparecer la versión que has instalado.
 
 > [!IMPORTANT]
-> Este recorrido de la aplicación utiliza worktrees locales. Un runtime instalado solo en un contenedor no está disponible para esas sesiones locales. Cada worktree también necesita las dependencias del proyecto y Chromium de Playwright para las comprobaciones E2E. Sigue el README del repositorio del participante al preparar un worktree y revisa cualquier solicitud de instalación antes de aprobarla.
+> Cada worktree también necesita las dependencias del proyecto y Chromium de Playwright para las comprobaciones E2E. Sigue el README del repositorio de Tailspin Toys al preparar un worktree y revisa cualquier solicitud de instalación antes de aprobarla.
 
 ## Configurar el repositorio del laboratorio
 
@@ -64,13 +64,16 @@ Trabajarás con tu propia copia del proyecto Tailspin Toys. Créala ahora a part
 > [!NOTE]
 > Al crear el repositorio a partir de la plantilla, se genera automáticamente una lista de incidencias de trabajo pendiente. Trabajarás con estas incidencias durante todo el taller; no necesitas crear ninguna.
 
-Utiliza una copia nueva de la plantilla revisada: incluye instrucciones del repositorio, código de la aplicación, pruebas y una extensión de lienzo existente, pero no incluye agentes personalizados ni habilidades. Crearás tu propia habilidad quality-checks y un perfil QA durante el taller. Si utilizas una copia anterior, examina las personalizaciones existentes en lugar de sobrescribirlas.
+Utiliza una copia nueva de la plantilla del taller. Incluye instrucciones del repositorio, código de la aplicación, pruebas, una habilidad quality-checks y una extensión de lienzo existente. Personalizarás la habilidad y crearás un agente QA durante el taller. Si utilizas una copia anterior, comprueba con quien imparte el taller que contiene los archivos que necesitarás.
 
 ## Resumen y pasos siguientes
 
-Ya tienes el entorno preparado. Has instalado Node.js para poder compilar y probar el proyecto en tu equipo y has creado tu propia copia del repositorio Tailspin Toys a partir de la plantilla.
+Ya tienes el entorno preparado. En esta lección:
 
-A continuación, instalarás la aplicación GitHub Copilot, conectarás el repositorio que acabas de crear y conocerás el espacio de trabajo. Continúa con la [Lección 1 - Instalar la aplicación GitHub Copilot][next-lesson].
+- has instalado Node.js para poder compilar y probar el proyecto en tu equipo.
+- has creado tu propia copia del repositorio Tailspin Toys a partir de la plantilla.
+
+A continuación, [instalarás la aplicación GitHub Copilot][next-lesson], conectarás el repositorio que acabas de crear y conocerás el espacio de trabajo.
 
 ## Recursos
 

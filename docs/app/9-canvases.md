@@ -1,34 +1,34 @@
 ---
-title: "Lesson 9 - Create a triage canvas"
-description: "Create and review a repository-backed triage canvas, merge PR 4, and reopen it to add issue context without starting another feature."
+title: "Lesson 9 - Explore and create canvases"
+description: "Use the existing Database Explorer canvas, then create and review a repository-backed triage canvas."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-09-17
 ---
 
-So far you've directed agents through chat. But a lot of work doesn't live in a conversation — it lives on a board, in a document, or on a checklist. **Canvases** give you and the agent a shared surface for exactly that kind of work, right inside the app. In this lesson you'll create a simple canvas to plan and track the backlog you've been working through.
+So far you've directed agents through chat. But a lot of work doesn't live in a conversation — it lives on a board, in a document, or on a checklist. **Canvases** give you and the agent a shared surface for exactly that kind of work, right inside the app. In this lesson you'll first use a canvas included with Tailspin Toys, then create one for the backlog you've been working through.
 
 In this lesson, you will:
 
 - understand what a canvas is and when to use one.
+- use the existing Database Explorer canvas to inspect project data.
 - create a shared Kanban board canvas to triage your backlog.
-- save the canvas to your repository and merge it for the team.
-- reopen the canvas and add issue context without implementing another feature.
+- inspect and exercise the new canvas without implementing another feature.
 
 ## Scenario
 
-Looking at a list of issues can be daunting. Tailspin Toys' developers want a tool to triage issues and add their details to a session's context. Adding context is not authorization to implement an issue; this exercise ends with a reusable board, not a fifth PR.
+Tailspin Toys already includes a canvas for exploring its database. After using it to understand how a canvas turns project data into an interactive surface, you'll create a reusable board for choosing what to work on next without starting another feature.
 
 ## What is a canvas?
 
-A [canvas][canvas-docs] is a shared, interactive surface for a work artifact — a plan, a triage board, a release checklist, a dashboard, or a document. While chat is great for describing intent and reasoning through ambiguity, most work happens on a *surface*. Canvases let you collaborate with the agent directly on that surface.
+A [canvas][canvas-docs] is a shared, interactive surface for a work artifact — a plan, a triage board, a release checklist, a dashboard, or a document. While chat is useful for describing intent and reasoning through ambiguity, most work happens on a *surface*. Canvases let you collaborate with the agent directly on that surface.
 
 Canvases are **bidirectional**: the agent can update the canvas while it works, and you can edit the same surface yourself. When you create a canvas, the agent builds it based on your prompt and workflow, and you can ask it to add, remove, or revise capabilities as you go. Once created, a canvas opens in the app's right side panel.
 
 Some common examples include:
 
 - **Markdown canvases** for planning your day and prioritizing issues and pull requests.
-- **Agentic kanban boards** where people and agents add cards and move work across columns.
+- **Agentic Kanban boards** where people and agents add cards and move work across columns.
 - **Issue triage boards** that summarize top issues and recurring themes for a repository.
 
 ## Why use a canvas?
@@ -39,101 +39,71 @@ Reach for a canvas when a task needs structure, iteration, and verification, and
 - steer or correct work directly on the shared surface, then let the agent continue from your changes.
 - inspect progress as visible changes to an artifact, not just chat responses.
 
-## Create a canvas to track your work
+## Use the Database Explorer canvas
 
-Confirm PR 3 has merged. The star rating, documentation standard, filtering feature, quality skill, and QA profile must all be on `main` before starting the canvas. Use a fresh session and one branch for this final PR milestone.
+Start with the project's existing Database Explorer canvas. Using a working example lets you see how a repository-scoped canvas behaves before you create one yourself.
 
-1. Return to (or open) the GitHub Copilot app.
-2. Select the **Home screen**.
-3. Ensure `tailspin-toys` is selected for the repo.
-4. Choose a **new working tree** and **Interactive** mode. Send this baseline request before creating any files:
+1. Confirm the filtering pull request (PR) is merged and update your local `main`.
+2. Return to the GitHub Copilot app and select the **Home screen**.
+3. Confirm `tailspin-toys` is the selected repository.
+4. Create a session in a **new working tree** based on the updated `main`, then select **Interactive** mode.
+5. Ask Copilot to prepare the local database if needed and open the existing canvas without changing it:
+
+    ```plaintext
+    Set up the local database if needed, then open the repository's Database Explorer canvas. Do not change any files.
+    ```
+
+6. In the Database Explorer, browse the available tables and select `games`.
+7. Run a read-only query that shows five highly rated games:
+
+    ```sql
+    SELECT title, star_rating
+    FROM games
+    ORDER BY star_rating DESC
+    LIMIT 5;
+    ```
+
+8. Confirm the results contain no more than five games in descending rating order.
+9. Open **Files** and inspect `.github/extensions/database-explorer/extension.mjs`. Note how the canvas is stored with the project and restricts queries to read-only `SELECT` and `WITH` statements.
+10. Confirm the session has no file changes.
+
+## Create a canvas to triage issues
+
+Now create a different kind of shared surface. Saving the triage canvas at project scope makes it a repository asset that the team can review and reuse.
+
+1. In the same session, enter `/create-canvas`, then describe the canvas you want to create:
 
    ```plaintext
-   Prepare this fresh canvas session without implementing anything. Confirm this is a clean new worktree, fetch origin, and fast-forward the current session branch to origin/main. Report the checkout, branch, and matching HEAD and origin/main revisions. Verify the filtering PR is merged and the filtering feature, quality-checks skill, and QA profile are present.
+   Create a Kanban triage canvas for this repo's open issues and save it under .github/extensions/. Highlight the three issues you'd prioritize and explain why, with the rest below. Include summaries and links.
 
-   Stop if the checkout is dirty, diverged, or missing the prior merge. Do not reset, discard work, switch branches, or create another branch. Stop after reporting the baseline.
+   Give each card an "Add to current context" action that adds the issue details without starting work or changing the issue. Make it keyboard-accessible and open it so I can try it.
    ```
 
-5. Check the baseline report, then request the repository-backed canvas:
-
-   ```plaintext
-   Create a basic repository-backed Kanban triage canvas for this repository using the App's supported canvas-extension workflow. Save its definition under .github/extensions/ so the team can reuse it. Inspect existing extensions and preserve them; do not overwrite the supplied database explorer.
-
-   Read the current open issues. Highlight the three most likely to need attention, with the remainder below. Include each highlighted issue's title, content summary, URL, and a justification for its priority. Treat the ranking as a suggestion, not an instruction to change issues.
-
-   Give every card an Add to current context action that attaches the issue details to this session only. It must not start implementation, create sessions or branches, change issue state, or create PRs. Keep the canvas bounded and keyboard-accessible.
-
-   Show me the generated files and open the canvas for inspection. Do not change application code, commit, push, or create a PR. Ask before installing anything or adding dependencies.
-   ```
-
-Copilot creates the canvas files and opens the shared surface. Review the generated extension before trusting its actions; it is executable repository content, not just a picture.
-
-> [!NOTE]
-> If the first version needs work, request focused improvements within the triage scope. Do not turn this exercise into implementing one of the backlog issues.
+Copilot creates the canvas extension under `.github/extensions` and opens the shared surface in the app's right side panel. The generated extension is executable repository content, not just a visual artifact, so you'll inspect its files and behavior next.
 
 ## Inspect and exercise the canvas
+
+Before sharing the canvas, compare it with the repository's actual issues and exercise its controls. This confirms that its content is accurate, its interaction is accessible, and its issue action adds context without starting work.
 
 1. Open **Changes** and confirm the canvas definition is repository-backed under `.github/extensions/`, not saved only for your user or session. Check that existing extensions and application files are unchanged.
 2. Compare the board with the actual open issues and assess the ranking explanations.
 3. Check that cards and controls are readable and usable with a keyboard.
 4. Select **Add to current context** for an issue and confirm only its details enter the conversation. No implementation or issue-state change should start.
 5. Review any corrections and ask Copilot to run the applicable existing validation for the files changed. Record results and blockers, rather than assuming an interactive surface is correct because it opened.
+6. If the canvas needs changes, request focused improvements within the triage scope, then repeat the affected checks. Do not implement one of the backlog issues as part of this canvas work.
 
-## Save the canvas and merge it to the repository
-
-The canvas is already a repository asset. Commit and submit only the reviewed canvas work as PR 4:
-
-1. In the same session, send:
-
-   ```plaintext
-   Review the repository-backed triage canvas diff and its validation evidence. Commit the approved canvas files on this session branch, push it, and create one PR targeting main using the repository's PR template. Describe the canvas behavior and how we verified that adding an issue only adds context. Do not merge yet or implement a backlog issue.
-   ```
-
-2. Review the full PR diff and checks in **My work**. Confirm it contains the canvas, not unrelated application work.
-3. In the same canvas session, open the PR action dropdown and select **Agent merge**. Review its allowed actions and keep **Merge pull request** off until you approve the final result.
-4. Set the scope before starting Agent Merge:
-
-   ```plaintext
-   Manage this existing canvas PR with Agent Merge. Address only in-scope review and CI blockers; ask before unrelated changes or installations. If the canvas changes, repeat its affected validation and update the evidence. Do not merge until I explicitly enable Merge pull request after review. Do not implement backlog issues or create another PR.
-   ```
-
-5. Select **Agent merge** and review any follow-up changes. Inspect the learner repository's actual CI checks and resolve failures; CI is not a replacement for exercising the canvas.
-
-6. When the final diff and current evidence are approved and required checks and reviews pass, explicitly allow Agent Merge to merge by selecting its dropdown, then **Merge pull request**.
-
-   ![The Agent merge dropdown showing the agent's allowed actions — Address reviews, Fix CI failures, Resolve conflicts — with an arrow pointing to Merge pull request](../_images/app-agent-merge-merge.png)
-
-7. Confirm GitHub shows PR 4 as **Merged** before continuing.
-
-You've now created a new shared canvas for your team!
-
-## Reopen the canvas without starting another feature
-
-Reopen the repository-backed canvas in the same canvas session after its PR is merged. This is an inspection step, not another branch or PR milestone.
-
-1. Return to the canvas session, keep **Interactive** mode, and close the canvas panel if it is still open.
-2. Send:
-
-   ```plaintext
-   Reopen the repository's triage canvas in this same session. I will add an issue to context to inspect its details only. Do not edit files, implement the issue, change its state, create another session or branch, commit, push, or open a PR.
-   ```
-
-3. Confirm the saved canvas opens again without regenerating its definition.
-4. Select **Add to current context** on one of the issues that's of most interest to you.
-5. Confirm the selected issue's details appear in context without starting implementation. Stop there: the workshop has four PR milestones, not five.
-
-You've now used a canvas you created to streamline the development process.
+The workshop stops before creating another PR because you've already practiced both manual merging and Agent Merge. In production, review and merge the canvas through your team's normal process before others rely on it.
 
 ## Summary and next steps
 
-You created a shared surface where you and the agent can collaborate! You:
+You created and reused a shared surface where you and the agent can collaborate. In this lesson, you:
 
-- learned what canvases are and when to use them.
-- created a shared Kanban triage board canvas with the agent.
-- saved and merged the canvas to your repository with Agent Merge.
-- reopened the merged canvas and added issue context without launching another feature.
+- understood what a canvas is and when to use one.
+- used the existing Database Explorer canvas to inspect project data.
+- created a shared Kanban board canvas to triage your backlog.
+- inspected and exercised the new canvas without implementing another feature.
 
-With your backlog tracked, take a step back to review everything you've built and where to go next. Continue to [Lesson 10 - Wrap-up and next steps][next-lesson].
+With your backlog tracked, you'll [review everything you've built and explore where to go next][next-lesson].
 
 ## Resources
 
@@ -141,7 +111,6 @@ With your backlog tracked, take a step back to review everything you've built an
 - [Canvases on Awesome Copilot][awesome-copilot-canvases]
 - [About the GitHub Copilot app][about-copilot-app]
 
-[previous-lesson]: ../8-create-pull-request/
 [next-lesson]: ../10-review/
 [canvas-docs]: https://docs.github.com/copilot/how-tos/github-copilot-app/working-with-canvas-extensions
 [awesome-copilot-canvases]: https://awesome-copilot.github.com/extensions/

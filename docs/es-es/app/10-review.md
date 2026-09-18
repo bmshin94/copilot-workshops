@@ -1,43 +1,40 @@
 ---
 title: "Lección 10 - Repaso y pasos siguientes"
-description: "Repasa los nueve módulos principales de la aplicación, los cuatro hitos de PR y el flujo de calidad reutilizable, y explora otros recursos."
+description: "Repasa el flujo de la aplicación, los dos hitos de PR, los ejercicios de lienzo y las prácticas de calidad reutilizables; después, explora otros recursos."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-07-09
 ---
 
-Durante las últimas lecciones, has llevado una funcionalidad desde la idea hasta la combinación mediante la aplicación GitHub Copilot. Entre otras cosas, has aprendido a:
+Has utilizado la aplicación GitHub Copilot durante un flujo continuo de Tailspin Toys. Has aprendido a:
 
-- conectar un repositorio y familiarizarte con el espacio de trabajo de la aplicación y la lista de trabajo pendiente inicial.
-- iniciar sesiones desde una tarea directa y desde incidencias, y utilizar los modos Plan y Autopilot para controlar cómo trabaja el agente.
-- orientar al agente con instrucciones personalizadas y después pedirle que cree una habilidad reutilizable con scripts de shell que has revisado y ejecutado para el linter, las pruebas unitarias, las pruebas de un extremo a otro y las comprobaciones de tipos.
+- conectar un repositorio, explorar el espacio de trabajo y la lista de trabajo pendiente inicial de la aplicación y probar un chat rápido.
+- iniciar una sesión específica de valoraciones por estrellas, revisar el resultado en un lienzo de navegador y combinar manualmente tu primera solicitud de incorporación de cambios (PR).
+- partir de la incidencia de filtrado, definir el enfoque en modo **Plan**, desarrollarlo en modo **Autopilot** y revisarlo en modo **Interactive**.
+- orientar al agente con instrucciones personalizadas y después personalizar una habilidad existente y utilizarla para ejecutar lint, pruebas unitarias, pruebas de un extremo a otro y comprobaciones de tipos.
 - probar el trabajo con el servidor MCP de Playwright en un navegador real.
 - crear y seleccionar un agente personalizado QA para evaluar requisitos, cobertura, resultados de scripts de la habilidad y pruebas de observación del navegador.
-- colaborar con el agente en un lienzo compartido.
-- combinar explícitamente las primeras PR personalmente y después autorizar **Agent Merge** dentro de los flujos de PR de la funcionalidad y el lienzo.
-
-Las Lecciones 0–1 de configuración dieron paso a nueve módulos principales, las Lecciones 2–10. Dedica un momento a repasar los recursos creados y cómo continuar; este resumen no inicia otra tarea práctica.
+- revisar el cambio completo de filtrado y autorizar **Agent Merge** para la segunda PR.
+- utilizar el lienzo Database Explorer existente y, después, crear y probar un lienzo de clasificación respaldado por el repositorio.
 
 ## Qué has entregado
 
-El taller tiene cuatro hitos de PR, cada uno en su propia rama a partir de `main` actualizado:
+El taller tiene dos hitos de PR, cada uno en su propia rama a partir de `main` actualizado:
 
 1. **Valoraciones por estrellas:** mostrar el `starRating` existente y un estado explícito sin valoración en las tarjetas de juegos.
-2. **Instrucciones y demostración:** añadir la convención de documentación y verificar su efecto en un pequeño cambio de código real.
-3. **Filtrado y flujo de calidad:** implementar la incidencia, crear la habilidad `quality-checks` con scripts de shell y el perfil QA e incluir las pruebas asociadas.
-4. **Lienzo de clasificación guardado en el repositorio:** compartir un tablero que añada contexto de incidencias sin implementar automáticamente otra funcionalidad.
+2. **Filtrado y flujo de calidad:** implementar el filtrado, actualizar las instrucciones y aplicarlas a la funcionalidad, personalizar el informe de `quality-checks`, crear un perfil QA e incluir las pruebas asociadas.
 
-Las Lecciones 4–8 utilizaron la misma sesión, worktree y rama de filtrado. Los commits de control conservaron el progreso dentro de la PR 3; las habilidades, la configuración MCP y QA no necesitaron ramas de funcionalidad independientes. Cada hito posterior comenzó solo después de combinar la PR anterior y actualizar la rama de la nueva sesión desde `origin/main`.
+Desde la planificación del filtrado hasta la apertura de su PR, utilizaste la misma sesión, worktree y rama. Reunimos ese trabajo en una sola PR para agilizar el taller. Después, utilizaste Database Explorer y creaste un lienzo de clasificación respaldado por el repositorio sin repetir el flujo de PR.
 
 ## Distintos tipos de verificación
 
-Las primeras funcionalidades utilizaron las comprobaciones npm existentes. El filtrado añadió tu inspección manual en el navegador. La habilidad hizo repetibles las cuatro comprobaciones mediante scripts incluidos, MCP añadió observaciones directas del agente en el navegador y QA combinó requisitos y cobertura con la verificación final. La PR reutilizó las pruebas de QA solo mientras correspondían a la revisión enviada.
+Comprobaste el código de varias formas: pruebas automatizadas, tu propia inspección en el navegador y la exploración de Copilot en el navegador mediante MCP. La habilidad quality-checks ejecutó las comprobaciones del proyecto y presentó los resultados con el nuevo formato. QA reunió esos resultados junto con una revisión de los requisitos y la cobertura de pruebas antes de la PR.
 
 Las pruebas añadidas deben cubrir carencias reales; una ejecución QA que no necesita pruebas nuevas puede ser correcta. Las herramientas ausentes, las comprobaciones omitidas y los fallos son bloqueos visibles, no resultados satisfactorios. Revisa el código y las pruebas de verificación antes de autorizar la combinación y actualiza las afectadas después de los cambios.
 
 ## Procedimientos recomendados
 
-Al utilizar cualquier herramienta de IA, la infraestructura que la rodea determina la calidad de los resultados. En este taller has creado instrucciones, una habilidad y un perfil QA; revísalos y reutilízalos entre sesiones. Los agentes personalizados definen roles especializados e instrucciones, con herramientas disponibles según la configuración y los permisos del entorno; las habilidades agrupan instrucciones reutilizables para tareas, scripts ejecutables y recursos de apoyo que se cargan bajo demanda. Un agente personalizado también puede ejecutar scripts, incluidos los que forman parte de una habilidad. Confirma la ejecución real de los scripts y la selección del agente personalizado en lugar de confiar en una descripción convincente.
+El contexto y las herramientas que proporcionas a Copilot influyen en su trabajo. En este taller has actualizado instrucciones, personalizado una habilidad, creado un perfil QA, configurado un servidor MCP y creado un lienzo. Reutiliza estas personalizaciones entre sesiones y ajústalas a medida que cambien las necesidades del equipo. Las instrucciones establecen estándares, las habilidades describen tareas repetibles, los agentes personalizados definen roles especializados, los servidores MCP conectan herramientas externas y los lienzos proporcionan superficies interactivas compartidas. Revisa los cambios reales y los resultados de las herramientas, no solo el resumen del agente.
 
 Adapta el **modo y el modelo** a la tarea. Utiliza **Plan** para razonar sobre un enfoque antes de desarrollar, **Interactive** para mantener el control durante cambios concretos y **Autopilot** solo para tareas aisladas y bien delimitadas. Elige un modelo más rápido para las modificaciones rutinarias y otro más capaz, con mayor esfuerzo de razonamiento, para el trabajo complejo.
 
@@ -47,13 +44,10 @@ El contexto sigue siendo tan importante como la infraestructura. Describir con c
 
 Ya conoces el flujo de trabajo principal. Estas son algunas funcionalidades adicionales que merece la pena explorar:
 
-- **Quick chats** para preguntas rápidas y desechables que no necesitan una sesión completa.
 - [**Automatizaciones**][using-automations] para tareas recurrentes o bajo demanda, como resumir el trabajo reciente. Revisa la programación, los permisos y el alcance antes de adoptar una; crear una automatización es un siguiente paso, no parte de este taller.
 - **Rubber duck** para razonar sobre un problema y obtener comentarios pertinentes antes de desarrollar.
-- [**Agentes personalizados**][custom-agents] para encapsular un rol, sus herramientas y sus instrucciones con el fin de realizar trabajo especializado y repetible.
 - [`/chronicle`][chronicle] para generar una narración de lo sucedido en una sesión.
 - [Usar tu propia clave (BYOK)][byok] para utilizar modelos de tu propio proveedor, incluidos modelos locales mediante Ollama, Foundry Local o LM Studio.
-- [Entornos aislados en la nube][sandboxes] para ejecutar sesiones en un entorno aislado hospedado en GitHub.
 - [Vínculos profundos][deep-links] para abrir la aplicación directamente en un repositorio, una sesión o una indicación.
 
 ## Pasos siguientes
@@ -69,9 +63,7 @@ Para explorar más elementos del ecosistema de GitHub Copilot, consulta el [reco
 - [Personalizar la aplicación GitHub Copilot][customize]
 - [Utilizar automatizaciones][using-automations]
 - [Trabajar con extensiones de lienzo][canvas-docs]
-- [Acerca de los entornos aislados locales y en la nube][sandboxes]
 
-[previous-lesson]: ../9-canvases/
 [vscode-harness]: ../../vscode/
 [cli-harness]: ../../cli/
 [cloud-harness]: ../../cloud/
@@ -80,8 +72,6 @@ Para explorar más elementos del ecosistema de GitHub Copilot, consulta el [reco
 [customize]: https://docs.github.com/copilot/how-tos/github-copilot-app/customize-github-copilot-app
 [using-automations]: https://docs.github.com/copilot/how-tos/github-copilot-app/using-automations
 [canvas-docs]: https://docs.github.com/copilot/how-tos/github-copilot-app/working-with-canvas-extensions
-[sandboxes]: https://docs.github.com/copilot/concepts/about-cloud-and-local-sandboxes
 [chronicle]: https://docs.github.com/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle
-[custom-agents]: https://docs.github.com/copilot/concepts/agents/cloud-agent/about-custom-agents
 [byok]: https://docs.github.com/copilot/how-tos/github-copilot-app/use-byok-models
 [deep-links]: https://docs.github.com/copilot/how-tos/github-copilot-app/open-with-deep-links

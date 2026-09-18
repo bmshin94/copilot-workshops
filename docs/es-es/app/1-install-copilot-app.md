@@ -41,15 +41,21 @@ Como cabe esperar, el primer paso para utilizar la aplicación GitHub Copilot es
 
 Con el proyecto conectado, dedica un momento a conocer el espacio de trabajo. La aplicación organiza todo en varias áreas de la barra lateral:
 
-- **Sessions**: donde los agentes realizan su trabajo. En este taller, elige **new working tree** para que cada hito de PR tenga una copia de trabajo y una rama aisladas. Existen otras opciones de espacio de trabajo, pero no se utilizan aquí.
-- **Quick chats**: conversaciones ligeras para preguntas y lluvias de ideas que no necesitan una rama ni un espacio de trabajo propios. Probarás una al final de esta lección.
-- **My work**: tus incidencias y solicitudes de incorporación de cambios, disponibles mediante la **integración nativa con GitHub** de la aplicación. Desde aquí puedes examinar y filtrar incidencias y solicitudes de incorporación de cambios, comprobar el estado de CI, iniciar una sesión a partir de una incidencia y revisar solicitudes de incorporación de cambios, todo ello sin salir de la aplicación.
-- **Customize**: descubre y gestiona servidores MCP, habilidades y lienzos. Lo utilizarás para configurar MCP de Playwright.
-- **Automations**: tareas de agente guardadas que se ejecutan según una programación o bajo demanda. El resumen final enlaza a ellas como siguiente paso, no como otro ejercicio del taller.
+- **New**: como cabe esperar, aquí puedes iniciar una nueva sesión de chat con Copilot.
+- **My work**: tus incidencias y solicitudes de incorporación de cambios, disponibles mediante la integración nativa con GitHub de la aplicación. Desde aquí puedes examinar y filtrar incidencias y solicitudes de incorporación de cambios, comprobar el estado de CI, iniciar una sesión a partir de una incidencia y revisar solicitudes de incorporación de cambios, todo ello sin salir de la aplicación.
+- **Automations**: tareas de agente guardadas que se ejecutan según una programación o bajo demanda. Son útiles para gestionar listas de tareas, realizar el mantenimiento periódico del proyecto o delegar otras tareas tediosas. El resumen final enlaza a ellas como siguiente paso, no como otro ejercicio del taller.
+- **Customize**: añade funcionalidades a la aplicación Copilot mediante servidores MCP, plugins, habilidades y otros componentes. Lo utilizarás para configurar MCP de Playwright.
+- **Chats**: conversaciones ligeras para preguntas y lluvias de ideas que no necesitan una rama ni un espacio de trabajo propios. Probarás una al final de esta lección.
+- **Sessions**: donde los agentes realizan su trabajo. Cada sesión se ejecuta en su propio espacio de trabajo aislado, por lo que puedes ejecutar varias a la vez sin que sus cambios entren en conflicto. Iniciarás tu primera sesión en la siguiente lección.
+
+A lo largo del taller, explorarás el espacio de trabajo.
+
+> [!TIP]
+> Si tienes dudas, pregunta a Copilot. Si no sabes cómo hacer algo o si es posible, puedes preguntarle y te ayudará a orientarte.
 
 ### Localizar la lista de trabajo pendiente inicial
 
-Como la aplicación se integra de forma nativa con GitHub, el trabajo pendiente del repositorio aparece directamente en ella. Cuando creaste el repositorio a partir de la plantilla, se generó una lista de incidencias. Vamos a comprobar que esté disponible.
+Prácticamente todos los proyectos tienen trabajo pendiente, y Tailspin Toys no es una excepción. Vamos a explorar la lista de incidencias que se generó al crear el repositorio a partir de la plantilla.
 
 1. Selecciona **My work** en la barra lateral.
 2. Busca estas incidencias por su título en lugar de dar por hecho su número:
@@ -57,7 +63,7 @@ Como la aplicación se integra de forma nativa con GitHub, el trabajo pendiente 
    - Allow users to filter games by category and publisher
    - Update our repository coding standards
 
-3. Selecciona una incidencia para leer sus detalles. Cada incidencia también sirve como punto de partida para una sesión de agente. Más adelante iniciarás el trabajo desde estas incidencias. Las demás incidencias pendientes aportan contexto al lienzo, no son otra tarea de implementación.
+3. Selecciona una incidencia para leer sus detalles. Cada incidencia también sirve como punto de partida para una sesión de agente. Partirás de la incidencia de filtrado después de completar un primer cambio rápido.
 
 > [!NOTE]
 > La lista de elementos de **My work** se filtra automáticamente para mostrar solo los elementos de los repositorios que has añadido a la aplicación Copilot. Para ver elementos de trabajo de otros repositorios, añádelos a la aplicación.
@@ -66,11 +72,11 @@ Como la aplicación se integra de forma nativa con GitHub, el trabajo pendiente 
 
 Una buena forma de familiarizarse con la aplicación es utilizarla para conocer la *propia aplicación*, y un **chat rápido** es la herramienta adecuada. Los chats rápidos permiten formular una pregunta o plantear ideas sin crear una rama ni un árbol de trabajo, por lo que son perfectos para una consulta rápida y desechable que no requiere una sesión.
 
-1. En la barra lateral, selecciona **+** junto a **Quick chats** para abrir un chat nuevo.
+1. En la barra lateral, selecciona **+** junto a **Chats** para abrir un chat nuevo.
 2. Pregunta a la aplicación cómo funcionan sus sesiones:
 
    ```plaintext
-   ¿Cómo utiliza la aplicación GitHub Copilot los worktrees?
+   How does the GitHub Copilot app use worktrees?
    ```
 
 3. Lee la respuesta en la vista de conversación. Verás que cada sesión se ejecuta en su propio árbol de trabajo de Git aislado, lo que permite ejecutar varios agentes en paralelo sin que sus cambios entren en conflicto. Puedes continuar la conversación o iniciar un chat nuevo en cualquier momento.
@@ -84,12 +90,6 @@ Has instalado la aplicación GitHub Copilot, conectado el proyecto y explorado e
 - familiarizarte con el espacio de trabajo y localizar la lista de trabajo pendiente inicial en **My work**.
 - utilizar un chat rápido para formular una pregunta breve y desechable.
 
-## Mantener separados los hitos de PR
-
-Combinarás cuatro PR: valoraciones por estrellas; instrucciones con una pequeña demostración; filtrado con la habilidad, el perfil QA y las pruebas; y, por último, el lienzo de clasificación de incidencias. Utiliza una rama por hito de PR. Las Lecciones 4–8 permanecen en la misma sesión, worktree y rama de filtrado, con commits de control en lugar de PR adicionales.
-
-Un worktree nuevo de la aplicación puede partir de un estado local desactualizado. Antes de editar archivos en cada hito nuevo, obtén los cambios del repositorio y actualiza la rama de la nueva sesión mediante un avance rápido hasta el último `origin/main`. Las lecciones siguientes lo muestran explícitamente. No apiles ramas, no selecciones commits de trabajos anteriores mediante cherry-pick ni cambies una sesión de filtrado activa a otra rama.
-
 A continuación, iniciarás tu primera sesión de agente y realizarás el primer cambio en el proyecto: mostrar una valoración por estrellas en las tarjetas de los juegos. Continúa con la [Lección 2 - Añadir valoraciones por estrellas: una mejora rápida][next-lesson].
 
 ## Recursos
@@ -98,7 +98,6 @@ A continuación, iniciarás tu primera sesión de agente y realizarás el primer
 - [Introducción a la aplicación GitHub Copilot][getting-started]
 - [Trabajar con sesiones de agente en la aplicación GitHub Copilot][agent-sessions]
 
-[previous-lesson]: ../0-prerequisites/
 [next-lesson]: ../2-add-star-rating/
 [about-copilot-app]: https://docs.github.com/copilot/concepts/agents/github-copilot-app
 [getting-started]: https://docs.github.com/copilot/how-tos/github-copilot-app/getting-started

@@ -27,7 +27,7 @@ GitHub Copilot dentro de **Visual Studio Code** y GitHub Codespaces. Trabaja con
 
 ### 🤖 [Copilot App](app/)
 
-La **aplicación GitHub Copilot** es una aplicación de escritorio basada en Copilot CLI. Sigue la misma configuración y los nueve módulos principales del flujo de valoraciones por estrellas, instrucciones, filtrado, habilidad, MCP, QA y PR de la funcionalidad, mediante las sesiones aisladas de la aplicación y **Agent Merge**. Crea y combina un lienzo guardado en el repositorio como cuarto hito de solicitudes de incorporación de cambios y termina con el resumen.
+La **aplicación GitHub Copilot** es una aplicación de escritorio basada en Copilot CLI. Configura la aplicación y el repositorio, combina manualmente un cambio específico de valoraciones por estrellas y, después, lleva el filtrado desde su incidencia a través de los modos Plan y Autopilot, instrucciones personalizadas, una habilidad personalizada, validación en el navegador mediante Model Context Protocol (MCP) y una revisión de control de calidad (QA). Utiliza **Agent Merge** para la solicitud de incorporación de cambios del filtrado; después, usa un lienzo de base de datos existente y crea un lienzo de clasificación respaldado por el repositorio.
 
 ### ☁️ [Copilot Cloud Agent](../cloud/)
 

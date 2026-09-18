@@ -3,15 +3,15 @@ title: "Lesson 6 - Validate functionality with Playwright MCP"
 description: "Configure Playwright MCP through Customize and observe filtering in a browser in the existing feature worktree."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-07-09
 ---
 
-In the previous lesson you packaged and ran the project's checks through your quality-checks skill. Now give the agent access to a browser so it can observe the filtering UI directly. Stay in the same filtering session, worktree, and branch. This lesson adds browser evidence, not another feature, full test-suite run, or PR.
+As we've already highlighted, there's more to writing code than just writing code. We need to work with data, external services, and even allow for additional automations to be available to Copilot. This is where MCP servers come into play. MCP servers allow Copilot to go beyond what's built into the app, providing it even more tools and services.
 
 In this lesson, you will:
 
 - understand what Model Context Protocol (MCP) is and how the GitHub Copilot app uses it.
-- add the Playwright MCP server through **Customize**.
+- add the Playwright MCP server.
 - ask the agent to drive a browser and explore your filtering feature.
 
 ## Scenario
@@ -36,46 +36,42 @@ There are many other MCP servers available that provide access to different tool
 
 ## Add the Playwright MCP server
 
-The current [App customization documentation][customize-app] uses **Customize** in the sidebar for MCP discovery and management. MCP servers configured for your repositories or Copilot CLI can already be available in the App; inspect installed servers before adding a duplicate.
+You manage MCP servers through **Customize** in the sidebar. Servers configured for your repositories or Copilot CLI may already be available in the app, so check before adding a duplicate. The [app customization documentation][customize-app] covers the available options.
 
 1. Select **Customize** in the sidebar.
 2. Select **MCP**, then check **Installed** for an existing Playwright server.
 3. If needed, find **Playwright** among the available servers, or use the custom-server flow documented by the publisher.
 4. Review the publisher, configuration, and any installation prompts before approving them. Follow the prompts to add the server; organization policy or missing prerequisites can block setup.
-5. Return to the existing filtering session, keeping **Interactive** mode. Confirm Playwright MCP browser tools are available before asking for validation. Do not create a new feature worktree as a setup workaround.
+5. Return to the filtering session in **Interactive** mode and confirm the Playwright MCP tools are available.
 
-If setup fails, resolve the configuration or permission issue rather than accepting a claim that the agent browsed without tools. Browser visibility depends on the server configuration; actual tool activity and observations are the evidence.
+If setup fails, resolve the configuration or permission issue before continuing.
 
 ## Ask Copilot to explore the feature via Playwright
 
-Use the actual issue URL and approved clarifications saved in Lesson 4. Stop any manual dev server from earlier lessons before the agent starts its own. It must identify the checkout and server it is testing.
+The issue and your planning decisions are already in context. Stop any dev server you started earlier before asking Copilot to start one.
 
 1. Use the following prompt to ask Copilot to validate the new functionality:
 
-   ```plaintext
-   Use the configured Playwright MCP server to observe the filtering feature against this issue: <filtering-issue-URL>. These are my approved planning clarifications: <paste the agreed clarifications, or write none>. Stay in this filtering worktree and branch.
+    ```plaintext
+    Start the app and use Playwright MCP to check filtering against the issue and our plan. Tell me what works and what doesn't, without making changes. Stop the server you started when you're done.
+    ```
 
-   Identify the checkout, start its dev server, and use actual browser tools to exercise the required multiple-category selection, publisher filtering, combined filtering, accessible controls, and any agreed clearing or empty-result behavior. Report observations against the criteria, including failures or blocked checks. Do not claim behavior you did not observe.
+> [!NOTE]
+> You're not required to tell Copilot to use a specific MCP server; it will normally find the right one to use based on the current context. However, it's never a bad idea to tell Copilot something you know you think is important.
 
-   This step is browser observation, not another full automated test run. Do not change application code, tests, skills, or agent profiles, commit, push, or create a PR. Report missing MCP tools or prerequisites as blocked and ask before installing anything. Do not reuse another checkout's server or stop unrelated processes. Stop only the server you started when finished.
-   ```
+2. Sit back and watch!
 
-Inspect the Playwright MCP tool calls, the URL under test, and the reported browser observations. A narrative based only on source code or earlier E2E results does not demonstrate MCP.
-
-2. Read the summary against the issue and approved clarifications. If there is a defect, authorize a focused fix separately, review the changed diff, and repeat relevant automated checks and browser observations. Evidence from before the fix is not proof of the resulting revision.
-3. Confirm the agent stopped its own server. Keep this filtering session open and remain in **Interactive** mode before creating the QA profile in Lesson 7.
-
-This stage establishes direct observation, not a replacement for automated coverage. A failure or blocked observation remains visible for QA.
+Copilot will start the server, open a browser, and interact with the website! Once it's done, it'll stop the server and give you a report.
 
 ## Summary and next steps
 
 Congratulations, you used the Playwright MCP server to explore your feature in a real browser from the GitHub Copilot app! To recap, you:
 
-- learned what Model Context Protocol (MCP) is and how the app makes MCP tools available.
-- configured the Playwright MCP server through **Customize**.
+- learned what Model Context Protocol (MCP) is and how the GitHub Copilot app uses it.
+- added the Playwright MCP server.
 - asked the agent to drive a browser and explore your filtering feature.
 
-Next, bring the requirements, browser observations, coverage, and skill together with a specialist profile. Continue in this same session to [Lesson 7 - Create and use a QA agent][next-lesson]. Do not create the feature PR yet.
+Next, you'll [create a QA custom agent][next-lesson] that brings the skill and browser tools together in a specialist role.
 
 ## Resources
 
@@ -83,7 +79,6 @@ Next, bring the requirements, browser observations, coverage, and skill together
 - [Microsoft Playwright MCP Server][playwright-mcp-server]
 - [Configuring MCP servers in the GitHub Copilot app][customize-app]
 
-[previous-lesson]: ../5-agent-skills/
 [next-lesson]: ../7-qa-agent/
 [mcp-blog-post]: https://github.blog/ai-and-ml/llms/what-the-heck-is-mcp-and-why-is-everyone-talking-about-it/
 [playwright-mcp-server]: https://github.com/microsoft/playwright-mcp

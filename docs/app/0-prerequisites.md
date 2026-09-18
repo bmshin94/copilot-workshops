@@ -6,7 +6,7 @@ authors:
 lastUpdated: 2026-06-30
 ---
 
-The GitHub Copilot app is a desktop app, serving as your central hub for both Copilot and GitHub. It provides quick access to issues and pull requests, and of course allows you to build using GitHub Copilot. During this workshop you'll be working locally, using both the Tailspin Toys app, built on Astro, and of course the GitHub Copilot app. Before you get started, let's ensure Node.js is installed locally, then install the Copilot app.
+The GitHub Copilot app is a desktop app serving as your central hub for both Copilot and GitHub. It provides quick access to issues and pull requests, and of course allows you to build using GitHub Copilot. During this workshop you'll be working locally, updating the Tailspin Toys app, built on Astro, using the GitHub Copilot app. Before you get started, let's ensure Node.js is installed locally, then install the Copilot app.
 
 In this lesson, you will:
 
@@ -15,18 +15,18 @@ In this lesson, you will:
 
 ## Install Node.js
 
-Several lessons ask an agent to build features and run the Tailspin Toys test suite locally, which needs **[Node.js][nodejs]**. Use **Node.js 22.13 or later**, and confirm the supported version in your checkout's `package.json` and README.
+Several lessons ask an agent to build features and run the Tailspin Toys test suite locally, which needs **[Node.js][nodejs]** — the only runtime the project requires. Install the current **LTS** release.
 
 The simplest option on every platform is the official installer:
 
 1. In your operating system, open a terminal window using Windows Terminal, macOS terminal, or whatever you typically use.
-2. Run the following command to confirm you have Node.js 22.13 or later installed:
+2. Run the following command to check your installed Node.js version:
 
     ```shell
     node --version
     ```
 
-3. If the reported version is at least `v22.13.0` and supported by the project, you can skip to the next section.
+3. If it meets the requirements in the project's README and `package.json`, you can skip to the next section.
 
 > [!TIP]
 > You only need to complete these steps if you don't have Node installed, or you need to update.
@@ -41,14 +41,14 @@ The simplest option on every platform is the official installer:
     node --version
     ```
 
-9. Confirm the reported version is at least `v22.13.0` and supported by the project.
+9. You should see the version you installed.
 
 > [!IMPORTANT]
-> This App path uses local worktrees. A runtime installed only in a container is not available to those local sessions. Each worktree also needs the project dependencies and Playwright Chromium for E2E checks. Follow the learner repository's README when preparing a worktree, and review any installation request before approving it.
+> Each worktree also needs the project dependencies and Playwright Chromium for E2E checks. Follow the Tailspin Toys repository's README when preparing a worktree, and review any installation request before approving it.
 
 ## Set up the lab repository
 
-You'll work against your own copy of the Tailspin Toys project. Create it now from the [template repository][template-repository]. The new repository contains every file the lab needs, and you'll connect it to the app in the next lesson.
+You'll work against your own copy of the Tailspin Toys project. Create it now from the [template repository][template-repository]. The new repository contains every file the lab needs, and you'll connect it when you install the app.
 
 1. In a new browser window, navigate to the GitHub repository for this lab: `https://github.com/github-samples/tailspin-toys`.
 2. Create your own copy of the repository by selecting the **Use this template** button on the lab repository page. Then select **Create a new repository**.
@@ -64,13 +64,16 @@ You'll work against your own copy of the Tailspin Toys project. Create it now fr
 > [!NOTE]
 > When you create your repository from the template, a backlog of GitHub issues is created for you automatically. You'll work from these issues throughout the workshop — there's nothing to file yourself.
 
-Use a fresh copy of the revised template: it includes repository instructions, application code, tests, and an existing canvas extension, but no supplied custom agents or skills. You will create your own quality-checks skill and QA profile during the workshop. If you use an older copy, inspect existing customizations rather than overwrite them.
+Use a fresh copy of the workshop template. It includes repository instructions, application code, tests, a quality-checks skill, and an existing canvas extension. You'll customize the skill and create a QA agent during the workshop. If you use an older copy, check with your facilitator that it has the files you'll need.
 
 ## Summary and next steps
 
-You're set up! You installed Node.js so the project can build and test on your machine, and you created your own copy of the Tailspin Toys repository from the template.
+You're set up! In this lesson, you:
 
-Next, you'll install the GitHub Copilot app, connect the repository you just created, and get oriented in the workspace. Continue to [Lesson 1 - Installing the GitHub Copilot app][next-lesson].
+- installed Node.js so the project can build and test on your machine.
+- created your own copy of the Tailspin Toys repository from the template.
+
+Next, you'll [install the GitHub Copilot app][next-lesson], connect the repository you just created, and get oriented in the workspace.
 
 ## Resources
 

@@ -1,12 +1,15 @@
 ---
 title: "Lição 8 - Criar e integrar o PR do recurso"
-description: "Revise a filtragem, a skill, o perfil QA e os testes em conjunto, crie o PR 3 e autorize explicitamente o Agent Merge."
+description: "Revise em conjunto a filtragem, as instruções, a atualização da skill, o perfil de QA e os testes; depois, crie um PR e use o Agent Merge."
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-09-17
 ---
 
-A implementação da filtragem, a skill quality-checks, o perfil QA e os testes associados estão salvos em commits de checkpoint em uma única branch. Revise-os em conjunto e use as evidências atuais de QA para preparar o PR 3. Você já fez o merge explicitamente dos PRs de avaliações por estrelas e instruções. Desta vez, usará o **Agent Merge** dentro do fluxo de PR, não como um recurso ou uma branch separados.
+A implementação da filtragem, as atualizações de instruções e da skill, o perfil de garantia de qualidade (QA) e os testes estão salvos em uma única branch. É hora de revisá-los em conjunto e abrir um pull request. Você mesmo fez o merge do pull request (PR) de avaliações por estrelas; desta vez, permitirá que o **Agent Merge** gerencie o processo.
+
+> [!NOTE]
+> Normalmente, dividiríamos o recurso, as atualizações de instruções e da skill e o agente de QA em alguns PRs separados. Para simplificar o workshop, você manteve todo o fluxo de filtragem e qualidade em uma única sessão e branch, com todo esse trabalho incluído neste PR.
 
 Nesta lição, você vai:
 
@@ -16,74 +19,56 @@ Nesta lição, você vai:
 
 ## Cenário
 
-Nos últimos módulos, você explorou vários níveis de automação, desde a criação de código até permitir que o Copilot valide diretamente uma interface. Para acelerar ainda mais o desenvolvimento, a Tailspin Toys quer descobrir se pull requests já avaliados e validados podem ter o merge feito automaticamente.
+Ao longo do fluxo de filtragem, você usou o Copilot para planejar, implementar e verificar um recurso. Agora, a Tailspin Toys quer automatizar o trabalho restante do PR, mantendo a autorização do merge sob o controle da pessoa desenvolvedora.
 
 ## Apresentação do Agent Merge
 
-O **Agent Merge** permite automatizar a etapa final de integração de um pull request por meio do aplicativo Copilot. Quando você o habilita, a sessão do aplicativo lê o pull request, resolve o que estiver bloqueando o merge, como verificações de CI com falha, comentários de revisão e a necessidade de rebase, e faz o merge assim que o GitHub permite. Ele é executado em segundo plano, continua funcionando após reinicializações do aplicativo e é desativado automaticamente quando o pull request é integrado.
+O **Agent Merge** automatiza o trabalho restante necessário para integrar um pull request no aplicativo GitHub Copilot. Quando você o habilita, a sessão do aplicativo lê o pull request, resolve o que estiver bloqueando o merge, como verificações de integração contínua (CI) com falha, comentários de revisão e a necessidade de rebase, e faz o merge assim que o GitHub permite. Ele é executado em segundo plano, continua funcionando após reinicializações do aplicativo e é desativado automaticamente quando o pull request é integrado.
 
 Até aqui, você selecionou **Merge pull request** por conta própria. O Agent Merge pode assumir essa responsabilidade, mas sua capacidade de editar código e fazer merge ainda exige autorização explícita. Revise as ações permitidas e o trabalho antes de conceder permissão de merge.
 
-## Revisar o marco completo
-
-Permaneça na sessão de filtragem das Lições 4–7. Verifique o diff completo da branch em relação a `main`, não apenas o último checkpoint: ele deve conter a filtragem, `.github/skills/quality-checks/SKILL.md`, os scripts incluídos, `.github/agents/qa.agent.md` e os testes associados.
-
-Use o seletor de agentes para voltar de **QA** ao agente geral do Copilot antes de solicitar commits ou ações de PR e mantenha o modo **Interactive**. O trabalho do perfil QA era verificar, não entregar. Mudar o agente selecionado não deve mudar a sessão, a cópia de trabalho ou a branch de filtragem.
-
-Este workshop combina deliberadamente o trabalho do recurso e a infraestrutura reutilizável de qualidade em um PR. Uma equipe de produção poderia separá-los; aqui, os commits de checkpoint preservam etapas revisáveis sem branches empilhadas ou PRs adicionais.
-
-Revise o relatório de QA da Lição 7. Reutilize suas evidências apenas se cobrirem a revisão final a ser enviada, com as quatro verificações e as observações relevantes no navegador concluídas. Se alterações de código, conflitos ou correções de CI modificarem o que foi testado, repita as verificações e observações afetadas e atualize as evidências. Um relatório **NO-GO** com falhas ou bloqueios não é aprovação de merge.
-
-Quando o diff e as evidências estiverem prontos, envie:
-
-```plaintext
-Revise o diff completo da branch de filtragem em relação a main, incluindo o recurso de filtragem, a skill quality-checks e seus scripts, a definição do agente QA e os testes associados. Resuma os critérios da issue, os esclarecimentos aprovados e as evidências atuais de QA. Reutilize a verificação apenas se ela ainda se aplicar à revisão final; relate evidências desatualizadas, ausentes ou com falhas antes de prosseguir.
-
-Se as alterações revisadas e a verificação estiverem prontas, faça commit de quaisquer alterações aprovadas restantes do marco, envie esta branch e crie um único PR do recurso destinado a main, usando o modelo de PR do repositório e a URL real da issue de filtragem. Mantenha o histórico de checkpoints nesta branch. Não use uma skill de contribuição, não crie outra branch ou PR nem faça o merge ainda.
-```
-
-Abra o PR em **My work** e examine **Files changed**, a descrição, as revisões e os resultados das verificações. Examine os próprios arquivos de fluxo de trabalho do Tailspin Toys e as verificações obrigatórias; não presuma que toda verificação local ou observação do navegador é executada na CI. O build Astro e o verificador de links que publicam o workshop pertencem a outro repositório e não validam este recurso.
-
 ## Usar o Agent Merge para gerenciar o PR
 
-Após revisar o PR existente, configure o Agent Merge nesta mesma sessão. Não crie um segundo PR.
+Com todo o código criado e revisado, vamos permitir que o Agent Merge gerencie o processo do PR.
 
-1. Volte à sessão de filtragem e confirme que ela está vinculada ao PR 3.
-2. Abra o menu suspenso de ações de PR no canto superior direito. Antes de existir um PR, ele fica ao lado de **Create PR**; o rótulo pode mudar quando um PR está vinculado.
-3. Selecione **Agent merge** para habilitá-lo.
-4. Revise as permissões disponíveis, incluindo **Address reviews**, **Fix CI failures**, **Resolve conflicts** e **Merge pull request**. Mantenha a permissão de merge desativada enquanto houver achados ou verificações pendentes.
-5. Antes de iniciá-lo, envie o escopo e a autorização a seguir e selecione **Agent merge**:
+1. Use o seletor de agentes para selecionar **Default agent**.
+2. Selecione o menu suspenso ao lado de **Create PR**.
+3. Selecione **Agent merge**. O botão mudará para **Agent merge**.
+4. Selecione **Agent merge** para iniciar o processo.
 
-   ```plaintext
-   Gerencie este PR de filtragem existente com o Agent Merge. Resolva bloqueios de revisão ou CI apenas dentro do escopo deste PR. Não enfraqueça testes ou requisitos e pergunte antes de alterações não relacionadas ou instalações. Qualquer alteração na revisão testada exige atualizar as verificações relevantes e as evidências do navegador; não trate resultados antigos de QA como prova de código alterado.
+O processo do Agent Merge começa. Ele vai:
 
-   Não faça o merge até eu habilitar explicitamente Merge pull request após revisar o diff final e as evidências. Não crie outro PR nem comece a tarefa do canvas.
-   ```
+- Criar o pull request com um título e uma descrição.
+- Se você iniciou a sessão por uma issue, incluir uma referência à issue relacionada no corpo da descrição.
+- Fazer rebase ou resolver possíveis conflitos de merge com a branch de destino.
+- Monitorar o processo de CI para garantir que todas as verificações sejam concluídas com sucesso.
+- Monitorar o PR para verificar feedback de outras pessoas desenvolvedoras ou da revisão de código do Copilot. Ele fará atualizações para resolver esses comentários.
+- Opcionalmente, fazer o merge automático do PR quando tudo for concluído com sucesso.
 
-6. Revise as alterações posteriores e os resultados atualizados. Quando o diff final estiver aprovado, a CI e as revisões obrigatórias passarem e as evidências de QA se aplicarem àquela revisão, autorize explicitamente o merge selecionando o menu suspenso ao lado de **Agent merge** e depois **Merge pull request**.
+Vamos permitir que o Agent Merge também faça o merge do PR quando tudo for concluído com sucesso!
 
-   ![Menu suspenso Agent merge mostrando as ações permitidas ao agente — Address reviews, Fix CI failures, Resolve conflicts — com uma seta apontando para Merge pull request](../../_images/app-agent-merge-merge.png)
+5. Selecione o menu suspenso ao lado de **Agent merge**.
+6. Confirme se há uma marca ao lado de **Merge pull request**.
 
-7. Confirme que o GitHub mostra o PR 3 como **Merged**, não apenas apto para merge ou na fila. O Agent Merge não contorna proteções do repositório nem permissões ausentes; resolva esses bloqueios antes de continuar.
 
-Somente após esse merge você deve iniciar o marco do canvas. A Lição 9 cria um worktree novo e avança sua branch de sessão por fast-forward até o `origin/main` mais recente para que o canvas comece com o recurso completo integrado.
+> [!IMPORTANT]
+> O Agent Merge não ignora as proteções do repositório nem as permissões ausentes. Resolva esses bloqueios antes de continuar.
 
 ## Resumo e próximos passos
 
 Você automatizou várias partes do processo de desenvolvimento, incluindo a geração, o teste e a validação de código e, agora, o processo de pull request. Você:
 
 - aprendeu o que é o Agent Merge e como ele automatiza o ciclo de vida do merge.
-- revisou o diff completo de filtragem, skill, perfil QA e testes como PR 3.
-- reutilizou as evidências atuais de QA, examinou a CI e autorizou explicitamente o Agent Merge.
+- examinou o PR completo do recurso e as evidências de verificação.
+- autorizou o Agent Merge somente após a revisão e confirmou que o PR foi integrado.
 
-Em seguida, você explorará **canvases**, uma maneira mais completa de planejar e visualizar o trabalho com o agente. Continue para a [Lição 9 - Criar um canvas de triagem][next-lesson].
+Em seguida, você [usará um canvas existente e criará um canvas de triagem][next-lesson] para explorar uma forma mais completa de examinar, planejar e visualizar o trabalho com o agente.
 
 ## Recursos
 
 - [Gerenciar issues e pull requests com o aplicativo GitHub Copilot][managing-issues-prs]
 - [Sobre o aplicativo GitHub Copilot][about-copilot-app]
 
-[previous-lesson]: ../7-qa-agent/
 [next-lesson]: ../9-canvases/
 [managing-issues-prs]: https://docs.github.com/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests
 [about-copilot-app]: https://docs.github.com/copilot/concepts/agents/github-copilot-app

@@ -41,15 +41,21 @@ To use the GitHub Copilot app the first step, as you might imagine, is to instal
 
 With your project connected, take a moment to learn your way around. The app organizes everything into a few areas in the sidebar:
 
-- **Sessions** — where agents do their work. For this workshop, choose a **new working tree** so each PR milestone has an isolated checkout and branch. Other workspace choices exist, but are not used here.
-- **Quick chats** — lightweight conversations for questions and brainstorming that don't need a branch or workspace of their own. You'll try one at the end of this lesson.
-- **My work** — your issues and pull requests, surfaced through the app's **native GitHub integration**. From here you can browse and filter issues and pull requests, check CI status, start a session from an issue, and review pull requests — all without leaving the app.
-- **Customize** — discover and manage MCP servers, skills, and canvases. You'll use it to configure Playwright MCP.
-- **Automations** — saved agent tasks that run on a schedule or on demand. The wrap-up links to these as a next step, not another workshop exercise.
+- **New** - like you might expect, you can start a new chat session with Copilot here!
+- **My work** - your issues and pull requests, surfaced through the app's native GitHub integration. From here you can browse and filter issues and pull requests, check CI status, start a session from an issue, and review pull requests — all without leaving the app.
+- **Automations** — saved agent tasks that run on a schedule or on demand. These are great for managing todo lists, regular project maintenance, or other bits of tedium you'd like to offload. The wrap-up links to these as a next step, not another workshop exercise.
+- **Customize** - add features and functions to the Copilot app in the form of MCP servers, plugins, skills, and other components. You'll use it to configure Playwright MCP.
+- **Chats** — lightweight conversations for questions and brainstorming that don't need a branch or workspace of their own. You'll try one at the end of this lesson.
+- **Sessions** — where agents do their work. Each session runs in its own isolated workspace, so you can run several at once without their changes colliding. You'll start your first session when you add star ratings.
+
+As you work through the workshop, you'll explore the workspace!
+
+> [!TIP]
+> When in doubt, ask Copilot! If you're not sure how to do something, or if something is possible, you can ask Copilot. It will help guide you.
 
 ### Find your seeded backlog
 
-Because the app integrates with GitHub natively, the work waiting in your repository shows up right inside the app. When you created your repository from the template, a backlog of issues was filed for you — let's confirm it's there.
+There's likely not a single project without a backlog, and Tailspin Toys isn't any different. Let's explore the backlog that currently exists, which was created when you created your template.
 
 1. Select **My work** in the sidebar.
 2. Find these issues by title rather than assuming their issue numbers:
@@ -57,16 +63,16 @@ Because the app integrates with GitHub natively, the work waiting in your reposi
    - Allow users to filter games by category and publisher
    - Update our repository coding standards
 
-3. Select an issue to read its details. Each issue is also a launch point for an agent session — you'll start work from these issues later in the harness. Other backlog issues provide context for the canvas, not another implementation task.
+3. Select an issue to read its details. Each issue is also a launch point for an agent session. You'll start from the filtering issue after completing a quick first change.
 
 > [!NOTE]
-> The list of items in My work is automatically filtered to only display items from the repositories you've added to Copilot app. Want to see work items from other repos? Add them to the app!
+> The list of items in My work is automatically filtered to only display items from the repositories you've added to Copilot app. Want to see work items from other repos? Add those repos to the app!
 
 ## Try a quick chat
 
 A great way to get comfortable with the app is to use it to learn about the *app itself* — and a **quick chat** is exactly the right tool for that. Quick chats let you ask a question or brainstorm without creating a branch or worktree, so they're perfect for a fast, throwaway question — no session required.
 
-1. In the sidebar, select **+** next to **Quick chats** to open a new chat.
+1. In the sidebar, select **+** next to **Chats** to open a new chat.
 2. Ask the app how its own sessions work:
 
    ```plaintext
@@ -84,13 +90,7 @@ Congratulations! You've installed the GitHub Copilot app, connected your project
 - get oriented in the workspace and find your seeded backlog in **My work**.
 - use a quick chat to ask a fast, throwaway question.
 
-## Keep PR milestones separate
-
-You will merge four PRs: star ratings; instructions with a small demonstration; filtering with the skill, QA profile, and tests; then the triage canvas. Use one branch per PR milestone. Lessons 4–8 stay in the same filtering session, worktree, and branch, with checkpoint commits rather than extra PRs.
-
-A new App worktree can start from stale local state. Before each new milestone edits files, fetch the repository and fast-forward the new session branch to the latest `origin/main`. The next lessons show this explicitly. Do not stack branches, cherry-pick earlier work, or switch an active filtering session to another branch.
-
-Next, you'll start your first agent session and make your first change to the project — showing a star rating on the game cards. Continue to [Lesson 2 - Add star ratings: a quick win][next-lesson].
+Next, you'll [start your first agent session][next-lesson] and use it to show a star rating on the game cards.
 
 ## Resources
 
@@ -98,7 +98,6 @@ Next, you'll start your first agent session and make your first change to the pr
 - [Getting started with the GitHub Copilot app][getting-started]
 - [Working with agent sessions in the GitHub Copilot app][agent-sessions]
 
-[previous-lesson]: ../0-prerequisites/
 [next-lesson]: ../2-add-star-rating/
 [about-copilot-app]: https://docs.github.com/copilot/concepts/agents/github-copilot-app
 [getting-started]: https://docs.github.com/copilot/how-tos/github-copilot-app/getting-started

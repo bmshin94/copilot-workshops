@@ -1,23 +1,23 @@
 ---
-title: "第 9 课 - 创建分类画布"
-description: "创建并审查保存在存储库中的分类画布，合并 PR 4，再重新打开画布以添加议题上下文，而不开始其他功能。"
+title: "第 9 课 - 探索并创建画布"
+description: "使用现有的 Database Explorer 画布，再创建并审查由存储库支持的分类画布。"
 authors:
   - geektrainer
-lastUpdated: 2026-09-11
+lastUpdated: 2026-09-17
 ---
 
-此前，你通过聊天指挥智能体。但许多工作并不只存在于对话中，而是呈现在看板、文档或检查清单上。借助**画布**，你和智能体可以直接在应用内共享一个适合此类工作的界面。本课将创建一个简单画布，用于规划和跟踪一直在处理的待办事项。
+此前，你通过聊天指挥智能体。但许多工作并不只存在于对话中，而是呈现在看板、文档或检查清单上。借助**画布**，你和智能体可以直接在应用内共享一个适合此类工作的界面。本课将先使用 Tailspin Toys 自带的画布，再为一直在处理的待办事项创建一个画布。
 
 本课将介绍如何：
 
 - 了解画布是什么以及何时使用画布。
+- 使用现有的 Database Explorer 画布检查项目数据。
 - 创建共享的看板画布以对待办事项进行分类。
-- 将画布保存到存储库，并为团队合并更改。
-- 重新打开画布并添加议题上下文，而不实现其他功能。
+- 检查并操作新画布，而不实现其他功能。
 
 ## 场景
 
-查看一长串议题可能让人望而生畏。Tailspin Toys 的开发人员希望有一个工具来分类议题，并将其详情加入会话上下文。添加上下文并不代表授权实现该议题；本练习以可复用的看板结束，而不是创建第五个 PR。
+Tailspin Toys 已包含用于探索数据库的画布。使用它了解画布如何将项目数据转换为交互式界面后，你将创建一个可复用的看板，用于选择下一项工作，而不开始实现其他功能。
 
 ## 什么是画布？
 
@@ -39,99 +39,69 @@ lastUpdated: 2026-09-11
 - 直接在共享界面上引导或纠正工作，再让智能体从更改处继续。
 - 通过工件的可见更改检查进度，而不只是查看聊天回复。
 
-## 创建画布来跟踪工作
+## 使用 Database Explorer 画布
 
-确认 PR 3 已合并。开始画布工作前，星级评分、文档标准、筛选功能、质量技能和 QA 配置文件必须都已进入 `main`。为这个最终 PR 里程碑使用一个新会话和一个分支。
+先使用项目现有的 Database Explorer 画布。通过可用的示例，可以在自行创建画布前了解存储库范围的画布如何工作。
 
-1. 返回（或打开）GitHub Copilot app。
-2. 选择 **Home screen**。
-3. 确保为存储库选择了 `tailspin-toys`。
-4. 选择 **new working tree** 和 **Interactive** 模式。创建任何文件前，发送以下基线请求：
-
-   ```plaintext
-   准备这个新的画布会话，不要实现任何内容。确认这是一个干净的新工作树，获取 origin，并将当前会话分支快进到 origin/main。报告检出目录、分支，以及相互一致的 HEAD 和 origin/main 修订版本。验证筛选 PR 已合并，且筛选功能、quality-checks 技能和 QA 配置文件均已存在。
-
-   如果检出目录不干净、已发生分叉或缺少之前的合并，停止。不要重置、丢弃工作、切换分支或创建其他分支。报告基线后停止。
-   ```
-
-5. 检查基线报告，再请求创建保存在存储库中的画布：
+1. 确认筛选拉取请求 (PR) 已合并，并更新本地 `main`。
+2. 返回 GitHub Copilot app，选择 **Home screen**。
+3. 确认已选择 `tailspin-toys` 存储库。
+4. 基于更新后的 `main` 在 **new working tree** 中创建会话，再选择 **Interactive** 模式。
+5. 要求 Copilot 根据需要准备本地数据库，并打开现有画布且不做更改：
 
    ```plaintext
-   使用 App 支持的画布扩展工作流，为此存储库创建一个基本的 Kanban 分类画布，并将其保存在存储库中。将定义保存到 .github/extensions/ 下，以便团队复用。检查并保留现有扩展；不要覆盖随附的数据库浏览器。
-
-   阅读当前未关闭的议题。突出显示最可能需要关注的三个，其余议题放在下方。每个突出显示的议题都应包含标题、内容摘要、URL 和优先级理由。将排序视为建议，而不是修改议题的指令。
-
-   为每张卡片提供 Add to current context 操作，仅将议题详情加入当前会话。此操作不得开始实现、创建会话或分支、修改议题状态或创建 PR。保持画布范围明确，并支持键盘操作。
-
-   向我展示生成的文件，并打开画布供我检查。不要更改应用代码、提交、推送或创建 PR。在安装任何内容或添加依赖项前先询问。
+   Set up the local database if needed, then open the repository's Database Explorer canvas. Do not change any files.
    ```
 
-Copilot 会创建画布文件并打开共享界面。信任其操作前，先审查生成的扩展；它是可执行的存储库内容，而不只是一幅图。
+6. 在 Database Explorer 中浏览可用表，并选择 `games`。
+7. 运行只读查询，显示五款评分较高的游戏：
 
-> [!NOTE]
-> 如果第一版需要改进，在分类任务范围内请求针对性调整。不要把本练习变成实现某个待办议题。
+   ```sql
+   SELECT title, star_rating
+   FROM games
+   ORDER BY star_rating DESC
+   LIMIT 5;
+   ```
+
+8. 确认结果包含不超过五款游戏，并按评分降序排列。
+9. 打开 **Files**，检查 `.github/extensions/database-explorer/extension.mjs`。注意画布如何随项目存储，并将查询限制为只读的 `SELECT` 和 `WITH` 语句。
+10. 确认会话没有文件更改。
+
+## 创建画布来分类议题
+
+现在创建另一种共享界面。将分类画布保存在项目范围内，使其成为团队可以审查和复用的存储库资产。
+
+1. 在同一会话中输入 `/create-canvas`，再描述要创建的画布：
+
+   ```plaintext
+   Create a Kanban triage canvas for this repo's open issues and save it under .github/extensions/. Highlight the three issues you'd prioritize and explain why, with the rest below. Include summaries and links.
+
+   Give each card an "Add to current context" action that adds the issue details without starting work or changing the issue. Make it keyboard-accessible and open it so I can try it.
+   ```
+
+Copilot 会在 `.github/extensions` 下创建画布扩展，并在应用右侧面板中打开共享界面。生成的扩展是可执行的存储库内容，而不只是可视工件，因此接下来需要检查其文件和行为。
 
 ## 检查并操作画布
 
-1. 打开 **Changes**，确认画布定义保存在存储库的 `.github/extensions/` 下，而不是仅保存到用户或会话。检查现有扩展和应用文件是否保持不变。
+共享画布前，将其与存储库中的实际议题进行比较，并操作其控件。这样可以确认内容准确、交互无障碍，而且议题操作只添加上下文，不会启动工作。
+
+1. 打开 **Changes**，确认画布定义由存储库支持并位于 `.github/extensions/` 下，而不是仅保存到用户或会话。检查现有扩展和应用文件是否保持不变。
 2. 将看板与实际未关闭的议题进行比较，并评估排序说明。
 3. 检查卡片和控件是否清晰可读，且支持键盘操作。
 4. 为一个议题选择 **Add to current context**，确认只有议题详情进入对话，不应开始实现或更改议题状态。
 5. 审查所有修正，并让 Copilot 对更改的文件运行适用的现有验证。记录结果和阻塞项，不要仅因为交互界面能打开就假定它正确。
+6. 如果画布需要更改，请在分类范围内请求针对性改进，然后重复受影响的检查。不要在此画布工作中实现某个待办议题。
 
-## 保存画布并合并到存储库
-
-画布已经是存储库资产。仅将已审查的画布工作提交为 PR 4：
-
-1. 在同一会话中发送：
-
-   ```plaintext
-   审查保存在存储库中的分类画布差异及其验证证据。在当前会话分支上提交已批准的画布文件，推送分支，并使用存储库的 PR 模板创建一个以 main 为目标的 PR。描述画布行为，以及我们如何验证添加议题只会添加上下文。暂时不要合并，也不要实现待办议题。
-   ```
-
-2. 在 **My work** 中审查完整的 PR 差异和检查结果。确认其中包含画布，而不是无关的应用工作。
-3. 在同一画布会话中打开 PR 操作下拉菜单，选择 **Agent merge**。审查其允许执行的操作，在批准最终结果前保持 **Merge pull request** 关闭。
-4. 启动 Agent Merge 前明确范围：
-
-   ```plaintext
-   使用 Agent Merge 管理此现有画布 PR。仅处理范围内的审查和 CI 阻塞项；在无关更改或安装前先询问。如果画布发生变化，重复受影响的验证并更新证据。在我审查后明确启用 Merge pull request 前，不要合并。不要实现待办议题或创建其他 PR。
-   ```
-
-5. 选择 **Agent merge**，审查后续更改。检查练习存储库实际的 CI 检查并解决失败项；CI 不能替代实际操作画布进行验证。
-
-6. 最终差异和当前证据获批，且必需的检查和审查通过后，选择 Agent Merge 下拉菜单，再选择 **Merge pull request**，明确允许合并。
-
-   ![Agent merge 下拉菜单显示智能体获准执行的操作：Address reviews、Fix CI failures 和 Resolve conflicts，箭头指向 Merge pull request](../../_images/app-agent-merge-merge.png)
-
-7. 确认 GitHub 显示 PR 4 为 **Merged** 后再继续。
-
-现在，你已经为团队创建了新的共享画布。
-
-## 重新打开画布，但不开始其他功能
-
-画布 PR 合并后，在同一画布会话中重新打开保存在存储库中的画布。这是检查步骤，而不是另一个分支或 PR 里程碑。
-
-1. 返回画布会话，保持 **Interactive** 模式；如果画布面板仍打开，先关闭它。
-2. 发送：
-
-   ```plaintext
-   在同一会话中重新打开存储库的分类画布。我会将一个议题加入上下文，仅用于检查其详情。不要编辑文件、实现议题、更改其状态、创建其他会话或分支、提交、推送或打开 PR。
-   ```
-
-3. 确认已保存的画布再次打开，而没有重新生成其定义。
-4. 在最感兴趣的一个议题上选择 **Add to current context**。
-5. 确认所选议题的详情出现在上下文中，而没有开始实现。到此停止：本研讨会有四个 PR 里程碑，而不是五个。
-
-现在，你已使用自己创建的画布简化了开发流程。
+本工作坊不会再创建 PR，因为你已练习过手动合并和 Agent Merge。在生产环境中，应先按团队的常规流程审查并合并画布，再让其他人使用。
 
 ## 总结与后续步骤
 
-你创建了一个可与智能体协作的共享界面。你：
+你创建并复用了一个可与智能体协作的共享界面。本课中，你：
 
 - 了解了画布是什么以及何时使用画布。
-- 与智能体共同创建了共享的看板分类画布。
-- 使用 Agent Merge 将画布保存并合并到存储库。
-- 重新打开已合并的画布，添加议题上下文，而不启动其他功能。
+- 使用现有的 Database Explorer 画布检查了项目数据。
+- 创建了用于对待办事项进行分类的共享看板画布。
+- 检查并操作了新画布，而未实现其他功能。
 
 待办事项现已得到跟踪。接下来回顾已构建的所有内容，并了解后续方向。继续学习[第 10 课 - 总结与后续步骤][next-lesson]。
 
@@ -141,7 +111,6 @@ Copilot 会创建画布文件并打开共享界面。信任其操作前，先审
 - [Awesome Copilot 上的画布][awesome-copilot-canvases]
 - [关于 GitHub Copilot app][about-copilot-app]
 
-[previous-lesson]: ../8-create-pull-request/
 [next-lesson]: ../10-review/
 [canvas-docs]: https://docs.github.com/copilot/how-tos/github-copilot-app/working-with-canvas-extensions
 [awesome-copilot-canvases]: https://awesome-copilot.github.com/extensions/
